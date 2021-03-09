@@ -1,3 +1,4 @@
+import 'package:NoEstasSola/src/codigoverificacion.dart';
 import 'package:NoEstasSola/src/view/index.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
       child: Scaffold(
         backgroundColor: Colors.purple[100],
         body: Container(
-          margin: EdgeInsets.only(top: height / 4),
+          margin: EdgeInsets.only(top: height / 6),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -45,6 +46,34 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                         ))
                       ],
                     )),
+                Container(
+                  margin: EdgeInsets.only(bottom: height / 12),
+                  width: width,
+                  child: Center(
+                    child: GestureDetector(
+                      child: SizedBox(
+                        child: Container(
+                          height: height / 16,
+                          width: width / 2,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.purple[300],
+                              shape: BoxShape.rectangle),
+                          child: Center(
+                            child: Text('Ingresar'),
+                          ),
+                        ),
+                      ),
+                      onTap: () => {
+                        Navigator.of(context).pop(),
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(builder: (context) => CodigoVerificacion()),
+                          ),
+                      },
+                    ),
+                  ),
+                ),
                 Container(
                   margin: EdgeInsets.only(bottom: height / 9),
                   child: Text("O ingresa con tus redes sociales"),
