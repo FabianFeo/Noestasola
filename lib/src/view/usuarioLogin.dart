@@ -1,3 +1,4 @@
+import 'package:NoEstasSola/src/view/index.dart';
 import 'package:flutter/material.dart';
 
 class UsuarioLogin extends StatefulWidget {
@@ -17,6 +18,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
+        backgroundColor: Colors.purple[100],
         body: Container(
           margin: EdgeInsets.only(top: height / 4),
           child: SingleChildScrollView(
@@ -51,20 +53,31 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                     child: Container(
                   width: width,
                   child: Row(
-                    children: [ SizedBox(
-                        width: width / 3,
-                        child: Container(
-                            alignment: Alignment.center,
-                            height: height / 9,
-                            width: width / 9,
-                            decoration: new BoxDecoration(
-                              color: Colors.purple[300],
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Text("red1"),
-                            )),
-                      ),SizedBox(
+                    children: [
+                      GestureDetector(
+                        child: SizedBox(
+                          width: width / 3,
+                          child: Container(
+                              alignment: Alignment.center,
+                              height: height / 9,
+                              width: width / 9,
+                              decoration: new BoxDecoration(
+                                color: Colors.purple[300],
+                                shape: BoxShape.circle,
+                              ),
+                              child: Center(
+                                child: Text("red1"),
+                              )),
+                        ),
+                        onTap: () => {
+                          Navigator.of(context).pop(),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Index()),
+                          )
+                        },
+                      ),
+                      SizedBox(
                         width: width / 3,
                         child: Container(
                             alignment: Alignment.center,
@@ -77,7 +90,8 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                             child: Center(
                               child: Text("red2"),
                             )),
-                      ),SizedBox(
+                      ),
+                      SizedBox(
                         width: width / 3,
                         child: Container(
                             alignment: Alignment.center,
@@ -90,7 +104,8 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                             child: Center(
                               child: Text("red3"),
                             )),
-                      )],
+                      )
+                    ],
                   ),
                 ))
               ],
