@@ -10,7 +10,7 @@ class UserCollectionService {
     User usuario=User();
     return firestore
         .collection('users')
-        .doc(usuario.cedula)
+        .doc(usuario.userUuid)
         .set(usuario.toMap());
   }
 }

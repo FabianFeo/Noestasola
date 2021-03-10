@@ -7,6 +7,7 @@ class User {
   String lastname;
   String email;
   String cedula;
+  String userUuid;
   User._internal();
   factory User() {
     return _user;
@@ -18,7 +19,8 @@ class User {
       'lastname': lastname,
       'email': email,
       'cedula': cedula,
-      'phoneNumber': phoneNumber
+      'phoneNumber': phoneNumber,
+      'userUuid':userUuid
     };
   }
 }

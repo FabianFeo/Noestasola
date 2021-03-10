@@ -8,14 +8,13 @@ class AuthService {
   factory AuthService() {
     return _authService;
   }
-
+  user.User usuario = user.User();
   AuthService._internal();
   AuthCredential _authCredential;
   String status;
   String actualCode;
   FirebaseAuth _auth = FirebaseAuth.instance;
   Future registerUser(String mobile, BuildContext context) async {
-    user.User usuario = user.User();
     usuario.phoneNumber = mobile;
     return await _auth.verifyPhoneNumber(
         phoneNumber: "+57 " + mobile,
@@ -66,7 +65,7 @@ class AuthService {
       status = 'Something has gone wrong, please try later';
     }).then((UserCredential user) async {
       status = 'Authentication successful';
-
+      usuario.userUuid = user.user.uid;
       onAuthenticationSuccessful(context);
     });
   }
