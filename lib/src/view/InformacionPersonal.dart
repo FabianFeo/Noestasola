@@ -38,9 +38,11 @@ class _DatosPersonalState extends State<DatosPersonal> {
                   child: Center(
                     child: Text(
                       'Por favor completa los siguientes datos para termianr tu registro:',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color.fromRGBO(101, 79, 168, 1),
                         fontWeight: FontWeight.w400,
+                        fontSize: 17,
                       ),
                     ),
                   )),
