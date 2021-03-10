@@ -1,4 +1,4 @@
-import 'package:NoEstasSola/src/view/InformacionPersonal.dart';
+import 'package:NoEstasSola/src/view/DatosPersonal.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:NoEstasSola/src/model/User.model.dart' as user show User;
