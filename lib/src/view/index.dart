@@ -32,7 +32,7 @@ class _IndexState extends State<Index> {
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Colors.purple[100],
+        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
         body: SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.only(top: height / 8),

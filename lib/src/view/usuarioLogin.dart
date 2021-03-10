@@ -1,5 +1,6 @@
-import 'package:NoEstasSola/src/codigoverificacion.dart';
+import 'package:NoEstasSola/src/view/codigoverificacion.dart';
 import 'package:NoEstasSola/src/view/index.dart';
+import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 
 class UsuarioLogin extends StatefulWidget {
@@ -19,14 +20,17 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Colors.purple[100],
+        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
         body: Container(
           margin: EdgeInsets.only(top: height / 6),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Container(
-                  child: Text("Ingresa tu número de teléfono"),
+                  child: Text(
+                    "Ingresa tu número de teléfono",
+                    style: TextStyle(fontSize: 18),
+                  ),
                   margin: EdgeInsets.only(bottom: height / 8),
                 ),
                 Container(
@@ -40,40 +44,44 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                           width: width / 1.5,
                           child: TextField(
                             onChanged: (value) => inputNumeroTelefono = value,
-                            decoration: InputDecoration(
-                                hintText: 'Enter a search term'),
+                            decoration:
+                                InputDecoration(hintText: 'Numero de telefono'),
                           ),
                         ))
                       ],
                     )),
-                Container(
-                  margin: EdgeInsets.only(bottom: height / 12),
-                  width: width,
-                  child: Center(
-                    child: GestureDetector(
-                      child: SizedBox(
-                        child: Container(
-                          height: height / 16,
-                          width: width / 2,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              color: Colors.purple[300],
-                              shape: BoxShape.rectangle),
-                          child: Center(
-                            child: Text('Ingresar'),
-                          ),
-                        ),
-                      ),
-                      onTap: () => {
-                        Navigator.of(context).pop(),
-                        Navigator.push(
-                          context, 
-                          MaterialPageRoute(builder: (context) => CodigoVerificacion()),
-                          ),
-                      },
+                    Container(
+                      margin: EdgeInsets.only(bottom: height / 12),
+                     
+                      child: BouncingWidget(
+                  duration: Duration(milliseconds: 100),
+                  scaleFactor: 1.5,
+                  onPressed: () { 
+                    Navigator.of(context).pop();
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(
+                        builder: (context) => CodigoVerificacion()));
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
                     ),
-                  ),
-                ),
+                    color: Color.fromRGBO(101, 79, 168, 1),
+                    child: Container(
+                      width: width / 2,
+                      height: height / 20,
+                      child: Text(
+                        "Verificar",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30),
+                      ),
+                    ),
+                  )),
+                    ), 
                 Container(
                   margin: EdgeInsets.only(bottom: height / 9),
                   child: Text("O ingresa con tus redes sociales"),
@@ -91,11 +99,14 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                               height: height / 9,
                               width: width / 9,
                               decoration: new BoxDecoration(
-                                color: Colors.purple[300],
+                                color: Color.fromRGBO(107, 79, 168, 1),
                                 shape: BoxShape.circle,
                               ),
                               child: Center(
-                                child: Text("red1"),
+                                child: Text("red1",
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(255, 255, 255, 1),
+                                        fontSize: 20)),
                               )),
                         ),
                         onTap: () => {
@@ -113,11 +124,14 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                             height: height / 9,
                             width: width / 9,
                             decoration: new BoxDecoration(
-                              color: Colors.purple[300],
+                              color: Color.fromRGBO(107, 79, 168, 1),
                               shape: BoxShape.circle,
                             ),
                             child: Center(
-                              child: Text("red2"),
+                              child: Text("red2",
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(255, 255, 255, 1),
+                                      fontSize: 20)),
                             )),
                       ),
                       SizedBox(
@@ -127,11 +141,14 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                             height: height / 9,
                             width: width / 9,
                             decoration: new BoxDecoration(
-                              color: Colors.purple[300],
+                              color: Color.fromRGBO(107, 79, 168, 1),
                               shape: BoxShape.circle,
                             ),
                             child: Center(
-                              child: Text("red3"),
+                              child: Text("red3",
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(255, 255, 255, 1),
+                                      fontSize: 20)),
                             )),
                       )
                     ],

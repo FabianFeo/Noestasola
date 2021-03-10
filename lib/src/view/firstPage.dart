@@ -17,7 +17,7 @@ class _FirstPageState extends State<FirstPage> {
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Colors.purple[100],
+        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
         body: Container(
           margin: EdgeInsets.only(top: height / 8),
           child: SingleChildScrollView(
@@ -28,11 +28,17 @@ class _FirstPageState extends State<FirstPage> {
                     height: height / 3,
                     width: width / 3,
                     decoration: new BoxDecoration(
-                      color: Colors.purple[400],
+                      color: Color.fromRGBO(101, 79, 168, 1),
                       shape: BoxShape.circle,
                     ),
                     child: Center(
-                      child: Text("logo"),
+                      child: Text(
+                        "Logo",
+                        style: TextStyle(
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                            fontSize: 24,
+                            fontFamily: 'Gotham Rounded Medium'),
+                      ),
                     )),
                 Container(
                   alignment: Alignment.center,
@@ -45,11 +51,16 @@ class _FirstPageState extends State<FirstPage> {
                             height: height / 9,
                             width: width / 9,
                             decoration: new BoxDecoration(
-                              color: Colors.purple[300],
+                              color: Color.fromRGBO(101, 79, 168, 1),
                               shape: BoxShape.circle,
                             ),
                             child: Center(
-                              child: Text("conductora"),
+                              child: Text(
+                                "conductora",
+                                style: TextStyle(
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontSize: 12),
+                              ),
                             )),
                       ),
                       GestureDetector(
@@ -68,11 +79,14 @@ class _FirstPageState extends State<FirstPage> {
                               height: height / 9,
                               width: width / 9,
                               decoration: new BoxDecoration(
-                                color: Colors.purple[300],
+                                color: Color.fromRGBO(101, 79, 168, 1),
                                 shape: BoxShape.circle,
                               ),
                               child: Center(
-                                child: Text("usuario"),
+                                child: Text("usuario",
+                                style: TextStyle(
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontSize: 12),),
                               )),
                         ),
                       )
