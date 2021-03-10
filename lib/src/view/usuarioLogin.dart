@@ -1,3 +1,4 @@
+import 'package:NoEstasSola/src/service/authService.dart';
 import 'package:NoEstasSola/src/view/codigoverificacion.dart';
 import 'package:NoEstasSola/src/view/index.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
@@ -50,38 +51,43 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                         ))
                       ],
                     )),
-                    Container(
-                      margin: EdgeInsets.only(bottom: height / 12),
-                     
-                      child: BouncingWidget(
-                  duration: Duration(milliseconds: 100),
-                  scaleFactor: 1.5,
-                  onPressed: () { 
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(
-                        builder: (context) => CodigoVerificacion()));
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                    color: Color.fromRGBO(101, 79, 168, 1),
-                    child: Container(
-                      width: width / 2,
-                      height: height / 20,
-                      child: Text(
-                        "Verificar",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30),
-                      ),
-                    ),
-                  )),
-                    ), 
+                Container(
+                  margin: EdgeInsets.only(bottom: height / 12),
+                  child: BouncingWidget(
+                      duration: Duration(milliseconds: 100),
+                      scaleFactor: 1.5,
+                      onPressed: () {
+                        AuthService authService = new AuthService();
+                        authService
+                            .registerUser(inputNumeroTelefono, context)
+                            .then((value) {
+                          print(value);
+                          Navigator.of(context).pop();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CodigoVerificacion()));
+                        });
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        color: Color.fromRGBO(101, 79, 168, 1),
+                        child: Container(
+                          width: width / 2,
+                          height: height / 20,
+                          child: Text(
+                            "Verificar",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30),
+                          ),
+                        ),
+                      )),
+                ),
                 Container(
                   margin: EdgeInsets.only(bottom: height / 9),
                   child: Text("O ingresa con tus redes sociales"),

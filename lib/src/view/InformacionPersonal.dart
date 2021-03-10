@@ -1,3 +1,5 @@
+import 'package:NoEstasSola/src/model/User.model.dart';
+import 'package:NoEstasSola/src/service/usersCollectionService.dart';
 import 'package:NoEstasSola/src/view/documento.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ class DatosPersonal extends StatefulWidget {
 }
 
 class _DatosPersonalState extends State<DatosPersonal> {
+  User user = User();
   double height = 0;
   double width = 0;
   @override
@@ -72,7 +75,7 @@ class _DatosPersonalState extends State<DatosPersonal> {
                   color: Colors.grey,
                 ),
                 onChanged: (text) {
-                  print(text);
+                  user.firstName = text;
                 },
               ),
               BeautyTextfield(
@@ -101,7 +104,7 @@ class _DatosPersonalState extends State<DatosPersonal> {
                   color: Colors.grey,
                 ),
                 onChanged: (text) {
-                  print(text);
+                  user.lastname = text;
                 },
               ),
               BeautyTextfield(
@@ -130,18 +133,20 @@ class _DatosPersonalState extends State<DatosPersonal> {
                   color: Colors.grey,
                 ),
                 onChanged: (text) {
-                  print(text);
+                  user.email = text;
                 },
               ),
               BouncingWidget(
                   duration: Duration(milliseconds: 100),
                   scaleFactor: 1.5,
                   onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Documento()));
+                  
+                         Navigator.of(context).pop();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Documento()))
+                                  ;
                   },
                   child: Card(
                     shape: RoundedRectangleBorder(

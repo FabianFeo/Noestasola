@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:NoEstasSola/src/service/authService.dart';
 import 'package:NoEstasSola/src/view/InformacionPersonal.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/gestures.dart';
@@ -39,19 +40,20 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                   child: Center(
                 child: Text(
                   'Ingresa tu codigo de seguridad',
-                  style: TextStyle(fontSize: 22,
-                  color: Color.fromRGBO(101, 79, 168, 1)),
+                  style: TextStyle(
+                      fontSize: 22, color: Color.fromRGBO(101, 79, 168, 1)),
                 ),
               )),
               Container(
                   margin: EdgeInsets.all(40),
                   child: Center(
                     child: Text(
-                        'Enviaremos un código de 6 digitos a tu numero de teléfono registrado, para verificar tu identidad',
-                        style: TextStyle(
-                          color: Color.fromRGBO(101, 79, 168, 1),
-                          fontWeight: FontWeight.w400,                          
-                        ),),
+                      'Enviaremos un código de 6 digitos a tu numero de teléfono registrado, para verificar tu identidad',
+                      style: TextStyle(
+                        color: Color.fromRGBO(101, 79, 168, 1),
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   )),
               Container(
                 margin: EdgeInsets.all(22),
@@ -95,10 +97,8 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                   duration: Duration(milliseconds: 100),
                   scaleFactor: 1.5,
                   onPressed: () {
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(
-                        builder: (context) => DatosPersonal()));                    
+                    AuthService authService = AuthService();
+                    authService.signInWithPhoneNumber(currentText, context);
                   },
                   child: Card(
                     shape: RoundedRectangleBorder(
@@ -112,7 +112,7 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                         "Verificar",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),                            
+                            color: Color.fromRGBO(255, 255, 255, 1),
                             fontWeight: FontWeight.bold,
                             fontSize: 30),
                       ),
