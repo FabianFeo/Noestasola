@@ -1,7 +1,8 @@
 import 'dart:ffi';
 
-import 'package:NoEstasSola/src/view/DocumentoManual.dart';
-import 'package:NoEstasSola/src/view/DocumentoScanner.dart';
+import 'package:NoEstasSola/src/view/ScannerCara.dart';
+import 'package:beauty_textfield/beauty_textfield.dart';
+import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 
 class Documento extends StatefulWidget {
@@ -87,70 +88,90 @@ class _DocumentoState extends State<Documento> {
                     Text('C.E')
                   ],
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: height / 10),
-                  alignment: Alignment.center,
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () => {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DocumentoManual()),
-                          )
-                        },
-                        child: SizedBox(
-                          width: width / 2,
-                          child: Container(
-                              alignment: Alignment.center,
-                              height: height / 9,
-                              width: width / 9,
-                              decoration: new BoxDecoration(
-                                color: Color.fromRGBO(101, 79, 168, 1),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Manual",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(255, 255, 255, 1),
-                                      fontSize: 12),
-                                ),
-                              )),
+                BeautyTextfield(
+                  width: double.maxFinite, //REQUIRED
+                  height: 60, //REQUIRED
+                  accentColor: Colors.white, // On Focus Color
+                  textColor: Color.fromRGBO(101, 79, 168, 1), //Text Color
+                  backgroundColor: Colors.white, //Not Focused Color
+                  textBaseline: TextBaseline.alphabetic,
+                  autocorrect: false,
+                  autofocus: false,
+                  enabled: true, // Textfield enabled
+                  focusNode: FocusNode(),
+                  fontFamily: 'Gotham Rounded', //Text Fontfamily
+                  fontWeight: FontWeight.w500,
+
+                  margin: EdgeInsets.all(30),
+                  cornerRadius: BorderRadius.all(Radius.circular(15)),
+                  duration: Duration(milliseconds: 300),
+                  inputType: TextInputType.number, //REQUIRED
+                  placeholder: "Numero de Cedula",
+                  isShadow: true,
+                  obscureText: false,
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.grey,
+                  ),
+                  onChanged: (text) {
+                    print(text);
+                  },
+                ),
+                BeautyTextfield(
+                  width: double.maxFinite, //REQUIRED
+                  height: 60, //REQUIRED
+                  accentColor: Colors.white, // On Focus Color
+                  textColor: Color.fromRGBO(101, 79, 168, 1), //Text Color
+                  backgroundColor: Colors.white, //Not Focused Color
+                  textBaseline: TextBaseline.alphabetic,
+                  autocorrect: false,
+                  autofocus: false,
+                  enabled: true, // Textfield enabled
+                  focusNode: FocusNode(),
+                  fontFamily: 'Gotham Rounded', //Text Fontfamily
+                  fontWeight: FontWeight.w500,
+
+                  margin: EdgeInsets.all(30),
+                  cornerRadius: BorderRadius.all(Radius.circular(15)),
+                  duration: Duration(milliseconds: 300),
+                  inputType: TextInputType.datetime, //REQUIRED
+                  placeholder: "Fecha de Expedición",
+                  isShadow: true,
+                  obscureText: false,
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.grey,
+                  ),
+                  onChanged: (text) {
+                    print(text);
+                  },
+                ),
+                BouncingWidget(
+                    duration: Duration(milliseconds: 100),
+                    scaleFactor: 1.5,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ScannerRostro()));
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                      color: Color.fromRGBO(101, 79, 168, 1),
+                      child: Container(
+                        width: width / 2,
+                        height: height / 20,
+                        child: Text(
+                          "Verificar",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30),
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () => {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DocumentoScanner()),
-                          )
-                        },
-                        child: SizedBox(
-                          width: width / 2,
-                          child: Container(
-                              alignment: Alignment.center,
-                              height: height / 9,
-                              width: width / 9,
-                              decoration: new BoxDecoration(
-                                color: Color.fromRGBO(101, 79, 168, 1),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Escanear",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(255, 255, 255, 1),
-                                      fontSize: 12),
-                                ),
-                              )),
-                        ),
-                      )
-                    ],
-                  ),
-                )
+                    )),
               ],
             ),
           ),
