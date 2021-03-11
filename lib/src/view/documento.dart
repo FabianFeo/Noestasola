@@ -1,8 +1,10 @@
 import 'dart:ffi';
 
+import 'package:NoEstasSola/src/service/usersCollectionService.dart';
 import 'package:NoEstasSola/src/view/ScannerCara.dart';
 import 'package:beauty_textfield/beauty_textfield.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class Documento extends StatefulWidget {
@@ -15,13 +17,18 @@ class Documento extends StatefulWidget {
 class _DocumentoState extends State<Documento> {
   double height = 0;
   double width = 0;
-
+  List<CameraDescription> cameras;
   int selectedRadio;
 
   @override
   void initState() {
     super.initState();
     selectedRadio = 0;
+    _startUp();
+  }
+
+  _startUp() async {
+    cameras = await availableCameras();
   }
 
   setSelectedRadio(int val) {
@@ -150,9 +157,21 @@ class _DocumentoState extends State<Documento> {
                     duration: Duration(milliseconds: 100),
                     scaleFactor: 1.5,
                     onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ScannerRostro()));
+                      UserCollectionService userCollectionService =
+                          UserCollectionService();
+                      userCollectionService.pushUser().then((value) => {
+                            Navigator.of(context).pop(),
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ScannerRostro(
+                                          cameraDescription: cameras.firstWhere(
+                                            (CameraDescription camera) =>
+                                                camera.lensDirection ==
+                                                CameraLensDirection.front,
+                                          ),
+                                        )))
+                          });
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(

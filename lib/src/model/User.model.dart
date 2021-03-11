@@ -6,8 +6,11 @@ class User {
   String firstName;
   String lastname;
   String email;
-  String cedula;
+  String documento;
   String userUuid;
+  String documentoType;
+  String expeditionDate;
+
   User._internal();
   factory User() {
     return _user;
@@ -18,9 +21,11 @@ class User {
       'firstName': firstName,
       'lastname': lastname,
       'email': email,
-      'cedula': cedula,
+      'documento': documento,
       'phoneNumber': phoneNumber,
-      'userUuid':userUuid
+      'userUuid':userUuid,
+      'documentoType':documentoType,
+      'expeditionDate':expeditionDate
     };
   }
 }

@@ -24,6 +24,12 @@ dependencies:
   bouncing_widget: ^1.2.3
   beauty_textfield: ^0.0.1
   firebase_auth: ^1.0.1
+  tflite_flutter: ^0.5.0
+  camera: ^0.5.8+5
+  path_provider:
+  path:
+  firebase_ml_vision: ^0.9.6+2
+  image:
 
 
 
