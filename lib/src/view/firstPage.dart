@@ -64,11 +64,10 @@ class _FirstPageState extends State<FirstPage> {
                                 color: Color.fromRGBO(101, 79, 168, 1),
                                 shape: BoxShape.circle,
                               ),
-                              child: Center(
-                                child: Text("Conductora",
-                                style: TextStyle(
-                                    color: Color.fromRGBO(255, 255, 255, 1),
-                                    fontSize: 12),),
+                              child: Center(                                
+                                child:Icon(Icons.car_repair,
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                size: 50,), 
                               )),
                         ),
                       ),
@@ -81,9 +80,10 @@ class _FirstPageState extends State<FirstPage> {
                                 builder: (context) => UsuarioLogin()),
                           )
                         },
-                        child: SizedBox(
+                        child: SizedBox(                          
                           width: width / 2,
                           child: Container(
+                              
                               alignment: Alignment.center,
                               height: height / 9,
                               width: width / 9,
@@ -92,13 +92,12 @@ class _FirstPageState extends State<FirstPage> {
                                 shape: BoxShape.circle,
                               ),
                               child: Center(
-                                child: Text("usuario",
-                                style: TextStyle(
-                                    color: Color.fromRGBO(255, 255, 255, 1),
-                                    fontSize: 12),),
-                              )),
+                                child: Icon(Icons.person,
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                size: 50,),                                
+                              ),),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 )

@@ -109,7 +109,7 @@ class _DatosPersonalState extends State<DatosPersonal> {
               ),
               BeautyTextfield(
                 width: double.maxFinite, //REQUIRED
-                height: 60, //REQUIRED
+                height: 65, //REQUIRED
                 accentColor: Colors.white, // On Focus Color
                 textColor: Color.fromRGBO(101, 79, 168, 1), //Text Color
                 backgroundColor: Colors.white, //Not Focused Color
@@ -120,12 +120,14 @@ class _DatosPersonalState extends State<DatosPersonal> {
                 focusNode: FocusNode(),
                 fontFamily: 'Gotham Rounded', //Text Fontfamily
                 fontWeight: FontWeight.w500,
-
+                
+                maxLines: 1,
                 margin: EdgeInsets.all(30),
                 cornerRadius: BorderRadius.all(Radius.circular(15)),
                 duration: Duration(milliseconds: 300),
                 inputType: TextInputType.emailAddress, //REQUIRED
                 placeholder: "Correo Electronico",
+                
                 isShadow: true,
                 obscureText: false,
                 prefixIcon: Icon(
