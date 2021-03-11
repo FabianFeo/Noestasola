@@ -87,84 +87,9 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                           ),
                         ),
                       )),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: height / 9),
-                  child: Text("O ingresa con tus redes sociales"),
-                ),
-                Center(
-                    child: Container(
-                  width: width,
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        child: SizedBox(
-                          width: width / 3,
-                          child: Container(
-                              alignment: Alignment.center,
-                              height: height / 9,
-                              width: width / 9,
-                              decoration: new BoxDecoration(
-                                color: Color.fromRGBO(107, 79, 168, 1),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Text("red1",
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(255, 255, 255, 1),
-                                        fontSize: 20)),
-                              )),
-                        ),
-                        onTap: () => {
-                          Navigator.of(context).pop(),
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Index()),
-                          )
-                        },
-                      ),
-                      SizedBox(
-                        width: width / 3,
-                        child: Container(
-                            alignment: Alignment.center,
-                            height: height / 9,
-                            width: width / 9,
-                            decoration: new BoxDecoration(
-                              color: Color.fromRGBO(107, 79, 168, 1),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Text("red2",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(255, 255, 255, 1),
-                                      fontSize: 20)),
-                            )),
-                      ),
-                      SizedBox(
-                        width: width / 3,
-                        child: Container(
-                            alignment: Alignment.center,
-                            height: height / 9,
-                            width: width / 9,
-                            decoration: new BoxDecoration(
-                              color: Color.fromRGBO(107, 79, 168, 1),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Text("red3",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(255, 255, 255, 1),
-                                      fontSize: 20)),
-                            )),
-                      )
-                    ],
-                  ),
-                ))
+                ),               
               ],
             ),
-          ),
-        ),
-      ),
-    );
+          ))));
   }
 }
