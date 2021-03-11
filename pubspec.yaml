@@ -42,7 +42,8 @@ flutter:
 
   uses-material-design: true
 
-
+  assets:
+    - assets/mobilefacenet.tflite
   fonts:
     - family: Gotham
       fonts: 
@@ -58,4 +59,5 @@ flutter:
         - asset: fonts/GothamRoundedBook_21018.ttf
         - asset: fonts/GothamRoundedLight_21020.ttf
         - asset: fonts/GothamRoundedMedium_21022.ttf
+        
 

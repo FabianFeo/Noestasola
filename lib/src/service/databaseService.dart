@@ -24,7 +24,7 @@ class DataBaseService {
   /// loads a simple json file.
   Future loadDB() async {
   User user=User();
-   return firestore.collection('users').doc(user.userUuid).get();
+    firestore.collection('users').doc(user.userUuid).get();
   }
 
   /// [Name]: name of the new user
