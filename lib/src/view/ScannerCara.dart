@@ -191,6 +191,8 @@ class _ScannerRostroState extends State<ScannerRostro> {
                       )),
                   Container(
                       margin: EdgeInsets.all(40),
+                      width: width,
+                      height: height/2,
                       child: Center(
                         child: FutureBuilder<void>(
                           future: _initializeControllerFuture,

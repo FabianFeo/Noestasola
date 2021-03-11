@@ -1,3 +1,4 @@
+import 'package:NoEstasSola/src/view/CodigoVerificacionDriver.dart';
 import 'package:NoEstasSola/src/view/DatosPersonal.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +74,6 @@ class AuthService {
   void onAuthenticationSuccessful(BuildContext context) {
     Navigator.of(context).pop();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DatosPersonal()));
+        context, MaterialPageRoute(builder: (context) => CodigoVerificacionDriver()));
   }
 }

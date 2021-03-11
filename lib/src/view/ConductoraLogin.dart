@@ -61,11 +61,7 @@ class _ConductoraLoginState extends State<ConductoraLogin> {
                             .registerUser(inputNumeroTelefono, context)
                             .then((value) {
                           print(value);
-                          Navigator.of(context).pop();
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CodigoVerificacionDriver()));
+                         
                         });
                       },
                       child: Card(

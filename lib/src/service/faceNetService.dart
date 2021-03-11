@@ -42,7 +42,7 @@ class FaceNetService {
       var interpreterOptions = tflite.InterpreterOptions()
         ..addDelegate(gpuDelegateV2);
       this._interpreter = await tflite.Interpreter.fromAsset(
-          'mobilefacenet.tflite',
+          'assets\mobilefacenet.tflite',
           options: interpreterOptions);
       print('model loaded successfully');
     } catch (e) {
