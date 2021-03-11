@@ -1,3 +1,4 @@
+import 'package:NoEstasSola/src/view/ConductoraLogin.dart';
 import 'package:NoEstasSola/src/view/usuarioLogin.dart';
 import 'package:flutter/material.dart';
 
@@ -44,24 +45,32 @@ class _FirstPageState extends State<FirstPage> {
                   alignment: Alignment.center,
                   child: Row(
                     children: [
-                      SizedBox(
-                        width: width / 2,
-                        child: Container(
-                            alignment: Alignment.center,
-                            height: height / 9,
-                            width: width / 9,
-                            decoration: new BoxDecoration(
-                              color: Color.fromRGBO(101, 79, 168, 1),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "conductora",
+                      GestureDetector(
+                        onTap: () => {
+                          Navigator.of(context).pop(),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ConductoraLogin()),
+                          )
+                        },
+                        child: SizedBox(
+                          width: width / 2,
+                          child: Container(
+                              alignment: Alignment.center,
+                              height: height / 9,
+                              width: width / 9,
+                              decoration: new BoxDecoration(
+                                color: Color.fromRGBO(101, 79, 168, 1),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Center(
+                                child: Text("Conductora",
                                 style: TextStyle(
                                     color: Color.fromRGBO(255, 255, 255, 1),
-                                    fontSize: 12),
-                              ),
-                            )),
+                                    fontSize: 12),),
+                              )),
+                        ),
                       ),
                       GestureDetector(
                         onTap: () => {
