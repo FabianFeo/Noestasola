@@ -19,6 +19,7 @@ import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
+
 class ScannerRostro extends StatefulWidget {
   final CameraDescription cameraDescription;
   ScannerRostro({Key key, @required this.cameraDescription}) : super(key: key);
@@ -155,123 +156,132 @@ class _ScannerRostroState extends State<ScannerRostro> {
   double width = 0;
   @override
   Widget build(BuildContext context) {
-      final double mirror = math.pi;
+    final double mirror = math.pi;
     context = context;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
-        body: Container(
-          margin: EdgeInsets.only(top: height / 8),
-          child: Column(
-            children: [
-              Container(
-                  child: Center(
-                child: Text(
-                  'Escaneo Facial',
-                  style: TextStyle(
-                      fontSize: 22, color: Color.fromRGBO(101, 79, 168, 1)),
-                ),
-              )),
-              Container(
-                  margin: EdgeInsets.all(40),
-                  child: Center(
+          backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+          body: SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.only(top: height / 8),
+              child: Column(
+                children: [
+                  Container(
+                      child: Center(
                     child: Text(
-                      'Por favor escanea tu rostro para finalizar con el proceso de registro',
-                      textAlign: TextAlign.center,
+                      'Escaneo Facial',
                       style: TextStyle(
-                        color: Color.fromRGBO(101, 79, 168, 1),
-                        fontWeight: FontWeight.w400,
-                        fontSize: 17,
-                      ),
+                          fontSize: 22, color: Color.fromRGBO(101, 79, 168, 1)),
                     ),
                   )),
-              Container(
-                  margin: EdgeInsets.all(40),
-                  child: Center(
-                    child:  Scaffold(
-        body: FutureBuilder<void>(
-          future: _initializeControllerFuture,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (pictureTaked) {
-                return Container(
-                  width: width,
-                  child: Transform(
-                      alignment: Alignment.center,
-                      child: Image.file(File(imagePath)),
-                      transform: Matrix4.rotationY(mirror)),
-                );
-              } else {
-                return Transform.scale(
-                  scale: 1.0,
-                  child: AspectRatio(
-                    aspectRatio: MediaQuery.of(context).size.aspectRatio,
-                    child: OverflowBox(
-                      alignment: Alignment.center,
-                      child: FittedBox(
-                        fit: BoxFit.fitHeight,
-                        child: Container(
-                          width: width,
-                          height: width / _cameraService.cameraController.value.aspectRatio,
-                          child: Stack(
-                            fit: StackFit.expand,
-                            children: <Widget>[
-                              CameraPreview(_cameraService.cameraController),
-                              CustomPaint(
-                                painter: FacePainter(face: faceDetected, imageSize: imageSize),
-                              ),
-                            ],
+                  Container(
+                      margin: EdgeInsets.all(40),
+                      child: Center(
+                        child: Text(
+                          'Por favor escanea tu rostro para finalizar con el proceso de registro',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color.fromRGBO(101, 79, 168, 1),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 17,
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                );
-              }
-            } else {
-              return Center(child: CircularProgressIndicator());
-            }
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: !_bottomSheetVisible? AuthActionButton(
-          _initializeControllerFuture,
-          onPressed: onShot,
-         
-        ): Container())
-                  )),
-              BouncingWidget(
-                  duration: Duration(milliseconds: 100),
-                  scaleFactor: 1.5,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Inicio()));
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                    color: Color.fromRGBO(101, 79, 168, 1),
-                    child: Container(
-                      width: width / 2,
-                      height: height / 20,
-                      child: Text(
-                        "Finalizar",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30),
-                      ),
-                    ),
-                  ))
-            ],
+                      )),
+                  Container(
+                      margin: EdgeInsets.all(40),
+                      child: Center(
+                        child: FutureBuilder<void>(
+                          future: _initializeControllerFuture,
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              if (pictureTaked) {
+                                return Container(
+                                  width: width,
+                                  child: Transform(
+                                      alignment: Alignment.center,
+                                      child: Image.file(File(imagePath)),
+                                      transform: Matrix4.rotationY(mirror)),
+                                );
+                              } else {
+                                return Transform.scale(
+                                  scale: 1.0,
+                                  child: AspectRatio(
+                                    aspectRatio:
+                                        MediaQuery.of(context).size.aspectRatio,
+                                    child: OverflowBox(
+                                      alignment: Alignment.center,
+                                      child: FittedBox(
+                                        fit: BoxFit.fitHeight,
+                                        child: Container(
+                                          width: width,
+                                          height: width /
+                                              _cameraService.cameraController
+                                                  .value.aspectRatio,
+                                          child: Stack(
+                                            fit: StackFit.expand,
+                                            children: <Widget>[
+                                              CameraPreview(_cameraService
+                                                  .cameraController),
+                                              CustomPaint(
+                                                painter: FacePainter(
+                                                    face: faceDetected,
+                                                    imageSize: imageSize),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                            } else {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                          },
+                        ),
+                      )),
+                  BouncingWidget(
+                      duration: Duration(milliseconds: 100),
+                      scaleFactor: 1.5,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Inicio()));
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        color: Color.fromRGBO(101, 79, 168, 1),
+                        child: Container(
+                          width: width / 2,
+                          height: height / 20,
+                          child: Text(
+                            "Finalizar",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30),
+                          ),
+                        ),
+                      ))
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: !_bottomSheetVisible
+              ? AuthActionButton(
+                  _initializeControllerFuture,
+                  onPressed: onShot,
+                )
+              : Container()),
     );
   }
 }
