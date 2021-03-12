@@ -30,7 +30,7 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
     double width = MediaQuery.of(context).size.width;
     return Container(
         child: Scaffold(
-      backgroundColor: Color.fromRGBO(229, 220, 255, 1),
+      backgroundColor: Color.fromRGBO(229, 255, 255, 1),
       body: Container(
         margin: EdgeInsets.only(top: height / 4),
         child: SingleChildScrollView(
@@ -41,9 +41,7 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                 child: Text(
                   'Ingresa tu codigo de seguridad',
                   style: TextStyle(
-                      fontSize: height / 38, 
-                      color: Color.fromRGBO(101, 79, 168, 1),
-                      ),
+                      fontSize: 22, color: Color.fromRGBO(101, 79, 168, 1)),
                 ),
               )),
               Container(
@@ -71,12 +69,9 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                     fieldHeight: 50,
                     fieldWidth: 40,
                     activeFillColor: Colors.white,
-                    activeColor: Colors.purple,
-                    selectedFillColor: Colors.pink[100],
-                    selectedColor: Color.fromRGBO(101, 79, 168, 1),
                   ),
                   animationDuration: Duration(milliseconds: 300),
-                  backgroundColor: Color.fromRGBO(229, 220, 255, 1),
+                  backgroundColor: Color.fromRGBO(229, 255, 255, 1),
                   enableActiveFill: true,
                   errorAnimationController: errorController,
                   controller: textEditingController,

@@ -23,6 +23,7 @@ class AuthService {
   Future registerUser(String mobile, BuildContext context) async {
     usuario.phoneNumber = mobile;
     return await _auth.verifyPhoneNumber(
+      
         phoneNumber: "+57 " + mobile,
         timeout: Duration(seconds: 60),
         verificationCompleted: (AuthCredential auth) {
@@ -62,6 +63,7 @@ class AuthService {
           this.actualCode = verificationId;
           status = "\nAuto retrieval time out";
         });
+
   }
 
   void signInWithPhoneNumber(String smsCode, BuildContext context) async {

@@ -246,6 +246,32 @@ class _ScannerRostroState extends State<ScannerRostro> {
                           },
                         ),
                       )),
+                  BouncingWidget(
+                      duration: Duration(milliseconds: 100),
+                      scaleFactor: 1.5,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Inicio()));
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        color: Color.fromRGBO(101, 79, 168, 1),
+                        child: Container(
+                          width: width / 2,
+                          height: height / 20,
+                          child: Text(
+                            "Finalizar",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30),
+                          ),
+                        ),
+                      ))
                 ],
               ),
             ),

@@ -30,12 +30,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                 Container(
                   child: Text(
                     "Ingresa tu número de teléfono",
-                    style: 
-                    TextStyle(
-                      fontSize: height / 40,
-                      color: Color.fromRGBO(101, 79, 168, 1),
-                      fontWeight: FontWeight.w500,
-                      ),
+                    style: TextStyle(fontSize: 18),
                   ),
                   margin: EdgeInsets.only(bottom: height / 8),
                 ),
@@ -80,7 +75,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                         ),
                         color: Color.fromRGBO(101, 79, 168, 1),
                         child: Container(
-                          width: width / 2.5,
+                          width: width / 2,
                           height: height / 20,
                           child: Text(
                             "Verificar",
@@ -88,7 +83,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                             style: TextStyle(
                                 color: Color.fromRGBO(255, 255, 255, 1),
                                 fontWeight: FontWeight.bold,
-                                fontSize: height / 30),
+                                fontSize: 30),
                           ),
                         ),
                       )),
