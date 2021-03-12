@@ -30,6 +30,8 @@ dependencies:
   path:
   firebase_ml_vision: ^0.9.6+2
   image:
+  datetime_picker_formfield: ^2.0.0
+  intl: ^0.17.0
 
 
 
