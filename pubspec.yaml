@@ -50,6 +50,7 @@ flutter:
 
   assets:
     - assets/mobilefacenet.tflite
+    - assets/Logo/Logo_lala_app.png
   fonts:
     - family: Gotham
       fonts: 

@@ -20,7 +20,7 @@ class _ConductoraLoginState extends State<ConductoraLogin> {
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+        backgroundColor: Color.fromRGBO(153, 153, 204, 1),
         body: Container(
           margin: EdgeInsets.only(top: height / 6),
           child: SingleChildScrollView(

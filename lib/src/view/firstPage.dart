@@ -18,7 +18,7 @@ class _FirstPageState extends State<FirstPage> {
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+        backgroundColor: Color.fromRGBO(207, 197, 239, 1),
         body: Container(
           margin: EdgeInsets.only(top: height / 8),
           child: SingleChildScrollView(
@@ -28,19 +28,12 @@ class _FirstPageState extends State<FirstPage> {
                     margin: EdgeInsets.only(bottom: height / 8),
                     height: height / 3,
                     width: width / 3,
-                    decoration: new BoxDecoration(
-                      color: Color.fromRGBO(101, 79, 168, 1),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Logo",
-                        style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 24,
-                            fontFamily: 'Gotham Rounded Medium'),
-                      ),
-                    )),
+                    child: Container(
+                      child: Image(image: AssetImage('assets/Logo/Logo_lala_app.png'),
+                      height: 100,
+                      width: 100,),
+                    ), ),
+                    
                 Container(
                   alignment: Alignment.center,
                   child: Row(

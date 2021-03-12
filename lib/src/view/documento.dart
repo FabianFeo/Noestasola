@@ -20,7 +20,7 @@ class _DocumentoState extends State<Documento> {
   double width = 0;
   List<CameraDescription> cameras;
   int selectedRadio;
-User user=User();
+  User user = User();
   @override
   void initState() {
     super.initState();
@@ -44,7 +44,7 @@ User user=User();
     double width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+        backgroundColor: Color.fromRGBO(207, 197, 239, 1),
         body: Container(
           margin: EdgeInsets.only(top: height / 8),
           child: SingleChildScrollView(
@@ -55,7 +55,9 @@ User user=User();
                     child: Text(
                       'Tipo de Documento',
                       style: TextStyle(
-                          fontSize: 22, color: Color.fromRGBO(101, 79, 168, 1)),
+                        fontSize: height / 40,
+                        color: Color.fromRGBO(40, 1, 102, 1),
+                        fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
@@ -66,7 +68,7 @@ User user=User();
                         'Por favor selecciona tu tipo de documento y la forma en la que quieres registrarlo',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Color.fromRGBO(101, 79, 168, 1),
+                          color: Color.fromRGBO(40, 1, 102, 1),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -80,7 +82,7 @@ User user=User();
                       activeColor: Colors.blue,
                       onChanged: (val) {
                         print("Radio $val");
-                        user.documentoType="C.C";
+                        user.documentoType = "C.C";
                         setSelectedRadio(val);
                       },
                     ),
@@ -90,7 +92,7 @@ User user=User();
                       groupValue: selectedRadio,
                       activeColor: Colors.blue,
                       onChanged: (val) {
-                        user.documentoType="C.E";
+                        user.documentoType = "C.E";
                         print("Radio $val");
                         setSelectedRadio(val);
                       },
@@ -124,7 +126,7 @@ User user=User();
                     color: Colors.grey,
                   ),
                   onChanged: (text) {
-                   user.documento=text;
+                    user.documento = text;
                   },
                 ),
                 BeautyTextfield(
@@ -153,7 +155,7 @@ User user=User();
                     color: Colors.grey,
                   ),
                   onChanged: (text) {
-                    user.expeditionDate=text;
+                    user.expeditionDate = text;
                   },
                 ),
                 BouncingWidget(

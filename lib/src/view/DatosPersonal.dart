@@ -22,28 +22,31 @@ class _DatosPersonalState extends State<DatosPersonal> {
     double width = MediaQuery.of(context).size.width;
     return Container(
         child: Scaffold(
-      backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+      backgroundColor: Color.fromRGBO(207, 197, 239, 1),
       body: Container(
         margin: EdgeInsets.only(top: height / 8),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
-                  child: Center(
-                child: Text(
-                  'Información Personal',
-                  style: TextStyle(
-                      fontSize: 22, color: Color.fromRGBO(101, 79, 168, 1)),
+                child: Center(
+                  child: Text(
+                    'Información Personal',
+                    style: TextStyle(
+                        fontSize: height / 40,
+                        color: Color.fromRGBO(40, 1, 102, 1),
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
-              )),
+              ),
               Container(
                   margin: EdgeInsets.all(40),
                   child: Center(
                     child: Text(
-                      'Por favor completa los siguientes datos para termianr tu registro:',
+                      'Por favor completa los siguientes datos para terminar tu registro:',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Color.fromRGBO(101, 79, 168, 1),
+                        color: Color.fromRGBO(40, 1, 102, 1),
                         fontWeight: FontWeight.w400,
                         fontSize: 17,
                       ),
@@ -63,11 +66,13 @@ class _DatosPersonalState extends State<DatosPersonal> {
                 fontFamily: 'Gotham Rounded', //Text Fontfamily
                 fontWeight: FontWeight.w500,
 
+                maxLines: 1,
                 margin: EdgeInsets.all(30),
                 cornerRadius: BorderRadius.all(Radius.circular(15)),
                 duration: Duration(milliseconds: 300),
                 inputType: TextInputType.name, //REQUIRED
                 placeholder: "Nombre",
+
                 isShadow: true,
                 obscureText: false,
                 prefixIcon: Icon(
@@ -77,7 +82,7 @@ class _DatosPersonalState extends State<DatosPersonal> {
                 onChanged: (text) {
                   user.firstName = text;
                 },
-              ),
+              ),              
               BeautyTextfield(
                 width: double.maxFinite, //REQUIRED
                 height: 60, //REQUIRED
@@ -120,14 +125,14 @@ class _DatosPersonalState extends State<DatosPersonal> {
                 focusNode: FocusNode(),
                 fontFamily: 'Gotham Rounded', //Text Fontfamily
                 fontWeight: FontWeight.w500,
-                
+
                 maxLines: 1,
                 margin: EdgeInsets.all(30),
                 cornerRadius: BorderRadius.all(Radius.circular(15)),
                 duration: Duration(milliseconds: 300),
                 inputType: TextInputType.emailAddress, //REQUIRED
                 placeholder: "Correo Electronico",
-                
+
                 isShadow: true,
                 obscureText: false,
                 prefixIcon: Icon(
@@ -142,13 +147,9 @@ class _DatosPersonalState extends State<DatosPersonal> {
                   duration: Duration(milliseconds: 100),
                   scaleFactor: 1.5,
                   onPressed: () {
-                  
-                         Navigator.of(context).pop();
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Documento()))
-                                  ;
+                    Navigator.of(context).pop();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Documento()));
                   },
                   child: Card(
                     shape: RoundedRectangleBorder(

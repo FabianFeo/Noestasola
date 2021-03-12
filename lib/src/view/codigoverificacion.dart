@@ -30,7 +30,7 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
     double width = MediaQuery.of(context).size.width;
     return Container(
         child: Scaffold(
-      backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+      backgroundColor: Color.fromRGBO(207, 197, 239, 1),
       body: Container(
         margin: EdgeInsets.only(top: height / 4),
         child: SingleChildScrollView(
@@ -41,7 +41,9 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                 child: Text(
                   'Ingresa tu codigo de seguridad',
                   style: TextStyle(
-                      fontSize: 22, color: Color.fromRGBO(101, 79, 168, 1)),
+                      fontSize: height / 40,
+                      color: Color.fromRGBO(40, 1, 102, 1),
+                      fontWeight: FontWeight.w500),
                 ),
               )),
               Container(
@@ -50,8 +52,9 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                     child: Text(
                       'Enviaremos un código de 6 digitos a tu numero de teléfono registrado, para verificar tu identidad',
                       style: TextStyle(
-                        color: Color.fromRGBO(101, 79, 168, 1),
+                        color: Color.fromRGBO(40, 1, 102, 1),
                         fontWeight: FontWeight.w400,
+                        fontSize: height / 65
                       ),
                     ),
                   )),
@@ -64,14 +67,17 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                   pinTheme: PinTheme(
                     shape: PinCodeFieldShape.box,
                     borderRadius: BorderRadius.circular(5),
-                    inactiveFillColor: Colors.white,
+                    inactiveFillColor: Color.fromRGBO(230, 224, 237, 0.5),
                     inactiveColor: Color.fromRGBO(101, 79, 168, 1),
                     fieldHeight: 50,
                     fieldWidth: 40,
-                    activeFillColor: Colors.white,
+                    selectedColor: Color.fromRGBO(101, 79, 168, 1),
+                    selectedFillColor: Color.fromRGBO(225, 206, 239, 1),
+                    activeColor: Color.fromRGBO(101, 79, 168, 1),
+                    activeFillColor: Color.fromRGBO(230, 224, 237, 0.5),
                   ),
                   animationDuration: Duration(milliseconds: 300),
-                  backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+                  backgroundColor: Color.fromRGBO(207, 197, 239, 1),
                   enableActiveFill: true,
                   errorAnimationController: errorController,
                   controller: textEditingController,
@@ -92,6 +98,9 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                   },
                   appContext: context,
                 ),
+              ),
+              Container(
+                child: Text('Aqui va lu'),
               ),
               BouncingWidget(
                   duration: Duration(milliseconds: 100),

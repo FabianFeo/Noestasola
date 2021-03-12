@@ -21,7 +21,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+        backgroundColor: Color.fromRGBO(207, 197, 239, 1),
         body: Container(
           margin: EdgeInsets.only(top: height / 6),
           child: SingleChildScrollView(
@@ -30,7 +30,9 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                 Container(
                   child: Text(
                     "Ingresa tu número de teléfono",
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: height / 40,
+                    fontWeight: FontWeight.w500,
+                    color: Color.fromRGBO(101, 79, 168, 1),),
                   ),
                   margin: EdgeInsets.only(bottom: height / 8),
                 ),
