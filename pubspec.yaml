@@ -30,6 +30,12 @@ dependencies:
   path:
   firebase_ml_vision: ^0.9.6+2
   image:
+  curved_navigation_bar: ^0.3.7
+  location: ^4.1.1
+  geolocator: ^7.0.1
+  address_search_field: ^3.0.10
+ 
+
 
 
 
