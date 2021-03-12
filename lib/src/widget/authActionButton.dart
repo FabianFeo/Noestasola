@@ -1,6 +1,7 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/service/databaseService.dart';
 import 'package:NoEstasSola/src/service/faceNetService.dart';
+import 'package:NoEstasSola/src/service/usersCollectionService.dart';
 import 'package:NoEstasSola/src/view/index.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +9,11 @@ class AuthActionButton extends StatefulWidget {
   AuthActionButton(
     this._initializeControllerFuture, {
     @required this.onPressed,
+    @required this.isLogin,
   });
   final Future _initializeControllerFuture;
   final Function onPressed;
+  final bool isLogin;
 
   @override
   _AuthActionButtonState createState() => _AuthActionButtonState();
@@ -29,6 +32,8 @@ class _AuthActionButtonState extends State<AuthActionButton> {
 
     /// creates a new user in the 'database'
     await _dataBaseService.saveData(predictedData);
+    User user = User();
+    user.facePatern = predictedData;
 
     /// resets the face stored in the face net sevice
     this._faceNetService.setPredictedData(null);
@@ -50,7 +55,14 @@ class _AuthActionButtonState extends State<AuthActionButton> {
           bool faceDetected = await widget.onPressed();
 
           if (faceDetected) {
-          saveCara(context);
+            widget.isLogin
+                ? loadFace(context)
+                : saveCara(context).then((value) {
+                    UserCollectionService userCollectionService =
+                        new UserCollectionService();
+
+                    userCollectionService.pushUser();
+                  });
           }
         } catch (e) {
           // If an error occurs, log the error to the console.
@@ -60,7 +72,15 @@ class _AuthActionButtonState extends State<AuthActionButton> {
     );
   }
 
-  
+  Future loadFace(context) async {
+    /// gets predicted data from facenet service (user face detected)
+
+    if (_faceNetService.predict()) {
+      Navigator.of(context).pop();
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Index()));
+    }
+    
+  }
 
   @override
   void dispose() {

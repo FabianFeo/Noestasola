@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/service/usersCollectionService.dart';
 import 'package:NoEstasSola/src/view/ScannerCara.dart';
 import 'package:beauty_textfield/beauty_textfield.dart';
@@ -19,7 +20,7 @@ class _DocumentoState extends State<Documento> {
   double width = 0;
   List<CameraDescription> cameras;
   int selectedRadio;
-
+User user=User();
   @override
   void initState() {
     super.initState();
@@ -79,6 +80,7 @@ class _DocumentoState extends State<Documento> {
                       activeColor: Colors.blue,
                       onChanged: (val) {
                         print("Radio $val");
+                        user.documentoType="C.C";
                         setSelectedRadio(val);
                       },
                     ),
@@ -88,6 +90,7 @@ class _DocumentoState extends State<Documento> {
                       groupValue: selectedRadio,
                       activeColor: Colors.blue,
                       onChanged: (val) {
+                        user.documentoType="C.E";
                         print("Radio $val");
                         setSelectedRadio(val);
                       },
@@ -121,7 +124,7 @@ class _DocumentoState extends State<Documento> {
                     color: Colors.grey,
                   ),
                   onChanged: (text) {
-                    print(text);
+                   user.documento=text;
                   },
                 ),
                 BeautyTextfield(
@@ -150,7 +153,7 @@ class _DocumentoState extends State<Documento> {
                     color: Colors.grey,
                   ),
                   onChanged: (text) {
-                    print(text);
+                    user.expeditionDate=text;
                   },
                 ),
                 BouncingWidget(
@@ -159,19 +162,18 @@ class _DocumentoState extends State<Documento> {
                     onPressed: () {
                       UserCollectionService userCollectionService =
                           UserCollectionService();
-                      userCollectionService.pushUser().then((value) => {
-                            Navigator.of(context).pop(),
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ScannerRostro(
-                                          cameraDescription: cameras.firstWhere(
-                                            (CameraDescription camera) =>
-                                                camera.lensDirection ==
-                                                CameraLensDirection.front,
-                                          ),
-                                        )))
-                          });
+
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ScannerRostro(
+                                    cameraDescription: cameras.firstWhere(
+                                      (CameraDescription camera) =>
+                                          camera.lensDirection ==
+                                          CameraLensDirection.front,
+                                    ),
+                                  )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(

@@ -10,6 +10,7 @@ class User {
   String userUuid;
   String documentoType;
   String expeditionDate;
+  List facePatern;
 
   User._internal();
   factory User() {
@@ -23,9 +24,22 @@ class User {
       'email': email,
       'documento': documento,
       'phoneNumber': phoneNumber,
-      'userUuid':userUuid,
-      'documentoType':documentoType,
-      'expeditionDate':expeditionDate
+      'userUuid': userUuid,
+      'documentoType': documentoType,
+      'expeditionDate': expeditionDate,
+      'facePatern': facePatern,
     };
+  }
+
+  fromMap(Map<String, dynamic> data) {
+    firstName = data['firstName'];
+    lastname = data['lastname'];
+    email = data['email'];
+    documento = data['documento'];
+    phoneNumber = data['phoneNumber'];
+    userUuid = data['userUuid'];
+    documentoType = data['documentoType'];
+    expeditionDate = data['expeditionDate'];
+    facePatern = data['facePatern'];
   }
 }

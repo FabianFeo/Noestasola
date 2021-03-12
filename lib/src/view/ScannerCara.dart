@@ -281,7 +281,7 @@ class _ScannerRostroState extends State<ScannerRostro> {
           floatingActionButton: !_bottomSheetVisible
               ? AuthActionButton(
                   _initializeControllerFuture,
-                  onPressed: onShot,
+                  onPressed: onShot, isLogin: false,
                 )
               : Container()),
     );

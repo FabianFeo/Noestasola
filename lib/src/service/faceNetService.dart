@@ -1,10 +1,12 @@
+import 'package:NoEstasSola/src/model/User.model.dart';
+
 import 'databaseService.dart';
 import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
-import 'package:tflite_flutter/tflite_flutter.dart' as tflite;
+import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:image/image.dart' as imglib;
 
 class FaceNetService {
@@ -19,7 +21,7 @@ class FaceNetService {
 
   DataBaseService _dataBaseService = DataBaseService();
 
-  tflite.Interpreter _interpreter;
+  Interpreter _interpreter;
 
   double threshold = 1.0;
 
@@ -31,18 +33,16 @@ class FaceNetService {
 
   Future loadModel() async {
     try {
-      final gpuDelegateV2 = tflite.GpuDelegateV2(
-          options: tflite.GpuDelegateOptionsV2(
+      GpuDelegateV2 gpuDelegateV2 = GpuDelegateV2(
+          options: GpuDelegateOptionsV2(
               false,
-              tflite.TfLiteGpuInferenceUsage.fastSingleAnswer,
-              tflite.TfLiteGpuInferencePriority.minLatency,
-              tflite.TfLiteGpuInferencePriority.auto,
-              tflite.TfLiteGpuInferencePriority.auto));
+              TfLiteGpuInferenceUsage.fastSingleAnswer,
+              TfLiteGpuInferencePriority.minLatency,
+              TfLiteGpuInferencePriority.auto,
+              TfLiteGpuInferencePriority.auto));
 
-      var interpreterOptions = tflite.InterpreterOptions()
-        ..addDelegate(gpuDelegateV2);
-      this._interpreter = await tflite.Interpreter.fromAsset(
-          'assets\mobilefacenet.tflite',
+      var interpreterOptions = InterpreterOptions()..addDelegate(gpuDelegateV2);
+      this._interpreter = await Interpreter.fromAsset('mobilefacenet.tflite',
           options: interpreterOptions);
       print('model loaded successfully');
     } catch (e) {
@@ -67,7 +67,7 @@ class FaceNetService {
   }
 
   /// takes the predicted data previously saved and do inference
-  String predict() {
+  bool predict() {
     /// search closer user prediction if exists
     return _searchResult(this._predictedData);
   }
@@ -150,24 +150,25 @@ class FaceNetService {
 
   /// searchs the result in the DDBB (this function should be performed by Backend)
   /// [predictedData]: Array that represents the face by the MobileFaceNet model
-  String _searchResult(List predictedData) {
+  bool _searchResult(List predictedData) {
     /// loads 'database' 🙄
     data = _dataBaseService.db;
 
     /// if no faces saved
-    if (data.length == 0) return null;
+
     double minDist = 999;
     double currDist = 0.0;
-    String predRes;
+    bool predRes;
+    User user = User();
 
     /// search the closest result 👓
-    for (String label in data.keys) {
-      currDist = _euclideanDistance(data[label], predictedData);
-      if (currDist <= threshold && currDist < minDist) {
-        minDist = currDist;
-        predRes = label;
-      }
+
+    currDist = _euclideanDistance(user.facePatern, predictedData);
+    if (currDist <= threshold && currDist < minDist) {
+      minDist = currDist;
+      predRes = true;
     }
+
     return predRes;
   }
 

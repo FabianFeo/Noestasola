@@ -1,5 +1,10 @@
+import 'package:NoEstasSola/src/service/usersCollectionService.dart';
 import 'package:NoEstasSola/src/view/CodigoVerificacionDriver.dart';
 import 'package:NoEstasSola/src/view/DatosPersonal.dart';
+import 'package:NoEstasSola/src/view/documento.dart';
+import 'package:NoEstasSola/src/view/index.dart';
+import 'package:NoEstasSola/src/view/sing-in.dart';
+import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:NoEstasSola/src/model/User.model.dart' as user show User;
@@ -29,7 +34,7 @@ class AuthService {
             if (value.user != null) {
               status = 'Authentication successful';
 
-              onAuthenticationSuccessful(context);
+              onAuthenticationSuccessful(context, value);
             } else {
               status = 'Invalid code/invalid authentication';
             }
@@ -67,13 +72,30 @@ class AuthService {
     }).then((UserCredential user) async {
       status = 'Authentication successful';
       usuario.userUuid = user.user.uid;
-      onAuthenticationSuccessful(context);
+      onAuthenticationSuccessful(context, user);
     });
   }
 
-  void onAuthenticationSuccessful(BuildContext context) {
-    Navigator.of(context).pop();
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => CodigoVerificacionDriver()));
+  void onAuthenticationSuccessful(BuildContext context, UserCredential value) {
+    UserCollectionService userCollectionService = UserCollectionService();
+    userCollectionService.getUser(value.user.uid).then((value) async {
+      Navigator.of(context).pop();
+      if (!value.exists) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => DatosPersonal()));
+      } else {
+        var cameras = await availableCameras();
+        usuario.fromMap(value.data());
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SignIn(
+                      cameraDescription: cameras.firstWhere(
+                        (CameraDescription camera) =>
+                            camera.lensDirection == CameraLensDirection.front,
+                      ),
+                    )));
+      }
+    });
   }
 }

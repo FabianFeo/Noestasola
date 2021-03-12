@@ -6,7 +6,8 @@ import 'package:path_provider/path_provider.dart';
 
 class DataBaseService {
   // singleton boilerplate
-  static final DataBaseService _cameraServiceService = DataBaseService._internal();
+  static final DataBaseService _cameraServiceService =
+      DataBaseService._internal();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   factory DataBaseService() {
     return _cameraServiceService;
@@ -22,18 +23,17 @@ class DataBaseService {
   Map<String, dynamic> get db => this._db;
 
   /// loads a simple json file.
-  Future loadDB() async {
-  User user=User();
-    firestore.collection('users').doc(user.userUuid).get();
-  }
+  
 
   /// [Name]: name of the new user
   /// [Data]: Face representation for Machine Learning model
-  Future saveData( List modelData) async {
-    User user=User();
-   firestore.collection('users').doc(user.userUuid).update({'cara':modelData});
+  Future saveData(List modelData) async {
+    User user = User();
+    firestore
+        .collection('users')
+        .doc(user.userUuid)
+        .update(user.toMap());
   }
-
 
   /// deletes the created users
   cleanDB() {
