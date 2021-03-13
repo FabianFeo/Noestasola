@@ -39,7 +39,7 @@ class _MapaPageState extends State<MapaPage> {
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+        backgroundColor: Color.fromRGBO(207, 197, 239, 1),
         body: SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.only(top: height / 8),
@@ -47,7 +47,7 @@ class _MapaPageState extends State<MapaPage> {
               children: [
                 Center(
                     child: Container(
-                  margin: EdgeInsets.only(top: height / 6),
+                  margin: EdgeInsets.only(top: height / 5),
                   height: height / 2,
                   width: width / 1.2,
                   child: GoogleMap(
@@ -59,35 +59,45 @@ class _MapaPageState extends State<MapaPage> {
                     myLocationEnabled: true,
                   ),
                 )),
-                TextField(
-                  controller: _controllerText,
-                  decoration: InputDecoration(
-                    labelText: "Search",
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2.0,
+                Center(
+                  child: Container(
+                  width: width / 1.3,
+                  color: Colors.white,
+                  child: Center(
+                    child: TextField(
+                    controller: _controllerText,
+                    decoration: InputDecoration(
+                      hoverColor: Colors.white,
+                      labelText: "A donde quieres ir?",
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(101, 79, 168, 1),
+                          width: 2.0,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black54,
+                          width: 2.0,
+                        ),
                       ),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black54,
-                        width: 2.0,
-                      ),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    if (value.isNotEmpty) {
-                      autoCompleteSearch(value);
-                    } else {
-                      if (predictions.length > 0 && mounted) {
-                        setState(() {
-                          predictions = [];
-                        });
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                        autoCompleteSearch(value);
+                      } else {
+                        if (predictions.length > 0 && mounted) {
+                          setState(() {
+                            predictions = [];
+                          });
+                        }
                       }
-                    }
-                  },
+                    },
+                  ),
+                  ),
                 ),
+                ),
+                
                 SizedBox(
                   height: 10,
                 ),
@@ -154,11 +164,10 @@ class _MapaPageState extends State<MapaPage> {
   }
 
   void obtainLatLand(String id, int distanceMeters) {
-   
     googlePlace.details.get(id).then((value) {
       if (value != null) {
         setState(() {
-           _markers.clear();
+          _markers.clear();
           _markers.add(new Marker(
               markerId: MarkerId(id),
               position: LatLng(value.result.geometry.location.lat,

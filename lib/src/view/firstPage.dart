@@ -25,15 +25,15 @@ class _FirstPageState extends State<FirstPage> {
             child: Column(
               children: [
                 Container(
-                    margin: EdgeInsets.only(bottom: height / 8),
-                    height: height / 3,
-                    width: width / 3,
-                    child: Container(
-                      child: Image(image: AssetImage('assets/Logo/Logo_lala_app.png'),
-                      height: 100,
-                      width: 100,),
-                    ), ),
-                    
+                  margin: EdgeInsets.only(bottom: height / 8),
+                  child: Container(
+                    child: Image(
+                      image: AssetImage('assets/Logo/Lu_logo.png'),
+                      width: width,
+                      height: height / 3.5,
+                    ),
+                  ),
+                ),
                 Container(
                   alignment: Alignment.center,
                   child: Row(
@@ -57,10 +57,11 @@ class _FirstPageState extends State<FirstPage> {
                                 color: Color.fromRGBO(101, 79, 168, 1),
                                 shape: BoxShape.circle,
                               ),
-                              child: Center(                                
-                                child:Icon(Icons.car_repair,
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                size: 50,), 
+                              child: Center(
+                                child: Image.asset(
+                                'assets/Logo/Conductora.png',
+                                height: height / 11.5,
+                              ),
                               )),
                         ),
                       ),
@@ -73,22 +74,23 @@ class _FirstPageState extends State<FirstPage> {
                                 builder: (context) => UsuarioLogin()),
                           )
                         },
-                        child: SizedBox(                          
+                        child: SizedBox(
                           width: width / 2,
                           child: Container(
-                              
-                              alignment: Alignment.center,
-                              height: height / 9,
-                              width: width / 9,
-                              decoration: new BoxDecoration(
-                                color: Color.fromRGBO(101, 79, 168, 1),
-                                shape: BoxShape.circle,
+                            alignment: Alignment.center,
+                            height: height / 9,
+                            width: width / 9,
+                            decoration: new BoxDecoration(
+                              color: Color.fromRGBO(101, 79, 168, 1),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: Image.asset(
+                                'assets/Logo/Usuaria.png',
+                                height: height / 11.5,
                               ),
-                              child: Center(
-                                child: Icon(Icons.person,
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                size: 50,),                                
-                              ),),
+                            ),
+                          ),
                         ),
                       ),
                     ],

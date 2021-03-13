@@ -7,6 +7,8 @@ import 'package:beauty_textfield/beauty_textfield.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
 class Documento extends StatefulWidget {
   Documento({Key key}) : super(key: key);
@@ -55,9 +57,9 @@ class _DocumentoState extends State<Documento> {
                     child: Text(
                       'Tipo de Documento',
                       style: TextStyle(
-                        fontSize: height / 40,
-                        color: Color.fromRGBO(40, 1, 102, 1),
-                        fontWeight: FontWeight.w500),
+                          fontSize: height / 40,
+                          color: Color.fromRGBO(40, 1, 102, 1),
+                          fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
@@ -79,7 +81,7 @@ class _DocumentoState extends State<Documento> {
                     Radio(
                       value: 1,
                       groupValue: selectedRadio,
-                      activeColor: Colors.blue,
+                      activeColor: Color.fromRGBO(101, 79, 168, 1),
                       onChanged: (val) {
                         print("Radio $val");
                         user.documentoType = "C.C";
@@ -90,7 +92,7 @@ class _DocumentoState extends State<Documento> {
                     Radio(
                       value: 2,
                       groupValue: selectedRadio,
-                      activeColor: Colors.blue,
+                      activeColor: Color.fromRGBO(101, 79, 168, 1),
                       onChanged: (val) {
                         user.documentoType = "C.E";
                         print("Radio $val");
@@ -129,35 +131,46 @@ class _DocumentoState extends State<Documento> {
                     user.documento = text;
                   },
                 ),
-                BeautyTextfield(
-                  width: double.maxFinite, //REQUIRED
-                  height: 60, //REQUIRED
-                  accentColor: Colors.white, // On Focus Color
-                  textColor: Color.fromRGBO(101, 79, 168, 1), //Text Color
-                  backgroundColor: Colors.white, //Not Focused Color
-                  textBaseline: TextBaseline.alphabetic,
-                  autocorrect: false,
-                  autofocus: false,
-                  enabled: true, // Textfield enabled
-                  focusNode: FocusNode(),
-                  fontFamily: 'Gotham Rounded', //Text Fontfamily
-                  fontWeight: FontWeight.w500,
-
-                  margin: EdgeInsets.all(30),
-                  cornerRadius: BorderRadius.all(Radius.circular(15)),
-                  duration: Duration(milliseconds: 300),
-                  inputType: TextInputType.datetime, //REQUIRED
-                  placeholder: "Fecha de Expedición",
-                  isShadow: true,
-                  obscureText: false,
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: Colors.grey,
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.grey),
                   ),
-                  onChanged: (text) {
-                    user.expeditionDate = text;
-                  },
+                  margin: EdgeInsets.all(30),
+                  child: Center(
+                      child: GestureDetector(
+                          onTap: () async {
+                            final DateTime picked = await showDatePicker(
+                                context: context,
+                                firstDate: DateTime(1900),
+                                initialDate: DateTime.now(),
+                                lastDate: DateTime(2100));
+                            if (picked != null) {
+                              final DateFormat formatter =
+                                  DateFormat('yyyy-MM-dd');
+                              final String formatted = formatter.format(picked);
+                              setState(() {
+                                user.expeditionDate = formatted;
+                              });
+                            }
+                          },
+                          child: Container(
+                            child: Center(
+                              child: Text(
+                                user.expeditionDate == null
+                                    ? 'Fecha de Expedición'
+                                    : user.expeditionDate,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(101, 79, 168, 1),
+                                    fontSize: height / 42,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            height: 60,
+                            width: width,
+                          ))),
                 ),
+                
                 BouncingWidget(
                     duration: Duration(milliseconds: 100),
                     scaleFactor: 1.5,

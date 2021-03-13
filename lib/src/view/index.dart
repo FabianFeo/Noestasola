@@ -28,15 +28,18 @@ Widget pageCurrent=MapaPage();
           height: 50.0,
           items: <Widget>[
           
-            Icon(Icons.list, size: 30),
-            Icon(Icons.compare_arrows, size: 30),
-            Icon(Icons.call_split, size: 30),
+            Icon(Icons.chat_bubble_rounded, size: 30,
+            color: Color.fromRGBO(102, 51, 204, 1),),
+            Icon(Icons.directions_car_rounded, size: 30,
+            color: Color.fromRGBO(102, 51, 204, 1)),
+            Icon(Icons.warning_rounded, size: 30,
+            color: Color.fromRGBO(102, 51, 204, 1)),
             
           ],
 
           color: Colors.white,
           buttonBackgroundColor: Colors.white,
-          backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+          backgroundColor: Color.fromRGBO(207, 197, 239, 1),
           animationCurve: Curves.easeInOut,
           animationDuration: Duration(milliseconds: 600),
           onTap: (index) {
@@ -59,7 +62,7 @@ Widget pageCurrent=MapaPage();
           letIndexChange: (index) => true,
         ),
         body: Container(
-          color: Color.fromRGBO(229, 255, 255, 1),
+          color: Color.fromRGBO(207, 197, 239, 1),
           child: Center(
             child: pageCurrent
           ),
