@@ -30,7 +30,8 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                 Container(
                   child: Text(
                     "Ingresa tu número de teléfono",
-                    style: TextStyle(fontSize: height / 40,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: height / 30,
                     fontWeight: FontWeight.w500,
                     color: Color.fromRGBO(101, 79, 168, 1),),
                   ),
@@ -43,9 +44,12 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                       children: [
                         Center(
                             child: Container(
-                          margin: EdgeInsets.only(left: width / 4),
+                          margin: EdgeInsets.only(left: width /6),
                           width: width / 1.5,
                           child: TextField(
+                            style: TextStyle(
+                              fontSize: height / 30,
+                            ),
                             onChanged: (value) => inputNumeroTelefono = value,
                             decoration:
                                 InputDecoration(hintText: 'Numero de telefono'),
@@ -53,6 +57,12 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                         ))
                       ],
                     )),
+                    Container(
+                      child: Center(
+                        child: Image.asset('assets/Logo/Usuaria.png',
+                        height: height / 5,),
+                      ),
+                    ),
                 Container(
                   margin: EdgeInsets.only(bottom: height / 12),
                   child: BouncingWidget(

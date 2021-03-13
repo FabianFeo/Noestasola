@@ -38,64 +38,84 @@ class _FirstPageState extends State<FirstPage> {
                   alignment: Alignment.center,
                   child: Row(
                     children: [
-                      GestureDetector(
-                        onTap: () => {
-                          Navigator.of(context).pop(),
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ConductoraLogin()),
-                          )
-                        },
-                        child: SizedBox(
-                          width: width / 2,
-                          child: Container(
-                              alignment: Alignment.center,
-                              height: height / 9,
-                              width: width / 9,
-                              decoration: new BoxDecoration(
-                                color: Color.fromRGBO(101, 79, 168, 1),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Image.asset(
-                                'assets/Logo/Conductora.png',
-                                height: height / 11.5,
-                              ),
-                              )),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () => {
-                          Navigator.of(context).pop(),
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => UsuarioLogin()),
-                          )
-                        },
-                        child: SizedBox(
-                          width: width / 2,
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: height / 9,
-                            width: width / 9,
-                            decoration: new BoxDecoration(
-                              color: Color.fromRGBO(101, 79, 168, 1),
-                              shape: BoxShape.circle,
+                      Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () => {
+                              Navigator.of(context).pop(),
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ConductoraLogin()),
+                              )
+                            },
+                            child: SizedBox(
+                              width: width / 2,
+                              child: Container(
+                                  alignment: Alignment.center,
+                                  height: height / 9,
+                                  width: width / 9,
+                                  decoration: new BoxDecoration(
+                                    color: Color.fromRGBO(101, 79, 168, 1),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Center(
+                                    child: Image.asset(
+                                      'assets/Logo/Conductora.png',
+                                      height: height / 11.5,
+                                    ),
+                                  )),
                             ),
-                            child: Center(
-                              child: Image.asset(
-                                'assets/Logo/Usuaria.png',
-                                height: height / 11.5,
+                          ),
+                          Text('Conductora', 
+                          style: TextStyle(
+                            color: Color.fromRGBO(101, 79, 168, 1),
+                            fontWeight: FontWeight.w500,
+                            fontSize: height / 50,
+                          ),),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () => {
+                              Navigator.of(context).pop(),
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => UsuarioLogin()),
+                              )
+                            },
+                            child: SizedBox(
+                              width: width / 2,
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: height / 9,
+                                width: width / 9,
+                                decoration: new BoxDecoration(
+                                  color: Color.fromRGBO(101, 79, 168, 1),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Center(
+                                  child: Image.asset(
+                                    'assets/Logo/Usuaria.png',
+                                    height: height / 11.5,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                          Text('Usuaria', 
+                          style: TextStyle(
+                            color: Color.fromRGBO(101, 79, 168, 1),
+                            fontWeight: FontWeight.w500,
+                            fontSize: height / 50,
+                          ),),
+                        ],
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
