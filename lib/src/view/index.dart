@@ -22,6 +22,7 @@ Widget pageCurrent=MapaPage();
   Widget build(BuildContext context) {
    
     return Scaffold(
+      
         bottomNavigationBar: CurvedNavigationBar(
           key: _bottomNavigationKey,
           index: 1,
@@ -63,9 +64,9 @@ Widget pageCurrent=MapaPage();
         ),
         body: Container(
           color: Color.fromRGBO(207, 197, 239, 1),
-          child: Center(
+          
             child: pageCurrent
-          ),
+         
         ));
   }
 

@@ -52,7 +52,7 @@ class _MapaPageState extends State<MapaPage> {
         backgroundColor: Color.fromRGBO(207, 197, 239, 1),
         body: SingleChildScrollView(
           child: Container(
-            margin: EdgeInsets.only(top: height / 8),
+           
             child: Stack(
               children: [
                 Center(
@@ -60,9 +60,9 @@ class _MapaPageState extends State<MapaPage> {
                   decoration: BoxDecoration(
                       color: const Color(0xff7c94b6),
                       borderRadius: BorderRadius.all(Radius.circular(90))),
-                  margin: EdgeInsets.only(top: height / 6),
-                  height: height / 2,
-                  width: width / 1.2,
+                  
+                  height: height-50,
+                  width: width ,
                   child: GoogleMap(
                     myLocationButtonEnabled: false,
                     buildingsEnabled: false,
@@ -78,6 +78,8 @@ class _MapaPageState extends State<MapaPage> {
                 )),
                 Center(
                   child: Container(
+                    margin: EdgeInsets.only(top: height / 10),
+                    height: height/10,
                     width: width / 1.3,
                     color: Colors.white,
                     child: Center(
@@ -120,7 +122,7 @@ class _MapaPageState extends State<MapaPage> {
                 Container(
                   height: height / 2,
                   padding: EdgeInsets.only(left: 50,right: 50,bottom: 50),
-                  margin: EdgeInsets.only(top: height / 18),
+                  margin: EdgeInsets.only(top: (height / 10)+(height/10)),
                   child: predictions.isNotEmpty
                       ? Container(
                           color: Colors.white,
@@ -152,7 +154,7 @@ class _MapaPageState extends State<MapaPage> {
                 ),
                 Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: height / 1.4),
+                    margin: EdgeInsets.only(top: height / 1.3),
                     child: BouncingWidget(
                         duration: Duration(milliseconds: 100),
                         scaleFactor: 1.5,
