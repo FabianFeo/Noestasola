@@ -57,7 +57,7 @@ class _DocumentoState extends State<Documento> {
                     child: Text(
                       'Tipo de Documento',
                       style: TextStyle(
-                          fontSize: height / 40,
+                          fontSize: height / 20,
                           color: Color.fromRGBO(40, 1, 102, 1),
                           fontWeight: FontWeight.w500),
                     ),
@@ -72,6 +72,7 @@ class _DocumentoState extends State<Documento> {
                         style: TextStyle(
                           color: Color.fromRGBO(40, 1, 102, 1),
                           fontWeight: FontWeight.w400,
+                           fontSize: height / 40,
                         ),
                       ),
                     )),

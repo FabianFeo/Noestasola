@@ -24,7 +24,7 @@ class _DatosPersonalState extends State<DatosPersonal> {
         child: Scaffold(
       backgroundColor: Color.fromRGBO(207, 197, 239, 1),
       body: Container(
-        margin: EdgeInsets.only(top: height / 8),
+        margin: EdgeInsets.only(top: height / 13),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -33,14 +33,14 @@ class _DatosPersonalState extends State<DatosPersonal> {
                   child: Text(
                     'Información Personal',
                     style: TextStyle(
-                        fontSize: height / 40,
+                        fontSize: height / 20,
                         color: Color.fromRGBO(40, 1, 102, 1),
                         fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
               Container(
-                  margin: EdgeInsets.all(40),
+                  margin: EdgeInsets.only(bottom: 20,left: 40,right: 40,top: 20),
                   child: Center(
                     child: Text(
                       'Por favor completa los siguientes datos para terminar tu registro:',
@@ -48,7 +48,7 @@ class _DatosPersonalState extends State<DatosPersonal> {
                       style: TextStyle(
                         color: Color.fromRGBO(40, 1, 102, 1),
                         fontWeight: FontWeight.w400,
-                        fontSize: 17,
+                        fontSize: height / 30,
                       ),
                     ),
                   )),

@@ -32,7 +32,7 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
         child: Scaffold(
       backgroundColor: Color.fromRGBO(207, 197, 239, 1),
       body: Container(
-        margin: EdgeInsets.only(top: height / 4),
+        margin: EdgeInsets.only(top: height / 8),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -40,10 +40,12 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                   child: Center(
                 child: Text(
                   'Ingresa tu codigo de seguridad',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: height / 40,
-                      color: Color.fromRGBO(40, 1, 102, 1),
-                      fontWeight: FontWeight.w500),
+                    fontSize: height / 20,
+                    color: Color.fromRGBO(40, 1, 102, 1),
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               )),
               Container(
@@ -51,11 +53,11 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                   child: Center(
                     child: Text(
                       'Enviaremos un código de 6 digitos a tu numero de teléfono registrado, para verificar tu identidad',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Color.fromRGBO(40, 1, 102, 1),
-                        fontWeight: FontWeight.w400,
-                        fontSize: height / 65
-                      ),
+                          color: Color.fromRGBO(40, 1, 102, 1),
+                          fontWeight: FontWeight.w400,
+                          fontSize: height / 32),
                     ),
                   )),
               Container(
@@ -100,7 +102,10 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                 ),
               ),
               Container(
-                child: Text('Aqui va lu'),
+                child: Image.asset(
+                  'assets/Logo/Usuaria.png',
+                  height: height / 11.5,
+                ),
               ),
               BouncingWidget(
                   duration: Duration(milliseconds: 100),
