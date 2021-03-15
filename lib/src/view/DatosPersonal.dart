@@ -32,6 +32,7 @@ class _DatosPersonalState extends State<DatosPersonal> {
                 child: Center(
                   child: Text(
                     'Información Personal',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: height / 20,
                         color: Color.fromRGBO(40, 1, 102, 1),
