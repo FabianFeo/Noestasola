@@ -1,4 +1,5 @@
 import 'package:NoEstasSola/src/service/authService.dart';
+import 'package:NoEstasSola/src/service/authServiceConductora.dart';
 import 'package:NoEstasSola/src/view/CodigoVerificacionDriver.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
@@ -30,14 +31,16 @@ class _ConductoraLoginState extends State<ConductoraLogin> {
                   child: Text(
                     "Ingresa tu número de teléfono",
                     textAlign: TextAlign.center,
-                    style:  TextStyle(fontSize: height / 30,
-                    fontWeight: FontWeight.w500,
-                    color: Color.fromRGBO(101, 79, 168, 1),),
+                    style: TextStyle(
+                      fontSize: height / 30,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromRGBO(101, 79, 168, 1),
+                    ),
                   ),
                   margin: EdgeInsets.only(bottom: height / 8),
                 ),
                 Container(
-                   margin: EdgeInsets.only(bottom: height / 12),
+                    margin: EdgeInsets.only(bottom: height / 12),
                     width: width,
                     child: Row(
                       children: [
@@ -56,24 +59,32 @@ class _ConductoraLoginState extends State<ConductoraLogin> {
                         ))
                       ],
                     )),
-                    Container(
-                      child: Center(
-                        child: Image.asset('assets/Logo/Conductora.png',
-                        height: height / 5,),
-                      ),
+                Container(
+                  child: Center(
+                    child: Image.asset(
+                      'assets/Logo/Conductora.png',
+                      height: height / 5,
                     ),
+                  ),
+                ),
                 Container(
                   margin: EdgeInsets.only(bottom: height / 12),
                   child: BouncingWidget(
                       duration: Duration(milliseconds: 100),
                       scaleFactor: 1.5,
                       onPressed: () {
-                        AuthService authService = new AuthService();
+                        AuthServiceConductora authService =
+                            new AuthServiceConductora();
                         authService
                             .registerUser(inputNumeroTelefono, context)
                             .then((value) {
                           print(value);
-                         
+                          Navigator.of(context).pop();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      CodigoVerificacionDriver()));
                         });
                       },
                       child: Card(
@@ -94,7 +105,7 @@ class _ConductoraLoginState extends State<ConductoraLogin> {
                           ),
                         ),
                       )),
-                ),               
+                ),
               ],
             ),
           ),

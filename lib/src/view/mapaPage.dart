@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as lo;
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'dart:math' show cos, sqrt, asin;
 
 class MapaPage extends StatefulWidget {
   MapaPage({Key key}) : super(key: key);
@@ -15,7 +16,8 @@ class MapaPage extends StatefulWidget {
 }
 
 class _MapaPageState extends State<MapaPage> {
-  bool servicioPedido=true;
+  double totalDistancia = 0;
+  bool servicioPedido = true;
   TextEditingController controller = TextEditingController();
 // Object for PolylinePoints
   PolylinePoints polylinePoints;
@@ -52,7 +54,6 @@ class _MapaPageState extends State<MapaPage> {
         backgroundColor: Color.fromRGBO(207, 197, 239, 1),
         body: SingleChildScrollView(
           child: Container(
-           
             child: Stack(
               children: [
                 Center(
@@ -60,9 +61,8 @@ class _MapaPageState extends State<MapaPage> {
                   decoration: BoxDecoration(
                       color: const Color(0xff7c94b6),
                       borderRadius: BorderRadius.all(Radius.circular(90))),
-                  
-                  height: height-50,
-                  width: width ,
+                  height: height - 50,
+                  width: width,
                   child: GoogleMap(
                     myLocationButtonEnabled: false,
                     buildingsEnabled: false,
@@ -79,7 +79,7 @@ class _MapaPageState extends State<MapaPage> {
                 Center(
                   child: Container(
                     margin: EdgeInsets.only(top: height / 10),
-                    height: height/10,
+                    height: height / 10,
                     width: width / 1.3,
                     color: Colors.white,
                     child: Center(
@@ -121,8 +121,8 @@ class _MapaPageState extends State<MapaPage> {
                 ),
                 Container(
                   height: height / 2,
-                  padding: EdgeInsets.only(left: 50,right: 50,bottom: 50),
-                  margin: EdgeInsets.only(top: (height / 10)+(height/10)),
+                  padding: EdgeInsets.only(left: 50, right: 50, bottom: 50),
+                  margin: EdgeInsets.only(top: (height / 10) + (height / 10)),
                   child: predictions.isNotEmpty
                       ? Container(
                           color: Colors.white,
@@ -223,6 +223,7 @@ class _MapaPageState extends State<MapaPage> {
       PointLatLng(startCoordinates.latitude, startCoordinates.longitude),
       PointLatLng(destination.latitude, destination.longitude),
       travelMode: TravelMode.driving,
+      optimizeWaypoints: true,
     );
 
     // Adding the coordinates to the list
@@ -242,7 +243,17 @@ class _MapaPageState extends State<MapaPage> {
       points: polylineCoordinates,
       width: 3,
     );
-
+  double totalDistance=0;
+    for (var i = 0; i < polylineCoordinates.length - 1; i++) {
+      totalDistance  +=
+          calculateDistance(
+              polylineCoordinates[i].latitude,
+              polylineCoordinates[i].longitude,
+              polylineCoordinates[i + 1].latitude,
+              polylineCoordinates[i + 1].longitude);
+    }
+    totalDistancia=totalDistance/10;
+    print(totalDistance);
     // Adding the polyline to the map
     setState(() {
       polylines.clear();
@@ -292,5 +303,14 @@ class _MapaPageState extends State<MapaPage> {
         showCurrentPosition = false;
       }
     });
+  }
+
+  double calculateDistance(lat1, lon1, lat2, lon2) {
+    var p = 0.017453292519943295;
+    var c = cos;
+    var a = 0.5 -
+        c((lat2 - lat1) * p) / 2 +
+        c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
+    return 12742 * asin(sqrt(a));
   }
 }

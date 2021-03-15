@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "421256406299-o91dllh62fts0emimmc1hh32rvt6irjr.apps.googleusercontent.com",
+          "client_id": "421256406299-qrsf66l4vclnj7moek76drl90bgkf97r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.NoEstasSola",
-            "certificate_hash": "c944d601f49cca382ea1d72aa9c629d7ed0f8a23"
+            "certificate_hash": "a7681894d186c25600aa1232cad62dd52499a112"
           }
         },
         {
