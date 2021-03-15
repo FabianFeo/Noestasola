@@ -146,6 +146,7 @@ class _MapaPageState extends State<MapaPage> {
                                         predictions[index].description;
                                   });
                                   predictions.clear();
+                                  polylineCoordinates.clear();
                                 },
                               );
                             },
@@ -159,6 +160,7 @@ class _MapaPageState extends State<MapaPage> {
                         duration: Duration(milliseconds: 100),
                         scaleFactor: 1.5,
                         onPressed: () {
+                          polylineCoordinates.clear();
                           _createPolylines();
                         },
                         child: Card(
@@ -243,20 +245,19 @@ class _MapaPageState extends State<MapaPage> {
       points: polylineCoordinates,
       width: 3,
     );
-  double totalDistance=0;
+    double totalDistance = 0;
     for (var i = 0; i < polylineCoordinates.length - 1; i++) {
-      totalDistance  +=
-          calculateDistance(
-              polylineCoordinates[i].latitude,
-              polylineCoordinates[i].longitude,
-              polylineCoordinates[i + 1].latitude,
-              polylineCoordinates[i + 1].longitude);
+      totalDistance += calculateDistance(
+          polylineCoordinates[i].latitude,
+          polylineCoordinates[i].longitude,
+          polylineCoordinates[i + 1].latitude,
+          polylineCoordinates[i + 1].longitude);
     }
-    totalDistancia=totalDistance/10;
+    totalDistancia = totalDistance / 10;
     print(totalDistance);
     // Adding the polyline to the map
+    polylines.clear();
     setState(() {
-      polylines.clear();
       polylines.add(polyline);
     });
   }
