@@ -16,19 +16,22 @@ class _IndexState extends State<Index> {
   int _page = 1;
   Widget pageCurrent = MapaPage();
   GlobalKey _bottomNavigationKey = GlobalKey();
-final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double heigth = MediaQuery.of(context).size.height;
     return Scaffold(
-      key: _scaffoldKey,
-      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+        key: _scaffoldKey,
+        floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-              _scaffoldKey.currentState.openEndDrawer();
+            _scaffoldKey.currentState.openEndDrawer();
           },
-          child: const Icon(Icons.people,color: Color.fromRGBO(102, 51, 204, 1),),
+          child: const Icon(
+            Icons.people,
+            color: Color.fromRGBO(102, 51, 204, 1),
+          ),
           backgroundColor: Colors.transparent,
         ),
         bottomNavigationBar: CurvedNavigationBar(
@@ -84,29 +87,197 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
               children: <Widget>[
                 DrawerHeader(
-                  child: Text('Drawer Header'),
+                  child: Text(
+                    'Nombre de usuaria',
+                    style: TextStyle(
+                      color: Color.fromRGBO(40, 1, 102, 1),
+                    ),
+                  ),
                   decoration: BoxDecoration(
                     color: Color.fromRGBO(207, 197, 239, 1),
                   ),
                 ),
-                ListTile(
-                  title: Text('Item 1'),
-                  onTap: () {
-                    // Update the state of the app
-                    // ...
-                    // Then close the drawer
-                    Navigator.pop(context);
-                  },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: heigth / 20,
+                      child: Icon(
+                        Icons.volunteer_activism,
+                        color: Color.fromRGBO(40, 1, 102, 1),
+                      ),
+                    ),
+                    Container(
+                      height: heigth / 15,
+                      width: width / 2,
+                      child: ListTile(
+                        title: Text(
+                          'Contacto de confianza',
+                          style:
+                              TextStyle(color: Color.fromRGBO(101, 79, 168, 1)),
+                        ),
+                        onTap: () {
+                          // Update the state of the app
+                          // ...
+                          // Then close the drawer
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-                ListTile(
-                  title: Text('Item 2'),
-                  onTap: () {
-                    // Update the state of the app
-                    // ...
-                    // Then close the drawer
-                    Navigator.pop(context);
-                  },
+                Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: heigth / 20,
+                      child: Icon(
+                        Icons.chat_rounded,
+                        color: Color.fromRGBO(40, 1, 102, 1),
+                      ),
+                    ),
+                    Container(
+                      height: heigth / 15,
+                      width: width / 2,
+                      child: ListTile(
+                        title: Text(
+                          'Mensajes',
+                          style:
+                              TextStyle(color: Color.fromRGBO(101, 79, 168, 1)),
+                        ),
+                        onTap: () {
+                          // Update the state of the app
+                          // ...
+                          // Then close the drawer
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
+                Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: heigth / 20,
+                      child: Icon(
+                        Icons.watch_later_outlined,
+                        color: Color.fromRGBO(40, 1, 102, 1),
+                      ),
+                    ),
+                    Container(
+                      height: heigth / 15,
+                      width: width / 2,
+                      child: ListTile(
+                        title: Text(
+                          'Historial de viajes',
+                          style:
+                              TextStyle(color: Color.fromRGBO(101, 79, 168, 1)),
+                        ),
+                        onTap: () {
+                          // Update the state of the app
+                          // ...
+                          // Then close the drawer
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: heigth / 20,
+                      child: Icon(
+                        Icons.credit_card,
+                        color: Color.fromRGBO(40, 1, 102, 1),
+                      ),
+                    ),
+                    Container(
+                      height: heigth / 15,
+                      width: width / 2,
+                      child: ListTile(
+                        title: Text(
+                          'Metodos de pago',
+                          style:
+                              TextStyle(color: Color.fromRGBO(101, 79, 168, 1)),
+                        ),
+                        onTap: () {
+                          // Update the state of the app
+                          // ...
+                          // Then close the drawer
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: heigth / 20,
+                      child: Icon(
+                        Icons.settings,
+                        color: Color.fromRGBO(40, 1, 102, 1),
+                      ),
+                    ),
+                    Container(
+                      height: heigth / 15,
+                      width: width / 2,
+                      child: ListTile(
+                        title: Text(
+                          'Configuracion',
+                          style:
+                              TextStyle(color: Color.fromRGBO(101, 79, 168, 1)),
+                        ),
+                        onTap: () {
+                          // Update the state of the app
+                          // ...
+                          // Then close the drawer
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: heigth / 20,
+                      child: Icon(
+                        Icons.live_help_outlined,
+                        color: Color.fromRGBO(40, 1, 102, 1),
+                      ),
+                    ),
+                    Container(
+                      height: heigth / 15,
+                      width: width / 2,
+                      child: ListTile(
+                        title: Text(
+                          'Ayuda',
+                          style:
+                              TextStyle(color: Color.fromRGBO(101, 79, 168, 1)),
+                        ),
+                        onTap: () {
+                          // Update the state of the app
+                          // ...
+                          // Then close the drawer
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(),
+                
               ],
             ),
           ),
