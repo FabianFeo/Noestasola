@@ -1,8 +1,6 @@
 import 'package:NoEstasSola/src/service/usersCollectionService.dart';
-import 'package:NoEstasSola/src/view/CodigoVerificacionDriver.dart';
 import 'package:NoEstasSola/src/view/DatosPersonal.dart';
-import 'package:NoEstasSola/src/view/documento.dart';
-import 'package:NoEstasSola/src/view/index.dart';
+
 import 'package:NoEstasSola/src/view/sing-in.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as lo;
 import 'package:geolocator/geolocator.dart';
+import 'package:slimy_card/slimy_card.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'dart:math' show cos, sqrt, asin;
 
@@ -15,8 +16,9 @@ class MapaPage extends StatefulWidget {
   _MapaPageState createState() => _MapaPageState();
 }
 
-class _MapaPageState extends State<MapaPage> {
+class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   double totalDistancia = 0;
+  bool showDetails = false;
   bool servicioPedido = true;
   TextEditingController controller = TextEditingController();
 // Object for PolylinePoints
@@ -27,6 +29,9 @@ class _MapaPageState extends State<MapaPage> {
 
 // Map storing polylines created by connecting
 // two points
+  Animation<double> animation;
+  AnimationController animationController;
+
   LatLng destination;
   LatLng startCoordinates;
   Set<Polyline> polylines = Set();
@@ -43,16 +48,30 @@ class _MapaPageState extends State<MapaPage> {
       GooglePlace("AIzaSyDDjt2cJQi5BgxkYJZ7ZtrPTafZQICenXo");
   List<AutocompletePrediction> predictions = [];
   double height = 0;
+  @override
+  void initState() {
+    super.initState();
+    animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 3));
+    animation = Tween<double>(begin: 0, end: -300).animate(animationController)
+      ..addListener(() {
+        setState(() {});
+      });
+  }
 
   double width = 0;
   @override
   Widget build(BuildContext context) {
+    var animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 3));
+
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
         backgroundColor: Color.fromRGBO(207, 197, 239, 1),
         body: SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
           child: Container(
             child: Stack(
               children: [
@@ -76,82 +95,59 @@ class _MapaPageState extends State<MapaPage> {
                     myLocationEnabled: true,
                   ),
                 )),
-                Center(
-                  child: Container(
-                    margin: EdgeInsets.only(top: height / 10),
-                    height: height / 10,
-                    width: width / 1.3,
-                    color: Colors.white,
-                    child: Center(
-                      child: TextField(
-                        controller: _controllerText,
-                        decoration: InputDecoration(
-                          hoverColor: Colors.white,
-                          labelText: "A donde quieres ir?",
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromRGBO(101, 79, 168, 1),
-                              width: 2.0,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black54,
-                              width: 2.0,
+                !showDetails
+                    ? Center(
+                        child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            showDetails = true;
+                          });
+
+                          animationController.forward();
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(top: height / 6),
+                          height: height / 10,
+                          width: width / 1.3,
+                          color: Colors.white,
+                          child: Center(
+                            child: TextField(
+                              enabled: false,
+                             
+                              decoration: InputDecoration(
+                                hoverColor: Colors.white,
+                                labelText: "A donde quieres ir?",
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color.fromRGBO(101, 79, 168, 1),
+                                    width: 2.0,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.black54,
+                                    width: 2.0,
+                                  ),
+                                ),
+                              ),
+                              onChanged: (value) {
+                                // if (value.isNotEmpty) {
+                                //   autoCompleteSearch(value);
+                                // } else {
+                                //   if (predictions.length > 0 && mounted) {
+                                //     setState(() {
+                                //       predictions = [];
+                                //     });
+                                //   }
+                                // }
+                              },
                             ),
                           ),
                         ),
-                        onChanged: (value) {
-                          if (value.isNotEmpty) {
-                            autoCompleteSearch(value);
-                          } else {
-                            if (predictions.length > 0 && mounted) {
-                              setState(() {
-                                predictions = [];
-                              });
-                            }
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                ),
+                      ))
+                    : Container(),
                 SizedBox(
                   height: 10,
-                ),
-                Container(
-                  height: height / 2,
-                  padding: EdgeInsets.only(left: 50, right: 50, bottom: 50),
-                  margin: EdgeInsets.only(top: (height / 10) + (height / 10)),
-                  child: predictions.isNotEmpty
-                      ? Container(
-                          color: Colors.white,
-                          child: ListView.builder(
-                            itemCount: predictions.length,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                leading: CircleAvatar(
-                                  child: Icon(
-                                    Icons.pin_drop,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                title: Text(predictions[index].description),
-                                onTap: () {
-                                  debugPrint(predictions[index].id);
-                                  obtainLatLand(predictions[index].placeId,
-                                      predictions[index].distanceMeters);
-                                  setState(() {
-                                    _controllerText.text =
-                                        predictions[index].description;
-                                  });
-                                  predictions.clear();
-                                  polylineCoordinates.clear();
-                                },
-                              );
-                            },
-                          ))
-                      : Container(),
                 ),
                 Center(
                   child: Container(
@@ -182,7 +178,109 @@ class _MapaPageState extends State<MapaPage> {
                           ),
                         )),
                   ),
-                )
+                ),
+                showDetails
+                    ? Center(
+                        child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Color.fromRGBO(101, 79, 168, 1),
+                        ),
+                        margin: EdgeInsets.only(top: height / 3),
+                        height: height / 1.5,
+                        width: width / 1.2,
+                        child: SingleChildScrollView(child: Column(
+                          children: [
+                            Center(
+                                child: Container(
+                                   decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.white,
+                        ),
+                               margin: EdgeInsets.only(top: height / 20),
+                              height: height / 20,
+                              width: width / 1.3,
+                             
+                              child: Center(
+                                child: TextField(
+                                  
+                              
+                                  controller: _controllerText,
+                                  decoration: InputDecoration(
+                                    focusColor:  Colors.white,
+                                    fillColor: Colors.white,
+                                    hoverColor: Colors.white,
+                                    labelText: "A donde quieres ir?",
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color.fromRGBO(101, 79, 168, 1),
+                                        width: 1,
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color.fromRGBO(101, 79, 168, 1),
+                                        width:1,
+                                      ),
+                                    ),
+                                  ),
+                                  onChanged: (value) {
+                                    if (value.isNotEmpty) {
+                                      autoCompleteSearch(value);
+                                    } else {
+                                      if (predictions.length > 0 && mounted) {
+                                        setState(() {
+                                          predictions = [];
+                                        });
+                                      }
+                                    }
+                                  },
+                                ),
+                              ),
+                            )),
+                            Container(
+                              height: height / 2,
+                              padding: EdgeInsets.only(
+                                  left: 50, right: 50, bottom: 50),
+                            
+                              child: predictions.isNotEmpty
+                                  ? Container(
+                                      color: Colors.white,
+                                      child: ListView.builder(
+                                        itemCount: predictions.length,
+                                        itemBuilder: (context, index) {
+                                          return ListTile(
+                                            leading: CircleAvatar(
+                                              child: Icon(
+                                                Icons.pin_drop,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            title: Text(
+                                                predictions[index].description),
+                                            onTap: () {
+                                              debugPrint(predictions[index].id);
+                                              obtainLatLand(
+                                                  predictions[index].placeId,
+                                                  predictions[index]
+                                                      .distanceMeters);
+                                              setState(() {
+                                                _controllerText.text =
+                                                    predictions[index]
+                                                        .description;
+                                              });
+                                              predictions.clear();
+                                              polylineCoordinates.clear();
+                                            },
+                                          );
+                                        },
+                                      ))
+                                  : Container(),
+                            ),
+                          ],
+                        ),
+                      )))
+                    : Container()
               ],
             ),
           ),

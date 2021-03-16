@@ -16,12 +16,21 @@ class _IndexState extends State<Index> {
   int _page = 1;
   Widget pageCurrent = MapaPage();
   GlobalKey _bottomNavigationKey = GlobalKey();
-
+final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    double width=MediaQuery.of(context).size.width;
-    double heigth=MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    double heigth = MediaQuery.of(context).size.height;
     return Scaffold(
+      key: _scaffoldKey,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+              _scaffoldKey.currentState.openEndDrawer();
+          },
+          child: const Icon(Icons.people,color: Color.fromRGBO(102, 51, 204, 1),),
+          backgroundColor: Colors.transparent,
+        ),
         bottomNavigationBar: CurvedNavigationBar(
           key: _bottomNavigationKey,
           index: 1,
@@ -50,6 +59,7 @@ class _IndexState extends State<Index> {
                   break;
                 case 1:
                   pageCurrent = MapaPage();
+
                   break;
                 case 2:
                   pageCurrent = Container();
@@ -62,12 +72,12 @@ class _IndexState extends State<Index> {
         ),
         body: Container(
             color: Color.fromRGBO(207, 197, 239, 1), child: pageCurrent),
-        drawer: Drawer(
+        endDrawer: Drawer(
           // Add a ListView to the drawer. This ensures the user can scroll
           // through the options in the drawer if there isn't enough vertical
           // space to fit everything.
           child: Container(
-            width: width/2,
+            width: width / 2,
             child: ListView(
               // Important: Remove any padding from the ListView.
               padding: EdgeInsets.zero,
