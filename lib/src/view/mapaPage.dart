@@ -112,7 +112,6 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                           child: Center(
                             child: TextField(
                               enabled: false,
-                             
                               decoration: InputDecoration(
                                 hoverColor: Colors.white,
                                 labelText: "A donde quieres ir?",
@@ -181,104 +180,106 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                 showDetails
                     ? Center(
                         child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Color.fromRGBO(101, 79, 168, 1),
-                        ),
-                        margin: EdgeInsets.only(top: height / 3),
-                        height: height / 1.5,
-                        width: width / 1.2,
-                        child: SingleChildScrollView(child: Column(
-                          children: [
-                            Center(
-                                child: Container(
-                                   decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors.white,
-                        ),
-                               margin: EdgeInsets.only(top: height / 20),
-                              height: height / 20,
-                              width: width / 1.3,
-                             
-                              child: Center(
-                                child: TextField(
-                                  
-                              
-                                  controller: _controllerText,
-                                  decoration: InputDecoration(
-                                    focusColor:  Colors.white,
-                                    fillColor: Colors.white,
-                                    hoverColor: Colors.white,
-                                    labelText: "A donde quieres ir?",
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color.fromRGBO(101, 79, 168, 1),
-                                        width: 1,
-                                      ),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color.fromRGBO(101, 79, 168, 1),
-                                        width:1,
-                                      ),
-                                    ),
-                                  ),
-                                  onChanged: (value) {
-                                    if (value.isNotEmpty) {
-                                      autoCompleteSearch(value);
-                                    } else {
-                                      if (predictions.length > 0 && mounted) {
-                                        setState(() {
-                                          predictions = [];
-                                        });
-                                      }
-                                    }
-                                  },
-                                ),
-                              ),
-                            )),
-                            Container(
-                              height: height / 2,
-                              padding: EdgeInsets.only(
-                                  left: 50, right: 50, bottom: 50),
-                            
-                              child: predictions.isNotEmpty
-                                  ? Container(
-                                      color: Colors.white,
-                                      child: ListView.builder(
-                                        itemCount: predictions.length,
-                                        itemBuilder: (context, index) {
-                                          return ListTile(
-                                            leading: CircleAvatar(
-                                              child: Icon(
-                                                Icons.pin_drop,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            title: Text(
-                                                predictions[index].description),
-                                            onTap: () {
-                                              debugPrint(predictions[index].id);
-                                              obtainLatLand(
-                                                  predictions[index].placeId,
-                                                  predictions[index]
-                                                      .distanceMeters);
-                                              setState(() {
-                                                _controllerText.text =
-                                                    predictions[index]
-                                                        .description;
-                                              });
-                                              predictions.clear();
-                                              polylineCoordinates.clear();
-                                            },
-                                          );
-                                        },
-                                      ))
-                                  : Container(),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Color.fromRGBO(101, 79, 168, 1),
                             ),
-                          ],
-                        ),
-                      )))
+                            margin: EdgeInsets.only(top: height / 3),
+                            height: height / 1.5,
+                            width: width / 1.2,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Center(
+                                      child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: Colors.white,
+                                    ),
+                                    margin: EdgeInsets.only(top: height / 20),
+                                    height: height / 20,
+                                    width: width / 1.3,
+                                    child: Center(
+                                      child: TextField(
+                                        controller: _controllerText,
+                                        decoration: InputDecoration(
+                                          focusColor: Colors.white,
+                                          fillColor: Colors.white,
+                                          hoverColor: Colors.white,
+                                          labelText: "A donde quieres ir?",
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color.fromRGBO(
+                                                  101, 79, 168, 1),
+                                              width: 1,
+                                            ),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color.fromRGBO(
+                                                  101, 79, 168, 1),
+                                              width: 1,
+                                            ),
+                                          ),
+                                        ),
+                                        onChanged: (value) {
+                                          if (value.isNotEmpty) {
+                                            autoCompleteSearch(value);
+                                          } else {
+                                            if (predictions.length > 0 &&
+                                                mounted) {
+                                              setState(() {
+                                                predictions = [];
+                                              });
+                                            }
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                  )),
+                                  Container(
+                                    height: height / 2,
+                                    padding: EdgeInsets.only(
+                                        left: 50, right: 50, bottom: 50),
+                                    child: predictions.isNotEmpty
+                                        ? Container(
+                                            color: Colors.white,
+                                            child: ListView.builder(
+                                              itemCount: predictions.length,
+                                              itemBuilder: (context, index) {
+                                                return ListTile(
+                                                  leading: CircleAvatar(
+                                                    child: Icon(
+                                                      Icons.pin_drop,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  title: Text(predictions[index]
+                                                      .description),
+                                                  onTap: () {
+                                                    debugPrint(
+                                                        predictions[index].id);
+                                                    obtainLatLand(
+                                                        predictions[index]
+                                                            .placeId,
+                                                        predictions[index]
+                                                            .distanceMeters);
+                                                    setState(() {
+                                                      _controllerText.text =
+                                                          predictions[index]
+                                                              .description;
+                                                    });
+                                                    predictions.clear();
+                                                    polylineCoordinates.clear();
+                                                  },
+                                                );
+                                              },
+                                            ))
+                                        : Container(),
+                                  ),
+                                ],
+                              ),
+                            )))
                     : Container()
               ],
             ),

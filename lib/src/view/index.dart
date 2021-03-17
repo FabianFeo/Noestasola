@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:NoEstasSola/src/model/User.model.dart';
+import 'package:NoEstasSola/src/view/Contactoconfianza.dart';
+import 'package:NoEstasSola/src/view/Historialviajes.dart';
+import 'package:NoEstasSola/src/view/Perfil.dart';
 import 'package:NoEstasSola/src/view/mapaPage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +17,7 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
+  User _user = User();
   int _page = 1;
   Widget pageCurrent = MapaPage();
   GlobalKey _bottomNavigationKey = GlobalKey();
@@ -23,16 +28,16 @@ class _IndexState extends State<Index> {
     double heigth = MediaQuery.of(context).size.height;
     return Scaffold(
         key: _scaffoldKey,
-        floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+        floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            _scaffoldKey.currentState.openEndDrawer();
+            _scaffoldKey.currentState.openDrawer();
           },
           child: const Icon(
-            Icons.people,
-            color: Color.fromRGBO(102, 51, 204, 1),
+            Icons.view_headline_rounded,
+            color: Colors.white,
           ),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Color.fromRGBO(101, 79, 168, 1),
         ),
         bottomNavigationBar: CurvedNavigationBar(
           key: _bottomNavigationKey,
@@ -75,7 +80,7 @@ class _IndexState extends State<Index> {
         ),
         body: Container(
             color: Color.fromRGBO(207, 197, 239, 1), child: pageCurrent),
-        endDrawer: Drawer(
+        drawer: Drawer(
           // Add a ListView to the drawer. This ensures the user can scroll
           // through the options in the drawer if there isn't enough vertical
           // space to fit everything.
@@ -86,15 +91,61 @@ class _IndexState extends State<Index> {
               padding: EdgeInsets.zero,
 
               children: <Widget>[
-                DrawerHeader(
-                  child: Text(
-                    'Nombre de usuaria',
-                    style: TextStyle(
-                      color: Color.fromRGBO(40, 1, 102, 1),
+                Container(
+                  height: heigth / 6,
+                  child: DrawerHeader(
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                height: heigth / 20,
+                                child: Icon(
+                                  Icons.person,
+                                  color: Color.fromRGBO(40, 1, 102, 1),
+                                ),
+                              ),
+                              Container(
+                                height: heigth / 42,
+                                width: width / 2,
+                                child: Text(
+                                  _user.firstName + ' ' + _user.lastname,
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(40, 1, 102, 1),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: width / 8),
+                                child: GestureDetector(
+                                  child: Text(
+                                    'Editar Perfil',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(40, 1, 102, 0.5),
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Perfil()));
+                                  },
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(207, 197, 239, 1),
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(207, 197, 239, 1),
+                    ),
                   ),
                 ),
                 Row(
@@ -117,10 +168,10 @@ class _IndexState extends State<Index> {
                               TextStyle(color: Color.fromRGBO(101, 79, 168, 1)),
                         ),
                         onTap: () {
-                          // Update the state of the app
-                          // ...
-                          // Then close the drawer
-                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ContactoConfianza()));
                         },
                       ),
                     ),
@@ -177,10 +228,10 @@ class _IndexState extends State<Index> {
                               TextStyle(color: Color.fromRGBO(101, 79, 168, 1)),
                         ),
                         onTap: () {
-                          // Update the state of the app
-                          // ...
-                          // Then close the drawer
-                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HistorialViajes()));
                         },
                       ),
                     ),
@@ -277,7 +328,69 @@ class _IndexState extends State<Index> {
                   ],
                 ),
                 Divider(),
-                
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: heigth / 20,
+                      child: Icon(
+                        Icons.drive_eta,
+                        color: Color.fromRGBO(40, 1, 102, 1),
+                      ),
+                    ),
+                    Container(
+                      height: heigth / 14,
+                      width: width / 2,
+                      child: ListTile(
+                        title: Text('Volverme conductora',
+                            style: TextStyle(
+                              color: Color.fromRGBO(101, 79, 168, 1),
+                            )),
+                        onTap: () {
+                          // Update the state of the app
+                          // ...
+                          // Then close the drawer
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(),
+                Container(
+                  margin: EdgeInsets.only(top: heigth / 6.2),
+                  color: Color.fromRGBO(207, 197, 239, 1),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: heigth / 20,
+                        child: Icon(
+                          Icons.exit_to_app_outlined,
+                          color: Color.fromRGBO(40, 1, 102, 0.5),
+                        ),
+                      ),
+                      Container(
+                        height: heigth / 14,
+                        width: width / 2,
+                        child: ListTile(
+                          title: Text(
+                            'Cerrar sesión',
+                            style: TextStyle(
+                              color: Color.fromRGBO(40, 1, 102, 0.5),
+                            ),
+                          ),
+                          onTap: () {
+                            // Update the state of the app
+                            // ...
+                            // Then close the drawer
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
