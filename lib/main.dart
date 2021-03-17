@@ -1,6 +1,7 @@
 import 'package:NoEstasSola/src/service/databaseService.dart';
 import 'package:NoEstasSola/src/service/faceNetService.dart';
 import 'package:NoEstasSola/src/service/mlVisionService.dart';
+import 'package:NoEstasSola/src/view/carga.dart';
 import 'package:NoEstasSola/src/view/firstPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: FirstPage(),
+      home: Carga(),
     );
   }
 }

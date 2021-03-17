@@ -18,10 +18,10 @@ class AuthService {
   String status;
   String actualCode;
   FirebaseAuth _auth = FirebaseAuth.instance;
+
   Future registerUser(String mobile, BuildContext context) async {
     usuario.phoneNumber = mobile;
     return await _auth.verifyPhoneNumber(
-      
         phoneNumber: "+57 " + mobile,
         timeout: Duration(seconds: 60),
         verificationCompleted: (AuthCredential auth) {
@@ -61,7 +61,6 @@ class AuthService {
           this.actualCode = verificationId;
           status = "\nAuto retrieval time out";
         });
-
   }
 
   void signInWithPhoneNumber(String smsCode, BuildContext context) async {
@@ -74,6 +73,10 @@ class AuthService {
       usuario.userUuid = user.user.uid;
       onAuthenticationSuccessful(context, user);
     });
+  }
+
+  Future<void> singOut() {
+    return _auth.signOut();
   }
 
   void onAuthenticationSuccessful(BuildContext context, UserCredential value) {

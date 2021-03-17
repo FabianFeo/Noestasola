@@ -1,4 +1,6 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
+import 'package:NoEstasSola/src/view/takeFoto.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class Perfil extends StatefulWidget {
@@ -90,7 +92,17 @@ class _PerfilState extends State<Perfil> {
                                         Icons.arrow_forward_ios_outlined,
                                         color: Colors.white,
                                       ),
-                                      onTap: () {},
+                                      onTap: () async {
+                                        final cameras =
+                                            await availableCameras();
+                                        final firstCamera = cameras[1];
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    TakePictureScreen(
+                                                        camera: firstCamera)));
+                                      },
                                     ),
                                   ],
                                 ),
@@ -115,6 +127,7 @@ class _PerfilState extends State<Perfil> {
                             margin: EdgeInsets.only(top: height / 50),
                             child: Text(
                               'Número de teléfono',
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -153,7 +166,7 @@ class _PerfilState extends State<Perfil> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: height /8),
+                            margin: EdgeInsets.only(top: height / 8),
                             child: Text(
                               _user.email + '',
                               style: TextStyle(
