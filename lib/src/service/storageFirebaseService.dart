@@ -9,10 +9,10 @@ class StorageFirebaseService {
 
   Future<void> uplodaImage(File file) async {
     var storageReference = FirebaseStorage.instance
-        .ref()
-        .child('users/${_user.userUuid}/profileImage');
+        .ref('users/${_user.userUuid}/')
+        .child('profileImage');
     await storageReference.putFile(file).then((task) async  {
-       var lista=await task.storage.ref().getData();
+       var lista=await task.storage.ref('users/${_user.userUuid}/').child('profileImage').getDownloadURL();
           await FirebaseFirestore.instance
               .collection('users')
               .doc(_user.userUuid)

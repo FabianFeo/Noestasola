@@ -13,8 +13,8 @@ class UserCollectionService {
         .set(usuario.toMap());
   }
 
-  Future<DocumentSnapshot> getUser(String phone) {
+  Future<DocumentSnapshot> getUser(String uiid) {
 
-    return firestore.collection('users').doc(phone).get();
+    return firestore.collection('users').doc(uiid).get();
   }
 }

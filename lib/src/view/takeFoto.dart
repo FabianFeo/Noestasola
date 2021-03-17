@@ -165,10 +165,12 @@ class DisplayPictureScreen extends StatelessWidget {
                             UserCollectionService userCollectionService =
                                 UserCollectionService();
                             User _user = User();
-                            _user.fromMap((await userCollectionService
-                                    .getUser(_user.phoneNumber))
-                                .data());
+
+                            _user.profileImage = (await userCollectionService
+                                    .getUser(_user.userUuid))
+                                .data()['profileImage'];
                           });
+                          
                         },
                         child: Icon(Icons.thumb_up),
                       ),

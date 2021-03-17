@@ -23,6 +23,16 @@ class _IndexState extends State<Index> {
   GlobalKey _bottomNavigationKey = GlobalKey();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
+  void initState() { 
+    super.initState();
+    
+  }
+  @override
+  void reassemble(){
+    super.reassemble();
+    
+  }
+  @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -32,6 +42,9 @@ class _IndexState extends State<Index> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             _scaffoldKey.currentState.openDrawer();
+              setState(() {
+          _user=_user;
+        });
           },
           child: const Icon(
             Icons.view_headline_rounded,
@@ -109,7 +122,7 @@ class _IndexState extends State<Index> {
                                     radius: height / 20,
                                     backgroundImage: _user.profileImage == null
                                         ? AssetImage('assets/Logo/Usuaria.png')
-                                        : _user.profileImage,
+                                        : NetworkImage(_user.profileImage),
                                   ),
                                 ),
                               ),
