@@ -1,14 +1,10 @@
-import 'dart:ffi';
-
 import 'package:NoEstasSola/src/model/User.model.dart';
-import 'package:NoEstasSola/src/service/usersCollectionService.dart';
 import 'package:NoEstasSola/src/view/ScannerCara.dart';
 import 'package:beauty_textfield/beauty_textfield.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
 class Documento extends StatefulWidget {
   Documento({Key key}) : super(key: key);
@@ -176,8 +172,7 @@ class _DocumentoState extends State<Documento> {
                     duration: Duration(milliseconds: 100),
                     scaleFactor: 1.5,
                     onPressed: () {
-                      UserCollectionService userCollectionService =
-                          UserCollectionService();
+                     
 
                       Navigator.of(context).pop();
                       Navigator.push(

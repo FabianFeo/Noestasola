@@ -1,5 +1,4 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
-import 'package:NoEstasSola/src/service/usersCollectionService.dart';
 import 'package:NoEstasSola/src/view/documento.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';

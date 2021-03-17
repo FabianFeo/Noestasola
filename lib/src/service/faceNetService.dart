@@ -57,6 +57,7 @@ class FaceNetService {
 
     /// then reshapes input and ouput to model format 🧑‍🔧
     input = input.reshape([1, 112, 112, 3]);
+    // ignore: deprecated_member_use
     List output = List(1 * 192).reshape([1, 192]);
 
     /// runs and transforms the data 🤖

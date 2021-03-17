@@ -1,6 +1,5 @@
 import 'package:NoEstasSola/src/service/authService.dart';
 import 'package:NoEstasSola/src/view/codigoverificacion.dart';
-import 'package:NoEstasSola/src/view/index.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 

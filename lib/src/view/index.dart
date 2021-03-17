@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/view/Contactoconfianza.dart';
@@ -7,7 +6,6 @@ import 'package:NoEstasSola/src/view/Perfil.dart';
 import 'package:NoEstasSola/src/view/mapaPage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Index extends StatefulWidget {
   Index({Key key}) : super(key: key);
@@ -18,6 +16,7 @@ class Index extends StatefulWidget {
 
 class _IndexState extends State<Index> {
   User _user = User();
+  // ignore: unused_field
   int _page = 1;
   Widget pageCurrent = MapaPage();
   GlobalKey _bottomNavigationKey = GlobalKey();

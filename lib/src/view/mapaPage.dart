@@ -82,6 +82,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                   height: height - 50,
                   width: width,
                   child: GoogleMap(
+                    // ignore: non_constant_identifier_names
                     onTap: (LatLng) {
                       setState(() {
                         showDetails = false;

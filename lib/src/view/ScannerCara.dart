@@ -1,10 +1,8 @@
 import 'package:NoEstasSola/src/service/cameraService.dart';
 import 'package:NoEstasSola/src/service/faceNetService.dart';
 import 'package:NoEstasSola/src/service/mlVisionService.dart';
-import 'package:NoEstasSola/src/view/Inicio.dart';
 import 'package:NoEstasSola/src/widget/authActionButton.dart';
 import 'package:NoEstasSola/src/widget/facePainter.dart';
-import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +11,7 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
-
-import 'package:camera/camera.dart';
-import 'package:firebase_ml_vision/firebase_ml_vision.dart';
-import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
-import 'package:path_provider/path_provider.dart';
 
 class ScannerRostro extends StatefulWidget {
   final CameraDescription cameraDescription;

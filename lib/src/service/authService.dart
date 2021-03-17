@@ -64,7 +64,7 @@ class AuthService {
   }
 
   void signInWithPhoneNumber(String smsCode, BuildContext context) async {
-    _authCredential = await PhoneAuthProvider.credential(
+    _authCredential =  PhoneAuthProvider.credential(
         verificationId: actualCode, smsCode: smsCode);
     _auth.signInWithCredential(_authCredential).catchError((error) {
       status = 'Something has gone wrong, please try later';

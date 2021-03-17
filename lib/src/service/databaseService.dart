@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:path_provider/path_provider.dart';
 
 class DataBaseService {
   // singleton boilerplate

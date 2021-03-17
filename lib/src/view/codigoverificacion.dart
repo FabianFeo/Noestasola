@@ -1,9 +1,4 @@
-import 'dart:async';
-
 import 'package:NoEstasSola/src/service/authService.dart';
-import 'package:NoEstasSola/src/view/DatosPersonal.dart';
-import 'package:flare_flutter/flare_actor.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
