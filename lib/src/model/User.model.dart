@@ -11,6 +11,7 @@ class User {
   String documentoType;
   String expeditionDate;
   List facePatern;
+  String profileImage;
 
   User._internal();
   factory User() {
@@ -28,6 +29,7 @@ class User {
       'documentoType': documentoType,
       'expeditionDate': expeditionDate,
       'facePatern': facePatern,
+      'profileImage':profileImage
     };
   }
 
@@ -41,5 +43,6 @@ class User {
     documentoType = data['documentoType'];
     expeditionDate = data['expeditionDate'];
     facePatern = data['facePatern'];
+    profileImage=data['profileImage'];
   }
 }

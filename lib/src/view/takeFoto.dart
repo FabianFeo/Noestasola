@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:NoEstasSola/src/model/User.model.dart';
+import 'package:NoEstasSola/src/service/storageFirebaseService.dart';
+import 'package:NoEstasSola/src/service/usersCollectionService.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
@@ -128,6 +131,7 @@ class DisplayPictureScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StorageFirebaseService storageFirebaseService = StorageFirebaseService();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -143,7 +147,7 @@ class DisplayPictureScreen extends StatelessWidget {
               ),
             ),
             Container(
-                margin: EdgeInsets.only(top: height / 30),
+              margin: EdgeInsets.only(top: height / 30),
               height: height - (height / 1.11),
               child: Row(
                 children: [
@@ -152,13 +156,27 @@ class DisplayPictureScreen extends StatelessWidget {
                     alignment: AlignmentDirectional.centerStart,
                     child: Center(
                       child: FloatingActionButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          storageFirebaseService
+                              .uplodaImage(File(imagePath))
+                              .then((value) async {
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+                            UserCollectionService userCollectionService =
+                                UserCollectionService();
+                            User _user = User();
+                            _user.fromMap((await userCollectionService
+                                    .getUser(_user.phoneNumber))
+                                .data());
+                          });
+                        },
                         child: Icon(Icons.thumb_up),
                       ),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: width / 2.3,right: width / 8),
+                    margin:
+                        EdgeInsets.only(left: width / 2.3, right: width / 8),
                     child: Center(
                       child: FloatingActionButton(
                         onPressed: () {},

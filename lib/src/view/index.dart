@@ -25,7 +25,7 @@ class _IndexState extends State<Index> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double heigth = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
         key: _scaffoldKey,
         floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
@@ -92,7 +92,7 @@ class _IndexState extends State<Index> {
 
               children: <Widget>[
                 Container(
-                  height: heigth / 6,
+                  height: height / 6,
                   child: DrawerHeader(
                     child: Container(
                       child: Column(
@@ -101,14 +101,20 @@ class _IndexState extends State<Index> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Container(
-                                height: heigth / 20,
-                                child: Icon(
-                                  Icons.person,
-                                  color: Color.fromRGBO(40, 1, 102, 1),
+                                height: height / 20,
+                                child: Container(
+                                  margin: EdgeInsets.only(top: height / 50),
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    radius: height / 20,
+                                    backgroundImage: _user.profileImage == null
+                                        ? AssetImage('assets/Logo/Usuaria.png')
+                                        : _user.profileImage,
+                                  ),
                                 ),
                               ),
                               Container(
-                                height: heigth / 42,
+                                height: height / 42,
                                 width: width / 2,
                                 child: Text(
                                   _user.firstName + ' ' + _user.lastname,
@@ -149,256 +155,256 @@ class _IndexState extends State<Index> {
                   ),
                 ),
                 Container(
-                  height: heigth/1.32 ,
+                    height: height / 1.32,
                     child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          height: heigth / 20,
-                          child: Icon(
-                            Icons.volunteer_activism,
-                            color: Color.fromRGBO(40, 1, 102, 1),
-                          ),
-                        ),
-                        Container(
-                          height: heigth / 15,
-                          width: width / 2,
-                          child: ListTile(
-                            title: Text(
-                              'Contacto de confianza',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 79, 168, 1)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: height / 20,
+                              child: Icon(
+                                Icons.volunteer_activism,
+                                color: Color.fromRGBO(40, 1, 102, 1),
+                              ),
                             ),
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ContactoConfianza()));
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: heigth / 20,
-                          child: Icon(
-                            Icons.chat_rounded,
-                            color: Color.fromRGBO(40, 1, 102, 1),
-                          ),
-                        ),
-                        Container(
-                          height: heigth / 15,
-                          width: width / 2,
-                          child: ListTile(
-                            title: Text(
-                              'Mensajes',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 79, 168, 1)),
+                            Container(
+                              height: height / 15,
+                              width: width / 2,
+                              child: ListTile(
+                                title: Text(
+                                  'Contacto de confianza',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(101, 79, 168, 1)),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ContactoConfianza()));
+                                },
+                              ),
                             ),
-                            onTap: () {
-                              // Update the state of the app
-                              // ...
-                              // Then close the drawer
-                              Navigator.pop(context);
-                            },
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: heigth / 20,
-                          child: Icon(
-                            Icons.watch_later_outlined,
-                            color: Color.fromRGBO(40, 1, 102, 1),
-                          ),
-                        ),
-                        Container(
-                          height: heigth / 15,
-                          width: width / 2,
-                          child: ListTile(
-                            title: Text(
-                              'Historial de viajes',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 79, 168, 1)),
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: height / 20,
+                              child: Icon(
+                                Icons.chat_rounded,
+                                color: Color.fromRGBO(40, 1, 102, 1),
+                              ),
                             ),
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HistorialViajes()));
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: heigth / 20,
-                          child: Icon(
-                            Icons.credit_card,
-                            color: Color.fromRGBO(40, 1, 102, 1),
-                          ),
-                        ),
-                        Container(
-                          height: heigth / 15,
-                          width: width / 2,
-                          child: ListTile(
-                            title: Text(
-                              'Metodos de pago',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 79, 168, 1)),
+                            Container(
+                              height: height / 15,
+                              width: width / 2,
+                              child: ListTile(
+                                title: Text(
+                                  'Mensajes',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(101, 79, 168, 1)),
+                                ),
+                                onTap: () {
+                                  // Update the state of the app
+                                  // ...
+                                  // Then close the drawer
+                                  Navigator.pop(context);
+                                },
+                              ),
                             ),
-                            onTap: () {
-                              // Update the state of the app
-                              // ...
-                              // Then close the drawer
-                              Navigator.pop(context);
-                            },
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: heigth / 20,
-                          child: Icon(
-                            Icons.settings,
-                            color: Color.fromRGBO(40, 1, 102, 1),
-                          ),
-                        ),
-                        Container(
-                          height: heigth / 15,
-                          width: width / 2,
-                          child: ListTile(
-                            title: Text(
-                              'Configuracion',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 79, 168, 1)),
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: height / 20,
+                              child: Icon(
+                                Icons.watch_later_outlined,
+                                color: Color.fromRGBO(40, 1, 102, 1),
+                              ),
                             ),
-                            onTap: () {
-                              // Update the state of the app
-                              // ...
-                              // Then close the drawer
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: heigth / 20,
-                          child: Icon(
-                            Icons.live_help_outlined,
-                            color: Color.fromRGBO(40, 1, 102, 1),
-                          ),
-                        ),
-                        Container(
-                          height: heigth / 15,
-                          width: width / 2,
-                          child: ListTile(
-                            title: Text(
-                              'Ayuda',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 79, 168, 1)),
+                            Container(
+                              height: height / 15,
+                              width: width / 2,
+                              child: ListTile(
+                                title: Text(
+                                  'Historial de viajes',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(101, 79, 168, 1)),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              HistorialViajes()));
+                                },
+                              ),
                             ),
-                            onTap: () {
-                              // Update the state of the app
-                              // ...
-                              // Then close the drawer
-                              Navigator.pop(context);
-                            },
-                          ),
+                          ],
                         ),
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: height / 20,
+                              child: Icon(
+                                Icons.credit_card,
+                                color: Color.fromRGBO(40, 1, 102, 1),
+                              ),
+                            ),
+                            Container(
+                              height: height / 15,
+                              width: width / 2,
+                              child: ListTile(
+                                title: Text(
+                                  'Metodos de pago',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(101, 79, 168, 1)),
+                                ),
+                                onTap: () {
+                                  // Update the state of the app
+                                  // ...
+                                  // Then close the drawer
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: height / 20,
+                              child: Icon(
+                                Icons.settings,
+                                color: Color.fromRGBO(40, 1, 102, 1),
+                              ),
+                            ),
+                            Container(
+                              height: height / 15,
+                              width: width / 2,
+                              child: ListTile(
+                                title: Text(
+                                  'Configuracion',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(101, 79, 168, 1)),
+                                ),
+                                onTap: () {
+                                  // Update the state of the app
+                                  // ...
+                                  // Then close the drawer
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: height / 20,
+                              child: Icon(
+                                Icons.live_help_outlined,
+                                color: Color.fromRGBO(40, 1, 102, 1),
+                              ),
+                            ),
+                            Container(
+                              height: height / 15,
+                              width: width / 2,
+                              child: ListTile(
+                                title: Text(
+                                  'Ayuda',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(101, 79, 168, 1)),
+                                ),
+                                onTap: () {
+                                  // Update the state of the app
+                                  // ...
+                                  // Then close the drawer
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: height / 20,
+                              child: Icon(
+                                Icons.drive_eta,
+                                color: Color.fromRGBO(40, 1, 102, 1),
+                              ),
+                            ),
+                            Container(
+                              height: height / 14,
+                              width: width / 2,
+                              child: ListTile(
+                                title: Text('Volverme conductora',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(101, 79, 168, 1),
+                                    )),
+                                onTap: () {
+                                  // Update the state of the app
+                                  // ...
+                                  // Then close the drawer
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(),
                       ],
-                    ),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: heigth / 20,
-                          child: Icon(
-                            Icons.drive_eta,
-                            color: Color.fromRGBO(40, 1, 102, 1),
-                          ),
+                    )),
+                Container(
+                  alignment: FractionalOffset.bottomCenter,
+                  color: Color.fromRGBO(207, 197, 239, 1),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: height / 20,
+                        child: Icon(
+                          Icons.exit_to_app_outlined,
+                          color: Color.fromRGBO(40, 1, 102, 0.5),
                         ),
-                        Container(
-                          height: heigth / 14,
-                          width: width / 2,
-                          child: ListTile(
-                            title: Text('Volverme conductora',
-                                style: TextStyle(
-                                  color: Color.fromRGBO(101, 79, 168, 1),
-                                )),
-                            onTap: () {
-                              // Update the state of the app
-                              // ...
-                              // Then close the drawer
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                   
-                  ],
-                )),
-                 Container(
-                      alignment: FractionalOffset.bottomCenter,
-                      color: Color.fromRGBO(207, 197, 239, 1),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            height: heigth / 20,
-                            child: Icon(
-                              Icons.exit_to_app_outlined,
+                      ),
+                      Container(
+                        height: height / 14,
+                        width: width / 2,
+                        child: ListTile(
+                          title: Text(
+                            'Cerrar sesión',
+                            style: TextStyle(
                               color: Color.fromRGBO(40, 1, 102, 0.5),
                             ),
                           ),
-                          Container(
-                            height: heigth / 14,
-                            width: width / 2,
-                            child: ListTile(
-                              title: Text(
-                                'Cerrar sesión',
-                                style: TextStyle(
-                                  color: Color.fromRGBO(40, 1, 102, 0.5),
-                                ),
-                              ),
-                              onTap: () {
-                                // Update the state of the app
-                                // ...
-                                // Then close the drawer
-                                Navigator.pop(context);
-                              },
-                            ),
-                          ),
-                        ],
+                          onTap: () {
+                            // Update the state of the app
+                            // ...
+                            // Then close the drawer
+                            Navigator.pop(context);
+                          },
+                        ),
                       ),
-                    ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
