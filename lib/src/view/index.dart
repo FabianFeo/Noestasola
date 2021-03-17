@@ -119,7 +119,7 @@ class _IndexState extends State<Index> {
                                   margin: EdgeInsets.only(top: height / 50),
                                   child: CircleAvatar(
                                     backgroundColor: Colors.white,
-                                    radius: height / 20,
+                                    radius: height / 28,
                                     backgroundImage: _user.profileImage == null
                                         ? AssetImage('assets/Logo/Usuaria.png')
                                         : NetworkImage(_user.profileImage),
@@ -141,7 +141,7 @@ class _IndexState extends State<Index> {
                           Row(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(left: width / 8),
+                                margin: EdgeInsets.only(left: width / 6.5),
                                 child: GestureDetector(
                                   child: Text(
                                     'Editar Perfil',
@@ -398,7 +398,7 @@ class _IndexState extends State<Index> {
                         ),
                       ),
                       Container(
-                        height: height / 14,
+                        height: height / 13,
                         width: width / 2,
                         child: ListTile(
                           title: Text(

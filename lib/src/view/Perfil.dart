@@ -121,10 +121,9 @@ class _PerfilState extends State<Perfil> {
                   children: [
                     Container(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(
-                            margin: EdgeInsets.only(top: height / 50),
+                          Container(                            
+                            margin: EdgeInsets.only(top: height / 50, left: width / 15),
                             child: Text(
                               'Número de teléfono',
                               textAlign: TextAlign.left,
@@ -134,7 +133,7 @@ class _PerfilState extends State<Perfil> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: height / 50),
+                            margin: EdgeInsets.only(top: height / 50, left: width / 3.55),
                             child: Text(
                               _user.phoneNumber + '',
                               style: TextStyle(
@@ -143,7 +142,7 @@ class _PerfilState extends State<Perfil> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: height / 50),
+                            margin: EdgeInsets.only(top: height / 50, left: width / 50),
                             child: Icon(
                               Icons.arrow_forward_ios_rounded,
                               color: Colors.white,
@@ -153,8 +152,8 @@ class _PerfilState extends State<Perfil> {
                       ),
                     ),
                     Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      margin: EdgeInsets.only(left: width /15 ),
+                      child: Row(                        
                         children: [
                           Container(
                             margin: EdgeInsets.only(top: height / 8),
@@ -165,8 +164,8 @@ class _PerfilState extends State<Perfil> {
                               ),
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(top: height / 8),
+                          Container(                            
+                            margin: EdgeInsets.only(top: height / 8, left: width / 15),
                             child: Text(
                               _user.email + '',
                               style: TextStyle(
@@ -175,7 +174,7 @@ class _PerfilState extends State<Perfil> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: height / 8),
+                            margin: EdgeInsets.only(top: height / 8, left: width / 50),
                             child: Icon(
                               Icons.arrow_forward_ios_rounded,
                               color: Colors.white,
@@ -185,11 +184,10 @@ class _PerfilState extends State<Perfil> {
                       ),
                     ),
                     Container(
+                      margin: EdgeInsets.only(top: height / 8, left: width / 12),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(top: height / 8),
                             child: Text(
                               'Mis dispositivos',
                               style: TextStyle(
@@ -198,7 +196,7 @@ class _PerfilState extends State<Perfil> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: height / 8),
+                            margin: EdgeInsets.only(left: width / 1.8),
                             child: Icon(
                               Icons.arrow_forward_ios_rounded,
                               color: Colors.white,
@@ -208,11 +206,10 @@ class _PerfilState extends State<Perfil> {
                       ),
                     ),
                     Container(
+                      margin: EdgeInsets.only(top: height / 8, left: width / 12),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(top: height / 8),
                             child: Text(
                               'Eliminar mi cuenta',
                               style: TextStyle(
@@ -221,7 +218,7 @@ class _PerfilState extends State<Perfil> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: height / 8),
+                            margin: EdgeInsets.only(left: width / 2),
                             child: Icon(
                               Icons.arrow_forward_ios_rounded,
                               color: Colors.white,
