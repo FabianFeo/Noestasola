@@ -141,7 +141,7 @@ class _PerfilState extends State<Perfil> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: height / 25),
+                                margin: EdgeInsets.only(top: height /8),
                                 child: Text(
                                   'Correo Electronico',
                                   textAlign: TextAlign.start,
@@ -151,7 +151,7 @@ class _PerfilState extends State<Perfil> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: height / 25),
+                                margin: EdgeInsets.only(top: height / 8),
                                 child: Text(
                                   'Mis dispositivos',
                                   textAlign: TextAlign.start,
@@ -161,7 +161,7 @@ class _PerfilState extends State<Perfil> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: height / 25),
+                                margin: EdgeInsets.only(top: height / 8),
                                 child: Text(
                                   'Eliminar mi cuenta',
                                   textAlign: TextAlign.start,
@@ -185,7 +185,7 @@ class _PerfilState extends State<Perfil> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: height / 25),
+                                margin: EdgeInsets.only(top: height / 8),
                                 child: Text(
                                   _user.email.substring(0, 15) + '...',
                                   textAlign: TextAlign.start,
@@ -195,7 +195,7 @@ class _PerfilState extends State<Perfil> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: height / 25),
+                                margin: EdgeInsets.only(top: height / 8),
                                 child: Text(
                                   '',
                                   style: TextStyle(
@@ -204,7 +204,7 @@ class _PerfilState extends State<Perfil> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: height / 25),
+                                margin: EdgeInsets.only(top: height / 8),
                                 child: Text(
                                   '',
                                   style: TextStyle(
@@ -224,21 +224,21 @@ class _PerfilState extends State<Perfil> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: height / 25),
+                                margin: EdgeInsets.only(top: height / 8),
                                 child: Icon(
                                   Icons.arrow_forward_ios_rounded,
                                   color: Colors.white,
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: height / 25),
+                                margin: EdgeInsets.only(top: height / 8),
                                 child: Icon(
                                   Icons.arrow_forward_ios_rounded,
                                   color: Colors.white,
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: height / 25),
+                                margin: EdgeInsets.only(top: height / 8),
                                 child: Icon(
                                   Icons.arrow_forward_ios_rounded,
                                   color: Colors.white,
