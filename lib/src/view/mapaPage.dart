@@ -100,56 +100,6 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                     myLocationEnabled: true,
                   ),
                 )),
-                !showDetails
-                    ? Center(
-                        child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            showDetails = true;
-                          });
-
-                          animationController.forward();
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(top: height / 6),
-                          height: height / 10,
-                          width: width / 1.3,
-                          color: Colors.white,
-                          child: Center(
-                            child: TextField(
-                              enabled: false,
-                              decoration: InputDecoration(
-                                hoverColor: Colors.white,
-                                labelText: "A donde quieres ir?",
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color.fromRGBO(101, 79, 168, 1),
-                                    width: 2.0,
-                                  ),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.black54,
-                                    width: 2.0,
-                                  ),
-                                ),
-                              ),
-                              onChanged: (value) {
-                                // if (value.isNotEmpty) {
-                                //   autoCompleteSearch(value);
-                                // } else {
-                                //   if (predictions.length > 0 && mounted) {
-                                //     setState(() {
-                                //       predictions = [];
-                                //     });
-                                //   }
-                                // }
-                              },
-                            ),
-                          ),
-                        ),
-                      ))
-                    : Container(),
                 SizedBox(
                   height: 10,
                 ),
@@ -160,8 +110,11 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                         duration: Duration(milliseconds: 100),
                         scaleFactor: 1.5,
                         onPressed: () {
-                          polylineCoordinates.clear();
-                          _createPolylines();
+                          setState(() {
+                            showDetails = true;
+                          });
+                          // polylineCoordinates.clear();
+                          // _createPolylines();
                         },
                         child: Card(
                           shape: RoundedRectangleBorder(
@@ -246,9 +199,8 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                   Container(
                                     height: height / 2,
                                     padding: EdgeInsets.only(
-                                        left: 50, right: 50, bottom: 50),
-                                    child: predictions.isNotEmpty
-                                        ? Container(
+                                        left: 18, right: 18, bottom: 50),
+                                    child: Container(
                                             color: Colors.white,
                                             child: ListView.builder(
                                               itemCount: predictions.length,
@@ -281,18 +233,8 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                 );
                                               },
                                             ))
-                                        : Container(
-                                          child: Scaffold(
-                                            body: Container(
-                                              child: Center(
-                                                child: Column(
-                                                  children: [
-                                                    Text('Viajes')
-                                                  ],
-                                                ),
-                                              ),
-                                            ),),
-                                        ),
+                                       
+                                          
                                   ),
                                 ],
                               ),
