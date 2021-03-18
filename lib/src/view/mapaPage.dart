@@ -1,4 +1,6 @@
+import 'package:NoEstasSola/src/service/contactosService.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_place/google_place.dart';
 
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ class MapaPage extends StatefulWidget {
 }
 
 class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
+  String dropDownValue ;
   double totalDistancia = 0;
   bool showDetails = false;
   bool servicioPedido = true;
@@ -47,18 +50,9 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
       GooglePlace("AIzaSyDDjt2cJQi5BgxkYJZ7ZtrPTafZQICenXo");
   List<AutocompletePrediction> predictions = [];
   double height = 0;
-  @override
-  void initState() {
-    super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
-    animation = Tween<double>(begin: 0, end: -300).animate(animationController)
-      ..addListener(() {
-        setState(() {});
-      });
-  }
 
   double width = 0;
+  ContactosService _contactosService = ContactosService();
   @override
   Widget build(BuildContext context) {
     var animationController =
@@ -142,19 +136,55 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
                               color: Color.fromRGBO(207, 197, 239, 1),
-                            ),                           
-                            height: height ,
-                            width: width ,
+                            ),
+                            height: height,
+                            width: width,
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
-                                  Center(                                    
-                                      child: Container(                                        
+                                  Center(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: Colors.white,
+                                      ),
+                                      margin:
+                                          EdgeInsets.only(top: height / 8.5),
+                                      height: height / 20,
+                                      width: width / 1.3,
+                                      child: Center(
+                                        child: TextField(
+                                          controller: _controllerText,
+                                          decoration: InputDecoration(
+                                            focusColor: Colors.white,
+                                            fillColor: Colors.white,
+                                            hoverColor: Colors.white,
+                                            labelText: "Donde estás?",
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color.fromRGBO(
+                                                    101, 79, 168, 1),
+                                                width: 1,
+                                              ),
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color.fromRGBO(
+                                                    101, 79, 168, 1),
+                                                width: 1,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Center(
+                                      child: Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
                                       color: Colors.white,
                                     ),
-                                    margin: EdgeInsets.only(top: height / 9),
                                     height: height / 20,
                                     width: width / 1.3,
                                     child: Center(
@@ -233,6 +263,141 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                               );
                                             },
                                           ))),
+                                  Container(
+                                    child: Container(
+                                      child: Center(
+                                        child: StreamBuilder(
+                                            stream: _contactosService
+                                                .getEmergenciContactsStream(),
+                                            builder: (_,
+                                                AsyncSnapshot<QuerySnapshot>
+                                                    snapshot) {
+                                              
+
+                                              return snapshot.hasData &&
+                                                      snapshot.data.docs
+                                                              .length !=
+                                                          0
+                                                  ? new DropdownButton<String>(
+                                                      value: dropDownValue,
+                                                      hint: Text(
+                                                          'Selecciona un contacto de emergencia'),
+                                                      items: snapshot.data.docs
+                                                          .map((value) {
+                                                        return new DropdownMenuItem<
+                                                            String>(
+                                                          value: value
+                                                              .data()['nombre'],
+                                                          child: new Text(
+                                                              value.data()[
+                                                                  'nombre']),
+                                                        );
+                                                      }).toList(),
+                                                      onChanged: (value) {
+                                                        setState(() {
+                                                          dropDownValue = value;
+                                                        });
+                                                      },
+                                                    )
+                                                  : Container(
+                                                      child: Text(
+                                                          'No tienes ningun contacto de confianza agregado'),
+                                                    );
+                                            }),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Container(
+                                      margin: EdgeInsets.only(top: height / 10),
+                                      child: Center(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Container(
+                                              child: BouncingWidget(
+                                                  duration: Duration(
+                                                      milliseconds: 100),
+                                                  scaleFactor: 1.5,
+                                                  onPressed: () {},
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50.0),
+                                                    ),
+                                                    color: Color.fromRGBO(
+                                                        101, 79, 168, 1),
+                                                    child: Container(
+                                                      width: width / 2.7,
+                                                      height: height / 20,
+                                                      child: Center(
+                                                        child: Text(
+                                                          "Cancelar",
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      255,
+                                                                      255,
+                                                                      255,
+                                                                      1),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 20),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )),
+                                            ),
+                                            Container(
+                                              child: BouncingWidget(
+                                                  duration: Duration(
+                                                      milliseconds: 100),
+                                                  scaleFactor: 1.5,
+                                                  onPressed: () {},
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50.0),
+                                                    ),
+                                                    color: Color.fromRGBO(
+                                                        101, 79, 168, 1),
+                                                    child: Container(
+                                                      width: width / 2.7,
+                                                      height: height / 20,
+                                                      child: Center(
+                                                        child: Text(
+                                                          "Confirmar",
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      255,
+                                                                      255,
+                                                                      255,
+                                                                      1),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 20),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                             )))

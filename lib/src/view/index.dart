@@ -1,9 +1,11 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/view/Contactoconfianza.dart';
 import 'package:NoEstasSola/src/view/Historialviajes.dart';
+import 'package:NoEstasSola/src/view/Mensajes.dart';
 
 import 'package:NoEstasSola/src/view/Perfil.dart';
 import 'package:NoEstasSola/src/view/mapaPage.dart';
+import 'package:NoEstasSola/src/view/payment.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -220,11 +222,12 @@ class _IndexState extends State<Index> {
                                   style: TextStyle(
                                       color: Color.fromRGBO(101, 79, 168, 1)),
                                 ),
-                                onTap: () {
-                                  // Update the state of the app
-                                  // ...
-                                  // Then close the drawer
-                                  Navigator.pop(context);
+                               onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              MensajesUser()));
                                 },
                               ),
                             ),
@@ -282,10 +285,11 @@ class _IndexState extends State<Index> {
                                       color: Color.fromRGBO(101, 79, 168, 1)),
                                 ),
                                 onTap: () {
-                                  // Update the state of the app
-                                  // ...
-                                  // Then close the drawer
-                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Pagos()));
                                 },
                               ),
                             ),
