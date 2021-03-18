@@ -1,4 +1,6 @@
+import 'package:NoEstasSola/src/service/contactosService.dart';
 import 'package:NoEstasSola/src/view/FormularioConfianza.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ContactoConfianza extends StatefulWidget {
@@ -11,6 +13,8 @@ class ContactoConfianza extends StatefulWidget {
 class _ContactoConfianzaState extends State<ContactoConfianza> {
   double height = 0;
   double width = 0;
+  var mostrarPlus = true;
+  ContactosService _contactosService = ContactosService();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -44,33 +48,61 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                   child: Center(
                     child: Row(
                       children: [
-                        Container(
-                          width: width / 1.5,
-                          child: Text(
-                            '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: width - (width / 1.2),
-                          child: GestureDetector(
-                            child: Icon(
-                              Icons.library_add,
-                              color: Colors.white,
-                            ),
-                            onTap: () => {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        FormularioConfianza()),
+                        StreamBuilder(
+                            stream:
+                                _contactosService.getEmergenciContactsStream(),
+                            builder:
+                                (_, AsyncSnapshot<QuerySnapshot> snapshot) {
+                            
+                              return snapshot.hasData
+                                  ? Container(
+                                      height: height / 2,
+                                      width: width / 1.5,
+                                      child: ListView.builder(
+                                          itemCount: snapshot.data.docs.length,
+                                          itemBuilder: (_, index) {
+                                            return Container(
+                                              width: width / 1.5,
+                                              child: Text(
+                                                '${snapshot.data.docs[index].data()["nombre"]}  ${snapshot.data.docs[index].data()["telefono"]}',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                    )
+                                  : Container(
+                                      width: width / 1.5,
+                                      child: Text(
+                                        '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    );
+                            }),
+                        mostrarPlus
+                            ? Container(
+                                width: width - (width / 1.2),
+                                child: GestureDetector(
+                                  child: Icon(
+                                    Icons.library_add,
+                                    color: Colors.white,
+                                  ),
+                                  onTap: () => {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              FormularioConfianza()),
+                                    )
+                                  },
+                                ),
                               )
-                            },
-                          ),
-                        ),
+                            : Container(),
                       ],
                     ),
                   ),

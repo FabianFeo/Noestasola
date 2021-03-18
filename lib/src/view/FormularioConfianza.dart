@@ -1,3 +1,4 @@
+import 'package:NoEstasSola/src/service/contactosService.dart';
 import 'package:beauty_textfield/beauty_textfield.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,9 @@ class FormularioConfianza extends StatefulWidget {
 class _FormularioConfianzaState extends State<FormularioConfianza> {
   double height = 0;
   double width = 0;
+  String nombre = "";
+  String telefono = "";
+  ContactosService _contactosService = ContactosService();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -62,7 +66,9 @@ class _FormularioConfianzaState extends State<FormularioConfianza> {
                           Icons.person,
                           color: Colors.grey,
                         ),
-                        onChanged: (text) {},
+                        onChanged: (text) {
+                          nombre = text;
+                        },
                       ),
                     ),
                   ),
@@ -93,14 +99,20 @@ class _FormularioConfianzaState extends State<FormularioConfianza> {
                           Icons.person,
                           color: Colors.grey,
                         ),
-                        onChanged: (text) {},
+                        onChanged: (text) {
+                          telefono = text;
+                        },
                       ),
                     ),
                   ),
                   BouncingWidget(
                       duration: Duration(milliseconds: 100),
                       scaleFactor: 1.5,
-                      onPressed: () {},
+                      onPressed: () {
+                        _contactosService
+                            .pushEmergenciContact(nombre, telefono)
+                            .then((value) => {Navigator.of(context).pop()});
+                      },
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.0),
