@@ -281,7 +281,18 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                 );
                                               },
                                             ))
-                                        : Container(),
+                                        : Container(
+                                          child: Scaffold(
+                                            body: Container(
+                                              child: Center(
+                                                child: Column(
+                                                  children: [
+                                                    Text('Viajes')
+                                                  ],
+                                                ),
+                                              ),
+                                            ),),
+                                        ),
                                   ),
                                 ],
                               ),

@@ -104,7 +104,7 @@ class _IndexState extends State<Index> {
 
               children: <Widget>[
                 Container(
-                  height: height / 6,
+                  height: height / 5,
                   child: DrawerHeader(
                     child: Container(
                       child: Column(
@@ -113,7 +113,7 @@ class _IndexState extends State<Index> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Container(
-                                height: height / 20,
+                                height: height / 15,
                                 child: Container(
                                   margin: EdgeInsets.only(top: height / 50),
                                   child: CircleAvatar(
