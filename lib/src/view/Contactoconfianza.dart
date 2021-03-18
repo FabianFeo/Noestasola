@@ -1,3 +1,4 @@
+import 'package:NoEstasSola/src/view/FormularioConfianza.dart';
 import 'package:flutter/material.dart';
 
 class ContactoConfianza extends StatefulWidget {
@@ -35,30 +36,41 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
               ),
               Card(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),                  
+                  borderRadius: BorderRadius.circular(15),
                 ),
                 margin: EdgeInsets.all(30),
                 child: Container(
                   height: height / 5,
                   child: Center(
-                    child: Row(                      
+                    child: Row(
                       children: [
                         Container(
                           width: width / 1.5,
                           child: Text(
-                          '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
+                            '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
                         ),
                         Container(
                           width: width - (width / 1.2),
-                          child: Icon(Icons.library_add,
-                          color: Colors.white,),
+                          child: GestureDetector(
+                            child: Icon(
+                              Icons.library_add,
+                              color: Colors.white,
+                            ),
+                            onTap: () => {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        FormularioConfianza()),
+                              )
+                            },
+                          ),
                         ),
-                        
                       ],
                     ),
                   ),
@@ -66,17 +78,27 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                 color: Color.fromRGBO(50, 31, 106, 0.3),
               ),
               Container(
-                child: Icon(Icons.library_add,
-                color: Color.fromRGBO(40, 1, 102, 1),
-                size: height / 15,),
+                child: GestureDetector(
+                  child: Icon(
+                    Icons.library_add,
+                    color: Color.fromRGBO(40, 1, 102, 1),
+                    size: height / 15,
+                  ),
+                  onTap: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FormularioConfianza()),
+                    )
+                  },
+                ),
               ),
               Container(
-                margin: EdgeInsets.only(top: height / 5),
-                child: Image.asset('assets/Logo/Lu_logo.png',
-                height: height / 5,)
-              ),
-              
-
+                  margin: EdgeInsets.only(top: height / 5),
+                  child: Image.asset(
+                    'assets/Logo/Lu_logo.png',
+                    height: height / 5,
+                  )),
             ],
           ),
         ),
