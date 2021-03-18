@@ -42,9 +42,11 @@ class _PerfilState extends State<Perfil> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
+                      Container(
+                        margin: EdgeInsets.only(left: width / 10),
+                        child: Column(
                         children: [
-                          Container(
+                          Container(                            
                             margin: EdgeInsets.only(top: height / 50),
                             child: CircleAvatar(
                               backgroundColor: Colors.white,
@@ -73,6 +75,7 @@ class _PerfilState extends State<Perfil> {
                           ),
                         ],
                       ),
+                      ),                      
                       Column(
                         children: [
                           Row(
@@ -82,7 +85,7 @@ class _PerfilState extends State<Perfil> {
                                 child: Row(
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.only(left: width /3),
+                                      margin: EdgeInsets.only(left: width / 4.5),
                                       child: Text(
                                       'Editar foto de perfil',
                                       style: TextStyle(
