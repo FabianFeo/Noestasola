@@ -21,7 +21,8 @@ class _PerfilState extends State<Perfil> {
     return Container(
       child: Scaffold(
         backgroundColor: Color.fromRGBO(207, 197, 239, 1),
-        body: Container(
+        body: SingleChildScrollView(
+          child: Container(
           child: Column(
             children: [
               Container(
@@ -257,6 +258,7 @@ class _PerfilState extends State<Perfil> {
               ),
             ],
           ),
+        ),
         ),
       ),
     );

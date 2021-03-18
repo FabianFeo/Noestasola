@@ -447,7 +447,50 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                             ),
                           )))
                   : Container(),
-              confirmationCard ? Container() : Container()
+              confirmationCard
+                  ? Container(
+                      child: Center(
+                        child: Container(
+                            height: height / 10,
+                            width: width / 1.2,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(15),
+                              ),
+                              color: Colors.green[300],
+                            ),
+                            child: Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                      child: Image(
+                                        image: AssetImage(
+                                            'assets/Logo/Lu_logo.png'),
+                                      ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15))),
+                                      child: GestureDetector(
+                                        child: Text('Confirmar'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Text('Valor & valor'),
+                                    Text('Tiempo de recogida'),
+                                    Text('Metodo de pago'),
+                                  ],
+                                ),
+                              ],
+                            )),
+                      ),
+                    )
+                  : Container()
             ],
           ),
         ),
