@@ -1,7 +1,7 @@
-
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/view/Contactoconfianza.dart';
 import 'package:NoEstasSola/src/view/Historialviajes.dart';
+
 import 'package:NoEstasSola/src/view/Perfil.dart';
 import 'package:NoEstasSola/src/view/mapaPage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -22,15 +22,15 @@ class _IndexState extends State<Index> {
   GlobalKey _bottomNavigationKey = GlobalKey();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
-  void initState() { 
+  void initState() {
     super.initState();
-    
   }
+
   @override
-  void reassemble(){
+  void reassemble() {
     super.reassemble();
-    
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -41,9 +41,9 @@ class _IndexState extends State<Index> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             _scaffoldKey.currentState.openDrawer();
-              setState(() {
-          _user=_user;
-        });
+            setState(() {
+              _user = _user;
+            });
           },
           child: const Icon(
             Icons.view_headline_rounded,

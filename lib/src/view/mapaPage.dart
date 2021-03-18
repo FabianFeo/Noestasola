@@ -141,21 +141,20 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                         child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
-                              color: Color.fromRGBO(101, 79, 168, 1),
-                            ),
-                            margin: EdgeInsets.only(top: height / 3),
-                            height: height / 1.5,
-                            width: width / 1.2,
+                              color: Color.fromRGBO(207, 197, 239, 1),
+                            ),                           
+                            height: height ,
+                            width: width ,
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
-                                  Center(
-                                      child: Container(
+                                  Center(                                    
+                                      child: Container(                                        
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
                                       color: Colors.white,
                                     ),
-                                    margin: EdgeInsets.only(top: height / 20),
+                                    margin: EdgeInsets.only(top: height / 9),
                                     height: height / 20,
                                     width: width / 1.3,
                                     child: Center(
@@ -197,45 +196,43 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                     ),
                                   )),
                                   Container(
-                                    height: height / 2,
-                                    padding: EdgeInsets.only(
-                                        left: 18, right: 18, bottom: 50),
-                                    child: Container(
-                                            color: Colors.white,
-                                            child: ListView.builder(
-                                              itemCount: predictions.length,
-                                              itemBuilder: (context, index) {
-                                                return ListTile(
-                                                  leading: CircleAvatar(
-                                                    child: Icon(
-                                                      Icons.pin_drop,
-                                                      color: Colors.white,
-                                                    ),
+                                      height: height / 2,
+                                      padding: EdgeInsets.only(
+                                          left: 18, right: 18, bottom: 50),
+                                      child: Container(
+                                          color:
+                                              Color.fromRGBO(207, 197, 239, 1),
+                                          child: ListView.builder(
+                                            itemCount: predictions.length,
+                                            itemBuilder: (context, index) {
+                                              return ListTile(
+                                                leading: CircleAvatar(
+                                                  child: Icon(
+                                                    Icons.pin_drop,
+                                                    color: Colors.white,
                                                   ),
-                                                  title: Text(predictions[index]
-                                                      .description),
-                                                  onTap: () {
-                                                    debugPrint(
-                                                        predictions[index].id);
-                                                    obtainLatLand(
+                                                ),
+                                                title: Text(predictions[index]
+                                                    .description),
+                                                onTap: () {
+                                                  debugPrint(
+                                                      predictions[index].id);
+                                                  obtainLatLand(
+                                                      predictions[index]
+                                                          .placeId,
+                                                      predictions[index]
+                                                          .distanceMeters);
+                                                  setState(() {
+                                                    _controllerText.text =
                                                         predictions[index]
-                                                            .placeId,
-                                                        predictions[index]
-                                                            .distanceMeters);
-                                                    setState(() {
-                                                      _controllerText.text =
-                                                          predictions[index]
-                                                              .description;
-                                                    });
-                                                    predictions.clear();
-                                                    polylineCoordinates.clear();
-                                                  },
-                                                );
-                                              },
-                                            ))
-                                       
-                                          
-                                  ),
+                                                            .description;
+                                                  });
+                                                  predictions.clear();
+                                                  polylineCoordinates.clear();
+                                                },
+                                              );
+                                            },
+                                          ))),
                                 ],
                               ),
                             )))
