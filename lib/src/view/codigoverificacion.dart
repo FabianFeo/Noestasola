@@ -74,7 +74,7 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                     activeFillColor: Color.fromRGBO(230, 224, 237, 0.5),
                   ),
                   animationDuration: Duration(milliseconds: 300),
-                  backgroundColor: Color.fromRGBO(207, 197, 239, 1),
+                  backgroundColor: Colors.white,
                   enableActiveFill: true,
                   errorAnimationController: errorController,
                   controller: textEditingController,

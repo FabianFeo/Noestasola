@@ -37,7 +37,7 @@ class _PerfilState extends State<Perfil> {
                 )),
               ),
               Container(
-                  color: Color.fromRGBO(149, 73, 193, 1),
+                  color: Color.fromRGBO(101, 79, 168, 1),
                   height: height / 4.7,
                   margin: EdgeInsets.only(top: height / 22),
                   child: Row(
@@ -52,8 +52,9 @@ class _PerfilState extends State<Perfil> {
                             child: CircleAvatar(
                               backgroundColor: Colors.white,
                               radius: height / 20,
-                              backgroundImage:
-                                  AssetImage('assets/Logo/Usuaria.png'),
+                              backgroundImage: _user.profileImage == null
+                                        ? AssetImage('assets/Logo/Usuaria.png')
+                                        : NetworkImage(_user.profileImage),
                             ),
                           ),
                           Container(
@@ -123,7 +124,7 @@ class _PerfilState extends State<Perfil> {
                     ],
                   )),
               Container(
-                color: Color.fromRGBO(149, 73, 193, 1),
+                color: Color.fromRGBO(101, 79, 168, 1),
                 height: height / 1.81,
                 margin: EdgeInsets.only(top: height / 22),
                 child: Column(

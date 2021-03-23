@@ -50,7 +50,7 @@ class _MensajesUserState extends State<MensajesUser> {
                   borderRadius: BorderRadius.all(
                     Radius.circular(15),
                   ),
-                  color: Color.fromRGBO(50, 31, 106, 0.3),
+                  color: Color.fromRGBO(101, 79, 168, 1),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

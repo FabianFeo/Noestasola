@@ -155,7 +155,7 @@ class _ScannerRostroState extends State<ScannerRostro> {
     double width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-          backgroundColor: Color.fromRGBO(207, 197, 239, 1),
+          backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Container(
               margin: EdgeInsets.only(top: height / 8),
