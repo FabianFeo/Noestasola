@@ -57,7 +57,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
     width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(207, 197, 239, 1),
+        backgroundColor: Colors.white,
         body: Container(
           child: Stack(
             children: [

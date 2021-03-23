@@ -16,7 +16,7 @@ class _ConfigState extends State<Config> {
     double width = MediaQuery.of(context).size.width;
     return Container(
        child: Scaffold(
-         backgroundColor: Color.fromRGBO(207, 197, 239, 1),
+         backgroundColor: Colors.white,
          body: Container(
            child: SingleChildScrollView(
              child: Container(
@@ -34,7 +34,10 @@ class _ConfigState extends State<Config> {
                 )),
               ),
               Container(
-                child: Container(),
+                margin: EdgeInsets.only(top: height / 2),
+                child: Center(
+                  child: Text('data'),
+                ),
               )
                  ],
                ),
