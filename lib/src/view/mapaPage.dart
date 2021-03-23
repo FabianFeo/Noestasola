@@ -450,41 +450,97 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                   : Container(),
               confirmationCard
                   ? Container(
+                    margin: EdgeInsets.only(top: height / 1.6),
                       child: Center(
-                        child: Container(
-                            height: height / 10,
-                            width: width / 1.2,
+                        child: Container(                          
+                            height: height / 3.8,
+                            width: width / 1.15,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(15),
                               ),
-                              color: Colors.green[300],
+                              color: Color.fromRGBO(207, 197, 239, 1),
                             ),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Column(
                                   children: [
                                     Container(
+                                      margin: EdgeInsets.only(top: height / 35),
                                       child: Image(
+                                        height: height / 10,
                                         image: AssetImage(
                                             'assets/Logo/Lu_logo.png'),
                                       ),
                                     ),
                                     Container(
+                                      height: height / 30,
+                                      width: width / 2.5,
+                                      margin: EdgeInsets.only(top: height / 65),
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
-                                              Radius.circular(15))),
+                                              Radius.circular(15)),
+                                              color: Color.fromRGBO(102, 51, 204, 1)),
                                       child: GestureDetector(
-                                        child: Text('Confirmar'),
+                                        child: Text('Confirmar',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: width / 20
+                                        ),),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: height / 30,
+                                      width: width / 2.5,
+                                      margin: EdgeInsets.only(top: height / 65),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15)),
+                                              color: Color.fromRGBO(102, 51, 204, 1)),
+                                      child: GestureDetector(
+                                        child: Text('Cancelar',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: width / 20
+                                        ),),
                                       ),
                                     ),
                                   ],
                                 ),
                                 Column(
                                   children: [
-                                    Text('Valor & valor'),
-                                    Text('Tiempo de recogida'),
-                                    Text('Metodo de pago'),
+                                    Container(
+                                      margin: EdgeInsets.only(top: height / 28),
+                                      child: Text('Valor:',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(102, 51, 204, 1),
+                                        fontWeight: FontWeight.w500,
+                                      ),),
+                                    ),  
+                                    Container(
+                                      child: 
+                                      Text('${((totalDistancia * 650) + 2500).toStringAsFixed(0)} COP',
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(102, 51, 204, 1),
+                                        fontWeight: FontWeight.w500,
+                                      ),),
+
+                                    ) ,                                  
+                                    Container(
+                                      margin: EdgeInsets.only(top: height / 28),
+                                      child: Text('Metodo de pago:',
+                                       style: TextStyle(
+                                        color: Color.fromRGBO(102, 51, 204, 1),
+                                        fontWeight: FontWeight.w500,
+                                      ),),
+                                    ),                                   
+                                    
                                   ],
                                 ),
                               ],
@@ -572,7 +628,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
           polylineCoordinates[i + 1].latitude,
           polylineCoordinates[i + 1].longitude);
     }
-    totalDistancia = totalDistance / 10;
+    totalDistancia = totalDistance;
     print(totalDistance);
     // Adding the polyline to the map
     polylines.clear();
