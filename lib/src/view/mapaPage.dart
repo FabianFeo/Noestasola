@@ -525,7 +525,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                     ),  
                                     Container(
                                       child: 
-                                      Text('${((totalDistancia * 650) + 2500).toStringAsFixed(0)} COP',
+                                      Text('${((totalDistancia * 850) + 2500).toStringAsFixed(0)} COP',
                                       style: TextStyle(
                                         color: Color.fromRGBO(102, 51, 204, 1),
                                         fontWeight: FontWeight.w500,
@@ -629,7 +629,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
           polylineCoordinates[i + 1].latitude,
           polylineCoordinates[i + 1].longitude);
     }
-    totalDistancia = totalDistance;
+    totalDistancia = totalDistance/1000;
     print(totalDistance);
     // Adding the polyline to the map
     polylines.clear();
@@ -697,11 +697,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   }
 
   double calculateDistance(lat1, lon1, lat2, lon2) {
-    var p = 0.017453292519943295;
-    var c = cos;
-    var a = 0.5 -
-        c((lat2 - lat1) * p) / 2 +
-        c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
-    return 12742 * asin(sqrt(a));
+    return  Geolocator.distanceBetween(lat1, lon1, lat2, lon2);
   }
 }
+
