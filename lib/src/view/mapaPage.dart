@@ -148,7 +148,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                       child: TextField(
                                         controller: _controllerText2,
                                         decoration: InputDecoration(
-                                          labelText: "Donde estás?",
+                                          labelText: "¿Donde estás?",
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color.fromRGBO(
@@ -196,7 +196,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                     child: TextField(
                                       controller: _controllerText,
                                       decoration: InputDecoration(
-                                        labelText: "A donde quieres ir?",
+                                        labelText: "¿A donde quieres ir?",
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color:
@@ -401,6 +401,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                 scaleFactor: 1.5,
                                                 onPressed: () {
                                                   setState(() {
+                                                    confirmationCard=true;
                                                     servicePedido = false;
                                                     showDetails = false;
                                                   });
@@ -503,6 +504,9 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
     if (result != null && result.predictions != null && mounted) {
       predictions = List();
       if (dondeestas) {
+        if (startCoordinates == null) {
+          await _location.getLocation().then((value) => {});
+        }
         var addresses = await Geocoder.local.findAddressesFromCoordinates(
             Coordinates(startCoordinates.latitude, startCoordinates.longitude));
         var result2 =
@@ -580,7 +584,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   Future<void> obtainLatLand() async {
     _markers.clear();
     await googlePlace.details.get(idDestination).then((value) async {
-      if (value != null) {
+      if (value.result != null) {
         setState(() {
           _markers.add(new Marker(
               markerId: MarkerId(idDestination),
@@ -599,34 +603,36 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
           startCoordinates = LatLng(value2.result.geometry.location.lat,
               value2.result.geometry.location.lng);
         });
-        destination = LatLng(value.result.geometry.location.lat,
-            value.result.geometry.location.lng);
-
-        if (startCoordinates.latitude <= value.result.geometry.location.lat) {
-          _southwestCoordinates = startCoordinates;
-          _northeastCoordinates = LatLng(value.result.geometry.location.lat,
+        if (value.result != null) {
+          destination = LatLng(value.result.geometry.location.lat,
               value.result.geometry.location.lng);
-        } else {
-          _southwestCoordinates = LatLng(value.result.geometry.location.lat,
-              value.result.geometry.location.lng);
-          _northeastCoordinates = startCoordinates;
-        }
 
-        _controller.animateCamera(
-          CameraUpdate.newLatLngBounds(
-            LatLngBounds(
-              northeast: LatLng(
-                _northeastCoordinates.latitude,
-                _northeastCoordinates.longitude,
+          if (startCoordinates.latitude <= value.result.geometry.location.lat) {
+            _southwestCoordinates = startCoordinates;
+            _northeastCoordinates = LatLng(value.result.geometry.location.lat,
+                value.result.geometry.location.lng);
+          } else {
+            _southwestCoordinates = LatLng(value.result.geometry.location.lat,
+                value.result.geometry.location.lng);
+            _northeastCoordinates = startCoordinates;
+          }
+
+          _controller.animateCamera(
+            CameraUpdate.newLatLngBounds(
+              LatLngBounds(
+                northeast: LatLng(
+                  _northeastCoordinates.latitude,
+                  _northeastCoordinates.longitude,
+                ),
+                southwest: LatLng(
+                  _southwestCoordinates.latitude,
+                  _southwestCoordinates.longitude,
+                ),
               ),
-              southwest: LatLng(
-                _southwestCoordinates.latitude,
-                _southwestCoordinates.longitude,
-              ),
+              100.0, // padding
             ),
-            100.0, // padding
-          ),
-        );
+          );
+        }
 
         showCurrentPosition = false;
       }
