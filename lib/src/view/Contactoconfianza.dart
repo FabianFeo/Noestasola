@@ -33,7 +33,7 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: height / 20,
-                        color: Color.fromRGBO(40, 1, 102, 1),
+                        color: Color.fromRGBO(101, 79, 168, 1),
                         fontWeight: FontWeight.w500),
                   ),
                 ),
@@ -107,13 +107,13 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                     ),
                   ),
                 ),
-                color: Color.fromRGBO(50, 31, 106, 0.3),
+                color: Color.fromRGBO(101, 79, 168, 1),
               ),
               Container(
                 child: GestureDetector(
                   child: Icon(
                     Icons.library_add,
-                    color: Color.fromRGBO(40, 1, 102, 1),
+                    color: Color.fromRGBO(101, 79, 168, 1),
                     size: height / 15,
                   ),
                   onTap: () => {
