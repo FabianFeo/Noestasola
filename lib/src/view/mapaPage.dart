@@ -401,7 +401,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                 scaleFactor: 1.5,
                                                 onPressed: () {
                                                   setState(() {
-                                                    confirmationCard=true;
+                                                    confirmationCard = true;
                                                     servicePedido = false;
                                                     showDetails = false;
                                                   });
@@ -556,6 +556,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   }
 
   void autoCompleteSearch(String value) async {
+    value += "Colombia";
     var result = await googlePlace.autocomplete.get(value);
     if (result != null && result.predictions != null && mounted) {
       predictions = List();
