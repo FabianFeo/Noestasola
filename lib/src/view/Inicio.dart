@@ -17,7 +17,7 @@ class _InicioState extends State<Inicio> {
     double width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(229, 255, 255, 1),
+        backgroundColor: Colors.white,
         body: Container(
           margin: EdgeInsets.only(top: height / 8),
           child: Column(

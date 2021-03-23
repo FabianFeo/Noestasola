@@ -21,7 +21,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
     width = MediaQuery.of(context).size.width;
     return Container(
         child: Scaffold(
-            backgroundColor: Color.fromRGBO(207, 197, 239, 1),
+            backgroundColor: Colors.white,
             body: Container(
                 margin: EdgeInsets.only(top: height / 6),
                 child: SingleChildScrollView(
