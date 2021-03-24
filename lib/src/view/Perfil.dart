@@ -18,11 +18,10 @@ class _PerfilState extends State<Perfil> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Container(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: Container(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Container(
           child: Column(
             children: [
               Container(
@@ -46,74 +45,80 @@ class _PerfilState extends State<Perfil> {
                       Container(
                         margin: EdgeInsets.only(left: width / 10),
                         child: Column(
-                        children: [
-                          Container(                            
-                            margin: EdgeInsets.only(top: height / 50),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: height / 20,
-                              backgroundImage: _user.profileImage == null
-                                        ? AssetImage('assets/Logo/Usuaria.png')
-                                        : NetworkImage(_user.profileImage),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: height / 65,),
-                            child: Text(
-                              _user.firstName + ' ',
-                              style: TextStyle(
-                                color: Colors.white,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: height / 50),
+                              child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: height / 20,
+                                backgroundImage: _user.profileImage == null
+                                    ? AssetImage('assets/Logo/Usuaria.png')
+                                    : NetworkImage(_user.profileImage),
                               ),
                             ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: height / 65),
-                            child: Text(
-                              _user.lastname + ' ',
-                              style: TextStyle(
-                                color: Colors.white,
+                            Container(
+                              margin: EdgeInsets.only(
+                                top: height / 65,
+                              ),
+                              child: Text(
+                                _user.firstName + ' ',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                            Container(
+                              margin: EdgeInsets.only(top: height / 65),
+                              child: Text(
+                                _user.lastname + ' ',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      ),                      
                       Column(
                         children: [
                           Row(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(top: height / 50, ),
+                                margin: EdgeInsets.only(
+                                  top: height / 50,
+                                ),
                                 child: Row(
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.only(left: width / 4.5),
+                                      margin:
+                                          EdgeInsets.only(left: width / 4.5),
                                       child: Text(
-                                      'Editar foto de perfil',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w500),
-                                    ),), 
-                                    Container(
-                                      child:  GestureDetector(
-                                      child: Icon(
-                                        Icons.arrow_forward_ios_outlined,
-                                        color: Colors.white,
+                                        'Editar foto de perfil',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w500),
                                       ),
-                                      onTap: () async {
-                                        final cameras =
-                                            await availableCameras();
-                                        final firstCamera = cameras[1];
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    TakePictureScreen(
-                                                        camera: firstCamera)));
-                                      },
                                     ),
+                                    Container(
+                                      child: GestureDetector(
+                                        child: Icon(
+                                          Icons.arrow_forward_ios_outlined,
+                                          color: Colors.white,
+                                        ),
+                                        onTap: () async {
+                                          final cameras =
+                                              await availableCameras();
+                                          final firstCamera = cameras[1];
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      TakePictureScreen(
+                                                          camera:
+                                                              firstCamera)));
+                                        },
+                                      ),
                                     )
-                                   
                                   ],
                                 ),
                               ),
@@ -124,142 +129,142 @@ class _PerfilState extends State<Perfil> {
                     ],
                   )),
               Container(
-                color: Color.fromRGBO(101, 79, 168, 1),
-                height: height / 1.81,
-                margin: EdgeInsets.only(top: height / 22),
-                child: Column(
-                  children: [
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
+                  color: Color.fromRGBO(101, 79, 168, 1),
+                  height: height / 1.81,
+                  margin: EdgeInsets.only(top: height / 22),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Container(
-                                margin: EdgeInsets.only(top: height / 25),
-                                child: Text(
-                                  'Numero de Telefono',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    color: Colors.white,
+                              Column(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 25),
+                                    child: Text(
+                                      'Numero de Telefono',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: height /8),
-                                child: Text(
-                                  'Correo Electronico',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    color: Colors.white,
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 8),
+                                    child: Text(
+                                      'Correo Electronico',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: height / 8),
-                                child: Text(
-                                  'Mis dispositivos',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    color: Colors.white,
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 8),
+                                    child: Text(
+                                      'Mis dispositivos',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: height / 8),
-                                child: Text(
-                                  'Eliminar mi cuenta',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    color: Colors.white,
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 8),
+                                    child: Text(
+                                      'Eliminar mi cuenta',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
+                              Column(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 25),
+                                    child: Text(
+                                      _user.phoneNumber + '',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 8),
+                                    child: Text(
+                                      _user.email.substring(0, 15) + '...',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 8),
+                                    child: Text(
+                                      '',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 8),
+                                    child: Text(
+                                      '',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 25),
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 8),
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 8),
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: height / 8),
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              )
                             ],
                           ),
-                          Column(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(top: height / 25),
-                                child: Text(
-                                  _user.phoneNumber + '',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: height / 8),
-                                child: Text(
-                                  _user.email.substring(0, 15) + '...',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: height / 8),
-                                child: Text(
-                                  '',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: height / 8),
-                                child: Text(
-                                  '',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(top: height / 25),
-                                child: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: height / 8),
-                                child: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: height / 8),
-                                child: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: height / 8),
-                                child: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
+                        )
+                      ],
+                    ),
+                  )),
             ],
           ),
-        ),
         ),
       ),
     );
