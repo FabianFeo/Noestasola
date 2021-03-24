@@ -167,7 +167,7 @@ class _ScannerRostroState extends State<ScannerRostro> {
                       'Escaneo Facial',
                       style: TextStyle(
                           fontSize: height / 40,
-                          color: Color.fromRGBO(40, 1, 102, 1),
+                          color: Color.fromRGBO(101, 79, 168, 1),
                           fontWeight: FontWeight.w500),
                     ),
                   )),

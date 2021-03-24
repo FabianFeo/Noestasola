@@ -34,7 +34,7 @@ class _DatosPersonalState extends State<DatosPersonal> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: height / 20,
-                        color: Color.fromRGBO(40, 1, 102, 1),
+                        color: Color.fromRGBO(101, 79, 168, 1),
                         fontWeight: FontWeight.w500),
                   ),
                 ),
@@ -46,7 +46,7 @@ class _DatosPersonalState extends State<DatosPersonal> {
                       'Por favor completa los siguientes datos para terminar tu registro:',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Color.fromRGBO(40, 1, 102, 1),
+                        color: Color.fromRGBO(101, 79, 168, 1),
                         fontWeight: FontWeight.w400,
                         fontSize: height / 30,
                       ),
