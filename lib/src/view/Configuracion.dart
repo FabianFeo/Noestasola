@@ -84,7 +84,7 @@ class _ConfigState extends State<Config> {
                           ),
                         ],
                       )),
-                      Container(
+                  Container(
                       margin: EdgeInsets.only(top: height / 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,7 +92,7 @@ class _ConfigState extends State<Config> {
                           Container(
                             margin: EdgeInsets.only(left: width / 15),
                             child: Text(
-                              'SMS',
+                              'Correo Electrónico',
                               style: TextStyle(
                                 color: Color.fromRGBO(101, 79, 168, 1),
                                 fontWeight: FontWeight.w500,
@@ -117,7 +117,88 @@ class _ConfigState extends State<Config> {
                             ),
                           ),
                         ],
-                      ))
+                      )),
+                  Container(
+                      margin: EdgeInsets.only(top: height / 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: width / 15),
+                            child: Text(
+                              'Notificaciones',
+                              style: TextStyle(
+                                color: Color.fromRGBO(101, 79, 168, 1),
+                                fontWeight: FontWeight.w500,
+                                fontSize: height / 50,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: width / 15),
+                            height: height / 25,
+                            child: LiteRollingSwitch(
+                              value: true,
+                              textOn: 'On',
+                              textOff: 'off',
+                              colorOn: Color.fromRGBO(101, 79, 168, 1),
+                              colorOff: Colors.grey,
+                              iconOn: Icons.auto_fix_high,
+                              iconOff: Icons.auto_fix_off,
+                              onChanged: (bool position) {
+                                print('el boton es $position');
+                              },
+                            ),
+                          ),
+                        ],
+                      )),
+                  Container(
+                      margin: EdgeInsets.only(top: height / 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: width / 15),
+                            child: Text(
+                              'Compartir ubicación',
+                              style: TextStyle(
+                                color: Color.fromRGBO(101, 79, 168, 1),
+                                fontWeight: FontWeight.w500,
+                                fontSize: height / 50,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: width / 15),
+                            height: height / 25,
+                            child: LiteRollingSwitch(
+                              value: true,
+                              textOn: 'On',
+                              textOff: 'off',
+                              colorOn: Color.fromRGBO(101, 79, 168, 1),
+                              colorOff: Colors.grey,
+                              iconOn: Icons.auto_fix_high,
+                              iconOff: Icons.auto_fix_off,
+                              onChanged: (bool position) {
+                                print('el boton es $position');
+                              },
+                            ),
+                          ),
+                        ],
+                      )),
+                      Container(
+                        margin: EdgeInsets.only(top: height / 20),
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Text('Compartir tu ubicación le ayuda a tu conductora a brindar un mejor servicio. Si está desactivada, tu conductora no podrá ver tu ubicación en tiempo real.',
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                 
+                       
                 ],
               ),
             ),
