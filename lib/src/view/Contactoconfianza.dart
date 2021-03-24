@@ -41,7 +41,8 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
               StreamBuilder(
                   stream: _contactosService.getEmergenciContactsStream(),
                   builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    return snapshot.data != null
+                    return snapshot.data != null &&
+                            snapshot.data.docs.length != 0
                         ? Container(
                             height: height / 1.7,
                             child: ListView.builder(
@@ -77,36 +78,46 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                                     color: Color.fromRGBO(101, 79, 168, 1),
                                   );
                                 }))
-                        : Row(
-                            children: [
-                              Container(
-                                width: width / 1.5,
-                                child: Text(
-                                  '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: width - (width / 1.2),
-                                child: GestureDetector(
-                                  child: Icon(
-                                    Icons.library_add,
-                                    color: Colors.white,
-                                  ),
-                                  onTap: () => {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              FormularioConfianza()),
+                        : Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            margin: EdgeInsets.all(30),
+                            child: Container(
+                                height: height / 10,
+                                child: Center(
+                                    child: Row(
+                                  children: [
+                                    Container(
+                                      width: width / 1.5,
+                                      child: Text(
+                                        '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: width - (width / 1.2),
+                                      child: GestureDetector(
+                                        child: Icon(
+                                          Icons.library_add,
+                                          color: Colors.white,
+                                        ),
+                                        onTap: () => {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    FormularioConfianza()),
+                                          )
+                                        },
+                                      ),
                                     )
-                                  },
-                                ),
-                              )
-                            ],
+                                  ],
+                                ))),
+                            color: Color.fromRGBO(101, 79, 168, 1),
                           );
                   }),
               Container(
