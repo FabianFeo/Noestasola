@@ -1,5 +1,6 @@
 import 'package:NoEstasSola/src/service/contactosService.dart';
 import 'package:NoEstasSola/src/view/FormularioConfianza.dart';
+import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
     return Container(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Container(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               Container(
@@ -121,20 +122,33 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                           );
                   }),
               Container(
-                child: GestureDetector(
-                  child: Icon(
-                    Icons.library_add,
-                    color: Color.fromRGBO(101, 79, 168, 1),
-                    size: height / 15,
-                  ),
-                  onTap: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => FormularioConfianza()),
-                    )
-                  },
-                ),
+                child: BouncingWidget(
+                    duration: Duration(milliseconds: 100),
+                    scaleFactor: 1.5,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FormularioConfianza()));
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                      color: Color.fromRGBO(101, 79, 168, 1),
+                      child: Container(
+                        width: width / 2,
+                        height: height / 20,
+                        child: Text(
+                          "Añadir",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30),
+                        ),
+                      ),
+                    )),
               ),
               Container(
                   child: Image.asset(

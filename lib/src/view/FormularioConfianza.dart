@@ -35,7 +35,7 @@ class _FormularioConfianzaState extends State<FormularioConfianza> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: height / 20,
-                          color: Color.fromRGBO(40, 1, 102, 1),
+                          color: Color.fromRGBO(101, 79, 168, 1),
                           fontWeight: FontWeight.w500),
                     ),
                   ),
