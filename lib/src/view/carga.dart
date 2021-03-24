@@ -28,24 +28,31 @@ class _CargaState extends State<Carga> {
           authService.stateListen().listen((value) async {
             UserCollectionService userCollectionService =
                 UserCollectionService();
-            var user = await userCollectionService.getUser(value.uid);
+                var user =null;
+            if (value != null) {
+               user = await userCollectionService.getUser(value.uid);
+            }
+            
+
             if (value == null || value.isAnonymous || !user.exists) {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => UsuarioLogin()));
             } else {
               UserSharePreference userSharePreference = UserSharePreference();
               userSharePreference.getUser().then((value) async {
-                User user=User();
+                User user = User();
                 print(user);
                 var cameras = await availableCameras();
-                Navigator.push(context,MaterialPageRoute(
-                    builder: (context) => SignIn(
-                          cameraDescription: cameras.firstWhere(
-                            (CameraDescription camera) =>
-                                camera.lensDirection ==
-                                CameraLensDirection.front,
-                          ),
-                        )));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SignIn(
+                              cameraDescription: cameras.firstWhere(
+                                (CameraDescription camera) =>
+                                    camera.lensDirection ==
+                                    CameraLensDirection.front,
+                              ),
+                            )));
               });
             }
           });
