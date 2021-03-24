@@ -191,6 +191,7 @@ class _ConfigState extends State<Config> {
                         child: Column(
                           children: [
                             Container(
+                              
                               child: Text('Compartir tu ubicación le ayuda a tu conductora a brindar un mejor servicio. Si está desactivada, tu conductora no podrá ver tu ubicación en tiempo real.',
                               ),
                             )
