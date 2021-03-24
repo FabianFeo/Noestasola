@@ -41,23 +41,23 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
               StreamBuilder(
                   stream: _contactosService.getEmergenciContactsStream(),
                   builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    return Container(
-                      height: height/1.7,
-                        child: ListView.builder(
-                            itemCount: snapshot.data.docs.length,
-                            itemBuilder: (_, index) {
-                              return Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                margin: EdgeInsets.all(30),
-                                child: Container(
-                                  height: height / 10,
-                                  child: Center(
-                                    child: Row(
-                                      children: [
-                                        snapshot.data.docs.length != 0
-                                            ? Container(
+                    return snapshot.data != null
+                        ? Container(
+                            height: height / 1.7,
+                            child: ListView.builder(
+                                itemCount: snapshot.data.docs.length,
+                                itemBuilder: (_, index) {
+                                  return Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    margin: EdgeInsets.all(30),
+                                    child: Container(
+                                      height: height / 10,
+                                      child: Center(
+                                        child: Row(
+                                          children: [
+                                            Container(
                                                 height: height / 2,
                                                 width: width / 1.5,
                                                 child: Container(
@@ -70,42 +70,44 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                                                     ),
                                                   ),
                                                 ))
-                                            : Container(
-                                                width: width / 1.5,
-                                                child: Text(
-                                                  '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                        snapshot.data.docs.length == 0
-                                            ? Container(
-                                                width: width - (width / 1.2),
-                                                child: GestureDetector(
-                                                  child: Icon(
-                                                    Icons.library_add,
-                                                    color: Colors.white,
-                                                  ),
-                                                  onTap: () => {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              FormularioConfianza()),
-                                                    )
-                                                  },
-                                                ),
-                                              )
-                                            : Container(),
-                                      ],
+                                          ],
+                                        ),
+                                      ),
                                     ),
+                                    color: Color.fromRGBO(101, 79, 168, 1),
+                                  );
+                                }))
+                        : Row(
+                            children: [
+                              Container(
+                                width: width / 1.5,
+                                child: Text(
+                                  '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
                                   ),
                                 ),
-                                color: Color.fromRGBO(101, 79, 168, 1),
-                              );
-                            }));
+                              ),
+                              Container(
+                                width: width - (width / 1.2),
+                                child: GestureDetector(
+                                  child: Icon(
+                                    Icons.library_add,
+                                    color: Colors.white,
+                                  ),
+                                  onTap: () => {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              FormularioConfianza()),
+                                    )
+                                  },
+                                ),
+                              )
+                            ],
+                          );
                   }),
               Container(
                 child: GestureDetector(
@@ -124,11 +126,10 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                 ),
               ),
               Container(
-                 
                   child: Image.asset(
-                    'assets/Logo/Lu_logo.png',
-                    height: height / 5,
-                  )),
+                'assets/Logo/Lu_logo.png',
+                height: height / 5,
+              )),
             ],
           ),
         ),
