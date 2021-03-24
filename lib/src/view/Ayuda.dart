@@ -1,5 +1,6 @@
 import 'package:NoEstasSola/src/view/Historialviajes.dart';
 import 'package:NoEstasSola/src/view/Olvide.dart';
+import 'package:NoEstasSola/src/view/Seguridad.dart';
 import 'package:flutter/material.dart';
 
 class Ayuda extends StatefulWidget {
@@ -114,166 +115,178 @@ class _AyudaState extends State<Ayuda> {
                     color: Color.fromRGBO(101, 79, 168, 1),
                     thickness: height / 160,
                   ),
-                  Container(        
-                    margin: EdgeInsets.only(top: height / 50),            
+                  Container(
+                    margin: EdgeInsets.only(top: height / 50),
                     child: Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(left: width /15),
+                          margin: EdgeInsets.only(left: width / 15),
                           child: Icon(
                             Icons.label_important_rounded,
                             color: Color.fromRGBO(101, 79, 168, 1),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(right: width /15),
+                          margin: EdgeInsets.only(right: width / 15),
                           child: GestureDetector(
-                            child: Text('Olvidé un objeto en el vehículo',
-                          style: TextStyle(
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                            fontWeight: FontWeight.w500
-                          ),),
-                          onTap: () {
-                            Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Olvide()));
-                          },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(        
-                    margin: EdgeInsets.only(top: height / 50),            
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: width /15),
-                          child: Icon(
-                            Icons.label_important_rounded,
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: width /15),
-                          child: GestureDetector(
-                            child: Text('Seguridad',
-                          style: TextStyle(
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                            fontWeight: FontWeight.w500
-                          ),),
-                          onTap: () {},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(        
-                    margin: EdgeInsets.only(top: height / 50),            
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: width /15),
-                          child: Icon(
-                            Icons.label_important_rounded,
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: width /15),
-                          child: GestureDetector(
-                            child: Text('Metodos de pago',
-                          style: TextStyle(
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                            fontWeight: FontWeight.w500
-                          ),),
-                          onTap: () {},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(        
-                    margin: EdgeInsets.only(top: height / 50),            
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: width /15),
-                          child: Icon(
-                            Icons.label_important_rounded,
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: width /15),
-                          child: GestureDetector(
-                            child: Text('Tarifas',
-                          style: TextStyle(
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                            fontWeight: FontWeight.w500
-                          ),),
-                          onTap: () {},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(        
-                    margin: EdgeInsets.only(top: height / 50),            
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: width /15),
-                          child: Icon(
-                            Icons.label_important_rounded,
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: width /15),
-                          child: GestureDetector(
-                            child: Text('Cuenta',
-                          style: TextStyle(
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                            fontWeight: FontWeight.w500
-                          ),),
-                          onTap: () {},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(        
-                    margin: EdgeInsets.only(top: height / 50),            
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: width /15),
-                          child: Icon(
-                            Icons.label_important_rounded,
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: width /15),
-                          child: GestureDetector(
-                            child: Text('Sugerencias acerca de la App',
-                          style: TextStyle(
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                            fontWeight: FontWeight.w500
-                          ),),
-                          onTap: () {},
+                            child: Text(
+                              'Olvidé un objeto en el vehículo',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(101, 79, 168, 1),
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Olvide()));
+                            },
                           ),
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: height / 20), 
-                    child: Image(image: AssetImage('assets/Logo/lu_back.png'),),
+                    margin: EdgeInsets.only(top: height / 50),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: width / 15),
+                          child: Icon(
+                            Icons.label_important_rounded,
+                            color: Color.fromRGBO(101, 79, 168, 1),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(right: width / 15),
+                          child: GestureDetector(
+                            child: Text(
+                              'Seguridad',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(101, 79, 168, 1),
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Seguridad()));
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: height / 50),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: width / 15),
+                          child: Icon(
+                            Icons.label_important_rounded,
+                            color: Color.fromRGBO(101, 79, 168, 1),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(right: width / 15),
+                          child: GestureDetector(
+                            child: Text(
+                              'Metodos de pago',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(101, 79, 168, 1),
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            onTap: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: height / 50),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: width / 15),
+                          child: Icon(
+                            Icons.label_important_rounded,
+                            color: Color.fromRGBO(101, 79, 168, 1),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(right: width / 15),
+                          child: GestureDetector(
+                            child: Text(
+                              'Tarifas',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(101, 79, 168, 1),
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            onTap: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: height / 50),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: width / 15),
+                          child: Icon(
+                            Icons.label_important_rounded,
+                            color: Color.fromRGBO(101, 79, 168, 1),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(right: width / 15),
+                          child: GestureDetector(
+                            child: Text(
+                              'Cuenta',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(101, 79, 168, 1),
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            onTap: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: height / 50),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: width / 15),
+                          child: Icon(
+                            Icons.label_important_rounded,
+                            color: Color.fromRGBO(101, 79, 168, 1),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(right: width / 15),
+                          child: GestureDetector(
+                            child: Text(
+                              'Sugerencias acerca de la App',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(101, 79, 168, 1),
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            onTap: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: height / 20),
+                    child: Image(
+                      image: AssetImage('assets/Logo/lu_back.png'),
+                    ),
                   )
-                  
                 ],
               ),
             ),
