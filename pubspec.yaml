@@ -72,6 +72,7 @@ flutter:
     - assets/video/carga.mp4
     - assets/Logo/Lu_verde.png
     - assets/Logo/lu_back.png
+    - assets/Logo/Blog_icono.png
   fonts:
     - family: Gotham
       fonts: 
