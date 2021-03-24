@@ -142,10 +142,11 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                       color: Colors.white,
                                     ),
                                     margin: EdgeInsets.only(top: height / 8.5),
-                                    height: height / 20,
+                                    height: height / 15,
                                     width: width / 1.3,
                                     child: Center(
-                                      child: TextField(
+                                      child: TextField(                                                                                
+                                        maxLines: 1,                                        
                                         controller: _controllerText2,
                                         decoration: InputDecoration(
                                           labelText: "¿Donde estás?",
@@ -154,6 +155,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                               color: Color.fromRGBO(
                                                   101, 79, 168, 1),
                                               width: 1,
+                                            
                                             ),
                                           ),
                                           enabledBorder: OutlineInputBorder(
@@ -190,10 +192,11 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                     borderRadius: BorderRadius.circular(12),
                                     color: Colors.white,
                                   ),
-                                  height: height / 20,
+                                  height: height / 15,
                                   width: width / 1.3,
                                   child: Center(
                                     child: TextField(
+                                      maxLines: 1,
                                       controller: _controllerText,
                                       decoration: InputDecoration(
                                         labelText: "¿A donde quieres ir?",

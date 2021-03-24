@@ -1,4 +1,5 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
+import 'package:NoEstasSola/src/view/Ayuda.dart';
 import 'package:NoEstasSola/src/view/Configuracion.dart';
 import 'package:NoEstasSola/src/view/Contactoconfianza.dart';
 import 'package:NoEstasSola/src/view/Historialviajes.dart';
@@ -345,10 +346,11 @@ class _IndexState extends State<Index> {
                                       color: Color.fromRGBO(101, 79, 168, 1)),
                                 ),
                                 onTap: () {
-                                  // Update the state of the app
-                                  // ...
-                                  // Then close the drawer
-                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Ayuda()));
                                 },
                               ),
                             ),
