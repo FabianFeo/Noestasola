@@ -1,4 +1,5 @@
 import 'package:NoEstasSola/src/view/Historialviajes.dart';
+import 'package:NoEstasSola/src/view/Olvide.dart';
 import 'package:flutter/material.dart';
 
 class Ayuda extends StatefulWidget {
@@ -132,7 +133,12 @@ class _AyudaState extends State<Ayuda> {
                             color: Color.fromRGBO(101, 79, 168, 1),
                             fontWeight: FontWeight.w500
                           ),),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Olvide()));
+                          },
                           ),
                         ),
                       ],
