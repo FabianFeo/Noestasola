@@ -186,20 +186,42 @@ class _ConfigState extends State<Config> {
                           ),
                         ],
                       )),
-                      Container(
-                        margin: EdgeInsets.only(top: height / 20),
-                        child: Column(
-                          children: [
-                            Container(
-                              
-                              child: Text('Compartir tu ubicación le ayuda a tu conductora a brindar un mejor servicio. Si está desactivada, tu conductora no podrá ver tu ubicación en tiempo real.',
+                  Container(
+                    margin: EdgeInsets.only(top: height / 20),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: width / 1.2,
+                          child: Text(
+                            'Compartir tu ubicación le ayuda a tu conductora a brindar un mejor servicio. Si está desactivada, tu conductora no podrá ver tu ubicación en tiempo real.',
+                            style: TextStyle(
+                              color: Color.fromRGBO(101, 79, 168, 1),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: height / 20),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: width / 1.2,
+                          child: GestureDetector(
+                            child: Text(
+                              'Eliminar mi cuenta',
+                              style: TextStyle(
+                                color: Color.fromRGBO(101, 79, 168, 1),
+                                fontWeight: FontWeight.w500,
                               ),
-                            )
-                          ],
-                        ),
-                      ),
-                 
-                       
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

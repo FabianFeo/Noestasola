@@ -59,11 +59,8 @@ class _IndexState extends State<Index> {
           index: 1,
           height: 50.0,
           items: <Widget>[
-            Icon(
-              Icons.chat_bubble_rounded,
-              size: 30,
-              color: Color.fromRGBO(102, 51, 204, 1),
-            ),
+            Image(image: AssetImage('assets/Logo/Blog_icono.png'),
+            height: 30,),
             Icon(Icons.directions_car_rounded,
                 size: 30, color: Color.fromRGBO(102, 51, 204, 1)),
             Icon(Icons.warning_rounded,
