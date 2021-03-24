@@ -149,6 +149,7 @@ class SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     final double mirror = math.pi;
     final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
@@ -173,7 +174,7 @@ class SignInState extends State<SignIn> {
                       fit: BoxFit.fitHeight,
                       child: Container(
                         width: width,
-                        height: width /
+                        height: height /
                             _cameraService.cameraController.value.aspectRatio,
                         child: Stack(
                           fit: StackFit.expand,

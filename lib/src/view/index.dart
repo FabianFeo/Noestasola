@@ -1,4 +1,5 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
+import 'package:NoEstasSola/src/service/authService.dart';
 import 'package:NoEstasSola/src/view/Ayuda.dart';
 import 'package:NoEstasSola/src/view/Configuracion.dart';
 import 'package:NoEstasSola/src/view/Contactoconfianza.dart';
@@ -6,6 +7,7 @@ import 'package:NoEstasSola/src/view/Historialviajes.dart';
 import 'package:NoEstasSola/src/view/Mensajes.dart';
 
 import 'package:NoEstasSola/src/view/Perfil.dart';
+import 'package:NoEstasSola/src/view/carga.dart';
 import 'package:NoEstasSola/src/view/mapaPage.dart';
 import 'package:NoEstasSola/src/view/payment.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -412,10 +414,18 @@ class _IndexState extends State<Index> {
                             ),
                           ),
                           onTap: () {
-                            // Update the state of the app
-                            // ...
-                            // Then close the drawer
-                            Navigator.pop(context);
+                            AuthService authService=AuthService();
+                            authService.singOut().then((value) => {
+                            Navigator.of(context).pop(),
+                            Navigator.of(context).pop(),
+                            Navigator.of(context).pop(),
+                            Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Carga())),
+                            });
+                            
                           },
                         ),
                       ),
