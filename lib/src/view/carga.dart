@@ -2,7 +2,6 @@ import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/service/authService.dart';
 import 'package:NoEstasSola/src/service/usersCollectionService.dart';
 import 'package:NoEstasSola/src/service/usersharePreference.dart';
-import 'package:NoEstasSola/src/view/firstPage.dart';
 import 'package:NoEstasSola/src/view/sing-in.dart';
 import 'package:NoEstasSola/src/view/usuarioLogin.dart';
 import 'package:camera/camera.dart';

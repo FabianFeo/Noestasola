@@ -38,77 +38,75 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                   ),
                 ),
               ),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                margin: EdgeInsets.all(30),
-                child: Container(
-                  height: height / 5,
-                  child: Center(
-                    child: Row(
-                      children: [
-                        StreamBuilder(
-                            stream:
-                                _contactosService.getEmergenciContactsStream(),
-                            builder:
-                                (_, AsyncSnapshot<QuerySnapshot> snapshot) {
-                            
-                              return snapshot.hasData
-                                  ? Container(
-                                      height: height / 2,
-                                      width: width / 1.5,
-                                      child: ListView.builder(
-                                          itemCount: snapshot.data.docs.length,
-                                          itemBuilder: (_, index) {
-                                            return Container(
-                                              width: width / 1.5,
-                                              child: Text(
-                                                '${snapshot.data.docs[index].data()["nombre"]}  ${snapshot.data.docs[index].data()["telefono"]}',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  color: Colors.white,
+              StreamBuilder(
+                  stream: _contactosService.getEmergenciContactsStream(),
+                  builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    return Container(
+                      height: height/1.7,
+                        child: ListView.builder(
+                            itemCount: snapshot.data.docs.length,
+                            itemBuilder: (_, index) {
+                              return Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                margin: EdgeInsets.all(30),
+                                child: Container(
+                                  height: height / 10,
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        snapshot.data.docs.length != 0
+                                            ? Container(
+                                                height: height / 2,
+                                                width: width / 1.5,
+                                                child: Container(
+                                                  width: width / 1.5,
+                                                  child: Text(
+                                                    '${snapshot.data.docs[index].data()["nombre"]}  ${snapshot.data.docs[index].data()["telefono"]}',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ))
+                                            : Container(
+                                                width: width / 1.5,
+                                                child: Text(
+                                                  '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
                                                 ),
                                               ),
-                                            );
-                                          }),
-                                    )
-                                  : Container(
-                                      width: width / 1.5,
-                                      child: Text(
-                                        '¡Aún no tienes un contacto de confianza, añadelo para compartir tu viaje y tu ruta!',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                            }),
-                        mostrarPlus
-                            ? Container(
-                                width: width - (width / 1.2),
-                                child: GestureDetector(
-                                  child: Icon(
-                                    Icons.library_add,
-                                    color: Colors.white,
+                                        snapshot.data.docs.length == 0
+                                            ? Container(
+                                                width: width - (width / 1.2),
+                                                child: GestureDetector(
+                                                  child: Icon(
+                                                    Icons.library_add,
+                                                    color: Colors.white,
+                                                  ),
+                                                  onTap: () => {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              FormularioConfianza()),
+                                                    )
+                                                  },
+                                                ),
+                                              )
+                                            : Container(),
+                                      ],
+                                    ),
                                   ),
-                                  onTap: () => {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              FormularioConfianza()),
-                                    )
-                                  },
                                 ),
-                              )
-                            : Container(),
-                      ],
-                    ),
-                  ),
-                ),
-                color: Color.fromRGBO(101, 79, 168, 1),
-              ),
+                                color: Color.fromRGBO(101, 79, 168, 1),
+                              );
+                            }));
+                  }),
               Container(
                 child: GestureDetector(
                   child: Icon(
@@ -126,7 +124,7 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.only(top: height / 5),
+                 
                   child: Image.asset(
                     'assets/Logo/Lu_logo.png',
                     height: height / 5,
