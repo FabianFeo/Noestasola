@@ -1,4 +1,11 @@
+import 'package:NoEstasSola/src/model/User.model.dart';
+import 'package:NoEstasSola/src/service/authService.dart';
+import 'package:NoEstasSola/src/service/usersCollectionService.dart';
+import 'package:NoEstasSola/src/service/usersharePreference.dart';
 import 'package:NoEstasSola/src/view/firstPage.dart';
+import 'package:NoEstasSola/src/view/sing-in.dart';
+import 'package:NoEstasSola/src/view/usuarioLogin.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -16,10 +23,33 @@ class _CargaState extends State<Carga> {
     super.initState();
     _controller = VideoPlayerController.asset('assets/video/carga.mp4')
       ..initialize().then((_) {
-        Future.delayed(
-            Duration(seconds:4),
-            () => Navigator.push(
-                context, MaterialPageRoute(builder: (context) => FirstPage())));
+        Future.delayed(Duration(seconds: 4), () {
+          AuthService authService = AuthService();
+          authService.stateListen().listen((value) async {
+            UserCollectionService userCollectionService =
+                UserCollectionService();
+            var user = await userCollectionService.getUser(value.uid);
+            if (value == null || value.isAnonymous || !user.exists) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => UsuarioLogin()));
+            } else {
+              UserSharePreference userSharePreference = UserSharePreference();
+              userSharePreference.getUser().then((value) async {
+                User user=User();
+                print(user);
+                var cameras = await availableCameras();
+                Navigator.push(context,MaterialPageRoute(
+                    builder: (context) => SignIn(
+                          cameraDescription: cameras.firstWhere(
+                            (CameraDescription camera) =>
+                                camera.lensDirection ==
+                                CameraLensDirection.front,
+                          ),
+                        )));
+              });
+            }
+          });
+        });
         setState(() {});
       });
   }

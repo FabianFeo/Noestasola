@@ -1,4 +1,5 @@
 import 'package:NoEstasSola/src/service/usersCollectionService.dart';
+import 'package:NoEstasSola/src/service/usersharePreference.dart';
 import 'package:NoEstasSola/src/view/DatosPersonal.dart';
 
 import 'package:NoEstasSola/src/view/sing-in.dart';
@@ -21,6 +22,7 @@ class AuthService {
 
   Future registerUser(String mobile, BuildContext context) async {
     usuario.phoneNumber = mobile;
+
     return await _auth.verifyPhoneNumber(
         phoneNumber: "+57 " + mobile,
         timeout: Duration(seconds: 60),
@@ -63,8 +65,12 @@ class AuthService {
         });
   }
 
+  Stream<User> stateListen() {
+    return _auth.authStateChanges();
+  }
+
   void signInWithPhoneNumber(String smsCode, BuildContext context) async {
-    _authCredential =  PhoneAuthProvider.credential(
+    _authCredential = PhoneAuthProvider.credential(
         verificationId: actualCode, smsCode: smsCode);
     _auth.signInWithCredential(_authCredential).catchError((error) {
       status = 'Something has gone wrong, please try later';
@@ -88,7 +94,10 @@ class AuthService {
             context, MaterialPageRoute(builder: (context) => DatosPersonal()));
       } else {
         var cameras = await availableCameras();
+        UserSharePreference userSharePreference = UserSharePreference();
+
         usuario.fromMap(value.data());
+        userSharePreference.saveUser();
         Navigator.push(
             context,
             MaterialPageRoute(
