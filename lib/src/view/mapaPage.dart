@@ -139,23 +139,25 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                   child: Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
-                                      color: Colors.white,
+                                     
                                     ),
                                     margin: EdgeInsets.only(top: height / 8.5),
-                                    height: height / 15,
+                                    height: height / 10,
                                     width: width / 1.3,
                                     child: Center(
-                                      child: TextField(                                                                                
-                                        maxLines: 1,                                        
+                                      child: TextField(
+                                        maxLines: 1,
                                         controller: _controllerText2,
                                         decoration: InputDecoration(
+                                          filled: true,
+                                          fillColor: Colors.white,
+
                                           labelText: "¿Donde estás?",
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color.fromRGBO(
                                                   101, 79, 168, 1),
                                               width: 1,
-                                            
                                             ),
                                           ),
                                           enabledBorder: OutlineInputBorder(
@@ -190,15 +192,16 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                   margin: EdgeInsets.only(top: height / 50),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
-                                    color: Colors.white,
                                   ),
-                                  height: height / 15,
+                                  height: height / 10,
                                   width: width / 1.3,
                                   child: Center(
                                     child: TextField(
                                       maxLines: 1,
                                       controller: _controllerText,
                                       decoration: InputDecoration(
+                                        fillColor: Colors.white,
+                                        filled: true,
                                         labelText: "¿A donde quieres ir?",
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -453,9 +456,9 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                   : Container(),
               confirmationCard
                   ? Container(
-                    margin: EdgeInsets.only(top: height / 1.6),
+                      margin: EdgeInsets.only(top: height / 1.6),
                       child: Center(
-                        child: Container(                          
+                        child: Container(
                             height: height / 3.8,
                             width: width / 1.15,
                             decoration: BoxDecoration(
@@ -484,15 +487,17 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15)),
-                                              color: Color.fromRGBO(102, 51, 204, 1)),
+                                          color:
+                                              Color.fromRGBO(102, 51, 204, 1)),
                                       child: GestureDetector(
-                                        child: Text('Confirmar',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 20
-                                        ),),
+                                        child: Text(
+                                          'Confirmar',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: width / 20),
+                                        ),
                                       ),
                                     ),
                                     Container(
@@ -502,15 +507,17 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15)),
-                                              color: Color.fromRGBO(102, 51, 204, 1)),
+                                          color:
+                                              Color.fromRGBO(102, 51, 204, 1)),
                                       child: GestureDetector(
-                                        child: Text('Cancelar',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 20
-                                        ),),
+                                        child: Text(
+                                          'Cancelar',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: width / 20),
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -519,31 +526,37 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                   children: [
                                     Container(
                                       margin: EdgeInsets.only(top: height / 28),
-                                      child: Text('Valor:',
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        color: Color.fromRGBO(102, 51, 204, 1),
-                                        fontWeight: FontWeight.w500,
-                                      ),),
-                                    ),  
+                                      child: Text(
+                                        'Valor:',
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(102, 51, 204, 1),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
                                     Container(
-                                      child: 
-                                      Text('${((totalDistancia * 850) + 2500).toStringAsFixed(0)} COP',
-                                      style: TextStyle(
-                                        color: Color.fromRGBO(102, 51, 204, 1),
-                                        fontWeight: FontWeight.w500,
-                                      ),),
-
-                                    ) ,                                  
+                                      child: Text(
+                                        '${((totalDistancia * 850) + 2500).toStringAsFixed(0)} COP',
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(102, 51, 204, 1),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
                                     Container(
                                       margin: EdgeInsets.only(top: height / 28),
-                                      child: Text('Metodo de pago:',
-                                       style: TextStyle(
-                                        color: Color.fromRGBO(102, 51, 204, 1),
-                                        fontWeight: FontWeight.w500,
-                                      ),),
-                                    ),                                   
-                                    
+                                      child: Text(
+                                        'Metodo de pago:',
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(102, 51, 204, 1),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -632,7 +645,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
           polylineCoordinates[i + 1].latitude,
           polylineCoordinates[i + 1].longitude);
     }
-    totalDistancia = totalDistance/1000;
+    totalDistancia = totalDistance / 1000;
     print(totalDistance);
     // Adding the polyline to the map
     polylines.clear();
@@ -700,7 +713,6 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   }
 
   double calculateDistance(lat1, lon1, lat2, lon2) {
-    return  Geolocator.distanceBetween(lat1, lon1, lat2, lon2);
+    return Geolocator.distanceBetween(lat1, lon1, lat2, lon2);
   }
 }
-

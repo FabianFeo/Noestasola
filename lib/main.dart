@@ -13,15 +13,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  inicializar() async {}
-
+ 
   @override
   Widget build(BuildContext context) {
     Firebase.initializeApp().then((value) async {
       SystemChrome.setPreferredOrientations([
         DeviceOrientation.portraitUp,
       ]);
-      inicializar();
+  
       FaceNetService _faceNetService = FaceNetService();
       MLVisionService _mlVisionService = MLVisionService();
       await _faceNetService.loadModel();
