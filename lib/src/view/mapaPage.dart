@@ -2,7 +2,7 @@ import 'package:NoEstasSola/src/service/contactosService.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_place/google_place.dart';
-
+import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as lo;
@@ -19,6 +19,7 @@ class MapaPage extends StatefulWidget {
 }
 
 class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
+  String _myActivity;
   String dropDownValue;
   double totalDistancia = 0;
   bool showDetails = false;
@@ -139,7 +140,6 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                   child: Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
-                                     
                                     ),
                                     margin: EdgeInsets.only(top: height / 8.5),
                                     height: height / 10,
@@ -151,7 +151,6 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                         decoration: InputDecoration(
                                           filled: true,
                                           fillColor: Colors.white,
-
                                           labelText: "¿Donde estás?",
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -557,6 +556,9 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                         ),
                                       ),
                                     ),
+                                    Container(
+                                     
+                                    )
                                   ],
                                 ),
                               ],

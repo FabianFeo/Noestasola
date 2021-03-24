@@ -1,6 +1,8 @@
 import 'package:NoEstasSola/src/view/Historialviajes.dart';
+
 import 'package:NoEstasSola/src/view/Olvide.dart';
 import 'package:NoEstasSola/src/view/Seguridad.dart';
+import 'package:NoEstasSola/src/view/Tarifas.dart';
 import 'package:flutter/material.dart';
 
 class Ayuda extends StatefulWidget {
@@ -21,6 +23,7 @@ class _AyudaState extends State<Ayuda> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
           child: Container(
             child: Center(
               child: Column(
@@ -177,32 +180,7 @@ class _AyudaState extends State<Ayuda> {
                       ],
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: height / 50),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: width / 15),
-                          child: Icon(
-                            Icons.label_important_rounded,
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: width / 15),
-                          child: GestureDetector(
-                            child: Text(
-                              'Metodos de pago',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 79, 168, 1),
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            onTap: () {},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  
                   Container(
                     margin: EdgeInsets.only(top: height / 50),
                     child: Row(
@@ -223,38 +201,18 @@ class _AyudaState extends State<Ayuda> {
                                   color: Color.fromRGBO(101, 79, 168, 1),
                                   fontWeight: FontWeight.w500),
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Tarifas()));
+                            },
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: height / 50),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: width / 15),
-                          child: Icon(
-                            Icons.label_important_rounded,
-                            color: Color.fromRGBO(101, 79, 168, 1),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: width / 15),
-                          child: GestureDetector(
-                            child: Text(
-                              'Cuenta',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 79, 168, 1),
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            onTap: () {},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  
                   Container(
                     margin: EdgeInsets.only(top: height / 50),
                     child: Row(

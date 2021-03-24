@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Seguridad extends StatefulWidget {
-  Seguridad({Key key}) : super(key: key);
+class Tarifas extends StatefulWidget {
+  Tarifas({Key key}) : super(key: key);
 
   @override
-  _SeguridadState createState() => _SeguridadState();
+  _TarifasState createState() => _TarifasState();
 }
 
-class _SeguridadState extends State<Seguridad> {
-  double height = 0;
+class _TarifasState extends State<Tarifas> {
+ double height = 0;
   double width = 0;
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _SeguridadState extends State<Seguridad> {
                       margin: EdgeInsets.only(top: height / 30 ),
                       child: Center(
                         child: Text(
-                          'Seguridad',
+                          'Tarifas',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: height / 20,
@@ -46,9 +46,9 @@ class _SeguridadState extends State<Seguridad> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              top: height / 30, right: width / 2.1),
+                              top: height / 30, right: width / 3),
                           child: Text(
-                            'Contactos de confianza',
+                            '¿Cómo se calculan las tarifas?',
                             style: TextStyle(
                               color: Color.fromRGBO(101, 79, 168, 1),
                               fontWeight: FontWeight.w400,
@@ -59,7 +59,7 @@ class _SeguridadState extends State<Seguridad> {
                           margin: EdgeInsets.only(
                               top: height / 50, left: width / 10),
                           child: Text(
-                            'Son los numeros que contactaremos cuando te sientas amenazada o en peligro',
+                            'Es la suma del tiempo de trayecto, el clima y la distancia total de recorrido',
                             style: TextStyle(
                               color: Color.fromRGBO(101, 79, 168, 1),
                               fontWeight: FontWeight.w400,
@@ -68,9 +68,9 @@ class _SeguridadState extends State<Seguridad> {
                         ),
                         Container(
                           margin: EdgeInsets.only(
-                              top: height / 30, right: width / 2.5),
+                              top: height / 30, right: width / 5),
                           child: Text(
-                            'Reconocimiento biometrico',
+                            '¿Cómo funcionan las promociones?',
                             style: TextStyle(
                               color: Color.fromRGBO(101, 79, 168, 1),
                               fontWeight: FontWeight.w400,
@@ -81,7 +81,7 @@ class _SeguridadState extends State<Seguridad> {
                           margin: EdgeInsets.only(
                               top: height / 50, left: width / 10),
                           child: Text(
-                            'Es la forma en la que nos aseguramos que unicamente tu accedes a tu cuenta',
+                            'Texto aquí',
                             style: TextStyle(
                               color: Color.fromRGBO(101, 79, 168, 1),
                               fontWeight: FontWeight.w400,
@@ -90,31 +90,9 @@ class _SeguridadState extends State<Seguridad> {
                         ),
                         Container(
                           margin: EdgeInsets.only(
-                              top: height / 30, right: width / 1.7),
+                              top: height / 30, left: width / 10),
                           child: Text(
-                            'Botón de pánico',
-                            style: TextStyle(
-                              color: Color.fromRGBO(101, 79, 168, 1),
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              top: height / 50, left: width / 10),
-                          child: Text(
-                            'Es el boton con el que nos informaras que no te sientes segura',
-                            style: TextStyle(
-                              color: Color.fromRGBO(101, 79, 168, 1),
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              top: height / 30, right: width / 2.5),
-                          child: Text(
-                            'Prótocolos de bioseguridad',
+                            '¿Cómo puedo verificar que la promoción fue aplicada?',
                             style: TextStyle(
                               color: Color.fromRGBO(101, 79, 168, 1),
                               fontWeight: FontWeight.w400,
@@ -125,13 +103,14 @@ class _SeguridadState extends State<Seguridad> {
                           margin: EdgeInsets.only(
                               top: height / 50, left: width / 10),
                           child: Text(
-                            'Son las medidas de seguridad tomadas por cada conductora para cada viaje',
+                            'mas texto aqui',
                             style: TextStyle(
                               color: Color.fromRGBO(101, 79, 168, 1),
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
+                       
                       ],
                     ),
                   ],

@@ -45,6 +45,7 @@ dependencies:
   path_provider_windows: ^2.0.0
   tflite_flutter: ^0.6.0
   lite_rolling_switch: ^0.1.1
+  dropdown_formfield: ^0.1.3
   
   
 dependency_overrides:
