@@ -156,6 +156,7 @@ class DisplayPictureScreen extends StatelessWidget {
                     alignment: AlignmentDirectional.centerStart,
                     child: Center(
                       child: FloatingActionButton(
+                        backgroundColor: Color.fromRGBO(101, 79, 168, 1),
                         onPressed: () {
                           storageFirebaseService
                               .uplodaImage(File(imagePath))
@@ -172,7 +173,7 @@ class DisplayPictureScreen extends StatelessWidget {
                           });
                           
                         },
-                        child: Icon(Icons.thumb_up),
+                        child: Icon(Icons.download_done_rounded),
                       ),
                     ),
                   ),
@@ -181,8 +182,12 @@ class DisplayPictureScreen extends StatelessWidget {
                         EdgeInsets.only(left: width / 2.3, right: width / 8),
                     child: Center(
                       child: FloatingActionButton(
-                        onPressed: () {},
-                        child: Icon(Icons.thumb_down),
+                        backgroundColor: Color.fromRGBO(101, 79, 168, 1),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                        },
+                        child: Icon(Icons.clear),
                       ),
                     ),
                     alignment: AlignmentDirectional.centerStart,

@@ -44,6 +44,7 @@ dependencies:
   shared_preferences: ^2.0.5
   path_provider_windows: ^2.0.0
   tflite_flutter: ^0.6.0
+  lite_rolling_switch: ^0.1.1
   
   
 dependency_overrides:
@@ -70,6 +71,7 @@ flutter:
     - assets/Logo/Usuaria.png
     - assets/video/carga.mp4
     - assets/Logo/Lu_verde.png
+    - assets/Logo/lu_back.png
   fonts:
     - family: Gotham
       fonts: 

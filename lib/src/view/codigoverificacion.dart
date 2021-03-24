@@ -38,7 +38,7 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: height / 20,
-                    color: Color.fromRGBO(40, 1, 102, 1),
+                    color: Color.fromRGBO(101, 79, 168, 1),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -50,7 +50,7 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                       'Enviaremos un código de 6 digitos a tu numero de teléfono registrado, para verificar tu identidad',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Color.fromRGBO(40, 1, 102, 1),
+                          color: Color.fromRGBO(101, 79, 168, 1),
                           fontWeight: FontWeight.w400,
                           fontSize: height / 32),
                     ),
@@ -74,7 +74,7 @@ class _CodigoVerificacionState extends State<CodigoVerificacion> {
                     activeFillColor: Color.fromRGBO(230, 224, 237, 0.5),
                   ),
                   animationDuration: Duration(milliseconds: 300),
-                  backgroundColor: Color.fromRGBO(207, 197, 239, 1),
+                  backgroundColor: Colors.white,
                   enableActiveFill: true,
                   errorAnimationController: errorController,
                   controller: textEditingController,

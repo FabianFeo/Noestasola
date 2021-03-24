@@ -69,9 +69,9 @@ class _IndexState extends State<Index> {
             Icon(Icons.warning_rounded,
                 size: 30, color: Color.fromRGBO(102, 51, 204, 1)),
           ],
-          color: Colors.white,
-          buttonBackgroundColor: Colors.white,
-          backgroundColor: Color.fromRGBO(207, 197, 239, 1),
+          color: Color.fromRGBO(207, 197, 239, 1),
+          buttonBackgroundColor: Color.fromRGBO(207, 197, 239, 1),
+          backgroundColor: Colors.white,
           animationCurve: Curves.easeInOut,
           animationDuration: Duration(milliseconds: 600),
           onTap: (index) {
@@ -94,7 +94,7 @@ class _IndexState extends State<Index> {
           letIndexChange: (index) => true,
         ),
         body: Container(
-            color: Color.fromRGBO(207, 197, 239, 1), child: pageCurrent),
+            color: Colors.white, child: pageCurrent),
         drawer: Drawer(
           // Add a ListView to the drawer. This ensures the user can scroll
           // through the options in the drawer if there isn't enough vertical

@@ -155,7 +155,7 @@ class _ScannerRostroState extends State<ScannerRostro> {
     double width = MediaQuery.of(context).size.width;
     return Container(
       child: Scaffold(
-          backgroundColor: Color.fromRGBO(207, 197, 239, 1),
+          backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Container(
               margin: EdgeInsets.only(top: height / 8),
@@ -167,7 +167,7 @@ class _ScannerRostroState extends State<ScannerRostro> {
                       'Escaneo Facial',
                       style: TextStyle(
                           fontSize: height / 40,
-                          color: Color.fromRGBO(40, 1, 102, 1),
+                          color: Color.fromRGBO(101, 79, 168, 1),
                           fontWeight: FontWeight.w500),
                     ),
                   )),
