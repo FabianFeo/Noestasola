@@ -1,4 +1,6 @@
+import 'package:NoEstasSola/src/model/viaje.model.dart';
 import 'package:NoEstasSola/src/service/contactosService.dart';
+import 'package:NoEstasSola/src/service/viajeServicecollection.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_place/google_place.dart';
@@ -46,11 +48,13 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   TextEditingController _controllerText2 = TextEditingController();
   Set<Marker> _markers = Set();
   bool showCurrentPosition = true;
+  Viaje viaje = Viaje();
   GooglePlace googlePlace =
       GooglePlace("AIzaSyDDjt2cJQi5BgxkYJZ7ZtrPTafZQICenXo");
   List<AutocompletePrediction> predictions = [];
   double height = 0;
   double width = 0;
+  String dropdownValue;
   ContactosService _contactosService = ContactosService();
   @override
   Widget build(BuildContext context) {
@@ -168,6 +172,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         onChanged: (value) {
+                                          viaje.direccionInicio = value;
                                           setState(() {
                                             dondeestas = true;
                                           });
@@ -218,6 +223,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                         ),
                                       ),
                                       onChanged: (value) {
+                                        viaje.direccionDestino = value;
                                         setState(() {
                                           dondeestas = false;
                                         });
@@ -290,6 +296,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                                   .text =
                                                               predictions[index]
                                                                   .description;
+
                                                           idStart =
                                                               predictions[index]
                                                                   .placeId;
@@ -297,6 +304,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                           _controllerText.text =
                                                               predictions[index]
                                                                   .description;
+
                                                           idDestination =
                                                               predictions[index]
                                                                   .placeId;
@@ -364,6 +372,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                     Duration(milliseconds: 100),
                                                 scaleFactor: 1.5,
                                                 onPressed: () {
+                                                  viaje.toNull();
                                                   setState(() {
                                                     showDetails = false;
                                                   });
@@ -489,6 +498,17 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                           color:
                                               Color.fromRGBO(102, 51, 204, 1)),
                                       child: GestureDetector(
+                                        onTap: () {
+                                          viaje.valor =
+                                              ((totalDistancia * 850) + 2500)
+                                                  .toStringAsFixed(0);
+                                          ViajesServiceCollection
+                                              viajesServiceCollection =
+                                              ViajesServiceCollection();
+                                          viajesServiceCollection.pushviaje().then((value) => {
+                                            
+                                          });
+                                        },
                                         child: Text(
                                           'Confirmar',
                                           textAlign: TextAlign.center,
@@ -509,6 +529,18 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                           color:
                                               Color.fromRGBO(102, 51, 204, 1)),
                                       child: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            showDetails = false;
+                                            confirmationCard = false;
+                                            servicePedido = true;
+                                            polylines.clear();
+                                            _markers.clear();
+                                            _controllerText.text = "";
+                                            _controllerText2.text = "";
+                                            predictions.clear();
+                                          });
+                                        },
                                         child: Text(
                                           'Cancelar',
                                           textAlign: TextAlign.center,
@@ -557,7 +589,42 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                       ),
                                     ),
                                     Container(
-                                     
+                                      child: DropdownButton<String>(
+                                        value: dropdownValue,
+                                        hint: Column(
+                                          children: [
+                                            Text('selecciona un '),
+                                            Text('metodo de pago')
+                                          ],
+                                        ),
+                                        icon: const Icon(Icons.arrow_downward),
+                                        iconSize: 24,
+                                        elevation: 16,
+                                        style: const TextStyle(
+                                            color: Colors.deepPurple),
+                                        underline: Container(
+                                          height: 2,
+                                          color: Colors.deepPurpleAccent,
+                                        ),
+                                        onChanged: (String newValue) {
+                                          viaje.metodoPago = newValue;
+                                          setState(() {
+                                            dropdownValue = newValue;
+                                          });
+                                        },
+                                        items: <String>[
+                                          'Efectivo',
+                                          'tarjeta de credito',
+                                          'pse',
+                                          'paypal'
+                                        ].map<DropdownMenuItem<String>>(
+                                            (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(value),
+                                          );
+                                        }).toList(),
+                                      ),
                                     )
                                   ],
                                 ),
@@ -659,7 +726,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   Future<void> obtainLatLand() async {
     _markers.clear();
     await googlePlace.details.get(idDestination).then((value) async {
-      if (value.result != null) {
+      if (value != null) {
         setState(() {
           _markers.add(new Marker(
               markerId: MarkerId(idDestination),
@@ -677,10 +744,14 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
           }
           startCoordinates = LatLng(value2.result.geometry.location.lat,
               value2.result.geometry.location.lng);
+          viaje.latInicio = startCoordinates.latitude;
+          viaje.lanInicio = startCoordinates.longitude;
         });
-        if (value.result != null) {
+        if (value != null) {
           destination = LatLng(value.result.geometry.location.lat,
               value.result.geometry.location.lng);
+          viaje.latDestino = destination.latitude;
+          viaje.lanDestino = destination.longitude;
 
           if (startCoordinates.latitude <= value.result.geometry.location.lat) {
             _southwestCoordinates = startCoordinates;
