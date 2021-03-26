@@ -652,7 +652,9 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                             ),
                             color: Color.fromRGBO(207, 197, 239, 1),
                           ),
-                          child: Column(
+                          child:SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Column(
                             children: [
                               Container(
                                 child: Row(
@@ -854,7 +856,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                           ),
                         ),
                       ),
-                    )
+                    ))
                   : Container(),
             ],
           ),
