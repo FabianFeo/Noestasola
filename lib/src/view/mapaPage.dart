@@ -649,19 +649,18 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                       stream: _viajesServiceCollection.getCambiosViaje(),
                       builder: (_, AsyncSnapshot<DocumentSnapshot> snapshotViaje) {
                         return Container(
-                            margin: EdgeInsets.only(top: height / 1.6),
+                            margin: EdgeInsets.only(top: height / 2),
                             child: Center(
                               child: Container(
-                                height: height / 3.2,
-                                width: width / 1.15,
+                                height: height / 2.5,
+                                width: width / 1.05,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(15),
                                   ),
                                   color: Color.fromRGBO(207, 197, 239, 1),
                                 ),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
+                                child: Container(
                                   child: snapshotViaje.hasData && snapshotViaje.data.exists?  Column(
                                     children: [
                                       Container(
@@ -674,7 +673,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                 children: [
                                                   Container(
                                                     margin: EdgeInsets.only(
-                                                        top: height / 35),
+                                                        top: height / 155),
                                                     child: Row(
                                                       children: [
                                                         Image(
@@ -689,38 +688,11 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
                                                             .spaceBetween,
-                                                    children: [
+                                                    children: [                                                      
                                                       Column(
                                                         children: [
                                                           Container(
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    left:
-                                                                        width /
-                                                                            15),
-                                                            child: Text(
-                                                              ' ',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Column(
-                                                        children: [
-                                                          Container(
+                                                            height: height /22,
                                                             margin:
                                                                 EdgeInsets.only(
                                                                     right:
@@ -745,6 +717,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                             ),
                                                           ),
                                                           Container(
+                                                            height: height /22,
                                                             margin:
                                                                 EdgeInsets.only(
                                                                     right:
@@ -769,6 +742,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                             ),
                                                           ),
                                                           Container(
+                                                            height: height /22,
                                                             margin:
                                                                 EdgeInsets.only(
                                                                     right:
@@ -793,6 +767,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                             ),
                                                           ),
                                                           Container(
+                                                            height: height /22,
                                                             margin:
                                                                 EdgeInsets.only(
                                                                     right:
@@ -817,6 +792,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                             ),
                                                           ),
                                                           Container(
+                                                            height: height /22,
                                                             margin:
                                                                 EdgeInsets.only(
                                                                     right:
@@ -845,6 +821,8 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                       Column(
                                                         children: [
                                                           Container(
+                                                            height: height /22,
+                                                             width: width /2.5,
                                                             child: Text(
                                                               snapshotViaje.data.data()['date'].split(
                                                                       'T')[0] +
@@ -863,6 +841,8 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                             ),
                                                           ),
                                                           Container(
+                                                            height: height /22,
+                                                            width: width /2.5,
                                                             child: Text(
                                                               snapshotViaje.data.data()['direccionInicio'] +
                                                                   '',
@@ -880,6 +860,8 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                             ),
                                                           ),
                                                           Container(
+                                                            height: height /22,
+                                                             width: width /2.5,
                                                             child: Text(
                                                               snapshotViaje.data.data()['direccionDestino'] +
                                                                   '',
@@ -897,6 +879,8 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                             ),
                                                           ),
                                                           Container(
+                                                            height: height /22,
+                                                             width: width /2.5,
                                                             child: Text(
                                                               snapshotViaje.data.data()['metodoPago'] +
                                                                   '',
@@ -914,6 +898,8 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                             ),
                                                           ),
                                                           Container(
+                                                            height: height /22,
+                                                             width: width /2.5,
                                                             child: Text(
                                                               snapshotViaje.data.data()['valor'] + '',
                                                               style: TextStyle(
