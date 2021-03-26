@@ -83,7 +83,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                       showDetails = false;
                     });
                   },
-                  myLocationButtonEnabled: false,
+                  myLocationButtonEnabled: true,
                   buildingsEnabled: false,
                   zoomControlsEnabled: false,
                   polylines: polylines,
