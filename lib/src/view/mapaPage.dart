@@ -174,7 +174,6 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         onChanged: (value) {
-                                          viaje.direccionInicio = value;
                                           setState(() {
                                             dondeestas = true;
                                           });
@@ -225,7 +224,6 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                         ),
                                       ),
                                       onChanged: (value) {
-                                        viaje.direccionDestino = value;
                                         setState(() {
                                           dondeestas = false;
                                         });
@@ -269,6 +267,9 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                         _controllerText2.text =
                                                             predictions[index]
                                                                 .description;
+                                                        viaje.direccionInicio =
+                                                            predictions[index]
+                                                                .description;
                                                       });
                                                       idStart =
                                                           predictions[index]
@@ -302,11 +303,16 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                           idStart =
                                                               predictions[index]
                                                                   .placeId;
+                                                          viaje.direccionInicio =
+                                                              predictions[index]
+                                                                  .description;
                                                         } else {
                                                           _controllerText.text =
                                                               predictions[index]
                                                                   .description;
-
+                                                          viaje.direccionDestino =
+                                                              predictions[index]
+                                                                  .description;
                                                           idDestination =
                                                               predictions[index]
                                                                   .placeId;
@@ -652,228 +658,235 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                             ),
                             color: Color.fromRGBO(207, 197, 239, 1),
                           ),
-                          child:SingleChildScrollView(
+                          child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Column(
-                            children: [
-                              Container(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: height / 35),
-                                            child: Row(
+                              children: [
+                                Container(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                  top: height / 35),
+                                              child: Row(
+                                                children: [
+                                                  Image(
+                                                    height: height / 10,
+                                                    image: AssetImage(
+                                                        'assets/Logo/Lu_logo.png'),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
-                                                Image(
-                                                  height: height / 10,
-                                                  image: AssetImage(
-                                                      'assets/Logo/Lu_logo.png'),
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          left: width / 15),
+                                                      child: Text(
+                                                        ' ',
+                                                        textAlign:
+                                                            TextAlign.left,
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          right: width / 3),
+                                                      child: Text(
+                                                        'Fecha: ',
+                                                        textAlign:
+                                                            TextAlign.left,
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          right: width / 11),
+                                                      child: Text(
+                                                        'Direccion de recogida:',
+                                                        textAlign:
+                                                            TextAlign.left,
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          right: width / 10),
+                                                      child: Text(
+                                                        'Direccion de Llegada:',
+                                                        textAlign:
+                                                            TextAlign.left,
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          right: width / 6),
+                                                      child: Text(
+                                                        'Metodo de Pago:',
+                                                        textAlign:
+                                                            TextAlign.left,
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          right: width / 3.8),
+                                                      child: Text(
+                                                        'Valor total:',
+                                                        textAlign:
+                                                            TextAlign.left,
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      child: Text(
+                                                        _viaje.date
+                                                                .split('T')[0] +
+                                                            '',
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Text(
+                                                        _viaje.direccionInicio +
+                                                            '',
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Text(
+                                                        _viaje.direccionDestino +
+                                                            '',
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Text(
+                                                        _viaje.metodoPago + '',
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Text(
+                                                        _viaje.valor + '',
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              102, 51, 204, 1),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
                                               ],
                                             ),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                               Column(
-                                                children: [
-                                                  Container(
-                                                    margin: EdgeInsets.only(left: width / 15),
-                                                    child: Text(
-                                                      ' ',
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Column(
-                                                children: [
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        right: width / 3),
-                                                    child: Text(
-                                                      'Fecha: ',
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        right: width / 11),
-                                                    child: Text(
-                                                      'Direccion de recogida:',
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        right: width / 10),
-                                                    child: Text(
-                                                      'Direccion de Llegada:',
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        right: width / 6),
-                                                    child: Text(
-                                                      'Metodo de Pago:',
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        right: width / 3.8),
-                                                    child: Text(
-                                                      'Valor total:',
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Column(
-                                                children: [
-                                                  Container(
-                                                    child: Text(
-                                                      _viaje.date
-                                                              .split('T')[0] +
-                                                          '',
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    child: Text(
-                                                      _viaje.direccionInicio +
-                                                          '',
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    child: Text(
-                                                      _viaje.direccionDestino +
-                                                          '',
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    child: Text(
-                                                      _viaje.metodoPago + '',
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    child: Text(
-                                                      _viaje.valor + '',
-                                                      style: TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            102, 51, 204, 1),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                child: BouncingWidget(
-                                    duration: Duration(milliseconds: 100),
-                                    scaleFactor: 1.5,
-                                    onPressed: () {},
-                                    child: Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                      ),
-                                      color: Color.fromRGBO(101, 79, 168, 1),
-                                      child: Container(
-                                        width: width / 2.8,
-                                        height: height / 25,
-                                        child: Text(
-                                          "Cancelar",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  255, 255, 255, 1),
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 25),
+                                          ],
                                         ),
-                                      ),
-                                    )),
-                              )
-                            ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: BouncingWidget(
+                                      duration: Duration(milliseconds: 100),
+                                      scaleFactor: 1.5,
+                                      onPressed: () {},
+                                      child: Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(50.0),
+                                        ),
+                                        color: Color.fromRGBO(101, 79, 168, 1),
+                                        child: Container(
+                                          width: width / 2.8,
+                                          height: height / 25,
+                                          child: Text(
+                                            "Cancelar",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    255, 255, 255, 1),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 25),
+                                          ),
+                                        ),
+                                      )),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ))
+                      ))
                   : Container(),
             ],
           ),
