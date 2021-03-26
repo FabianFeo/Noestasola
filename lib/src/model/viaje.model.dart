@@ -12,6 +12,7 @@ class Viaje {
   double lanInicio;
   double latDestino;
   double lanDestino;
+  String estado;
   Viaje._internal();
   factory Viaje() {
     return _viaje;
@@ -30,7 +31,8 @@ class Viaje {
       'latInicio': latInicio,
       'lanInicio': lanInicio,
       'latDestino': latDestino,
-      'lanDestino': lanDestino
+      'lanDestino': lanDestino,
+      'estado':estado
     };
   }
 
@@ -47,6 +49,7 @@ class Viaje {
     lanInicio = data['lanInicio'];
     latDestino = data['latDestino'];
     lanDestino = data['lanDestino'];
+    estado=data['estado'];
   }
 
   toNull() {
@@ -62,5 +65,6 @@ class Viaje {
     lanInicio = null;
     latDestino = null;
     lanDestino = null;
+    estado=null;
   }
 }

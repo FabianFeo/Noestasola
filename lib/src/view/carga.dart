@@ -27,7 +27,7 @@ class _CargaState extends State<Carga> {
           authService.stateListen().listen((value) async {
             UserCollectionService userCollectionService =
                 UserCollectionService();
-                var user =null;
+                var user ;
             if (value != null) {
                user = await userCollectionService.getUser(value.uid);
             }

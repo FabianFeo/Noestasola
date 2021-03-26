@@ -12,6 +12,7 @@ class ViajesServiceCollection {
     viaje.date = DateTime.now().toIso8601String();
     viaje.uiid = uuid.v4();
     viaje.idCliente = user.userUuid;
+    viaje.estado="enEspera";
     return firestore.collection('viajes').doc(viaje.uiid).set(viaje.toMap());
   }
 
