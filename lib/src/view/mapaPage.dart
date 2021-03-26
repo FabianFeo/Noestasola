@@ -659,7 +659,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                               Container(
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.center,
                                   children: [
                                     Container(
                                       child: Column(
@@ -681,11 +681,28 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
+                                               Column(
+                                                children: [
+                                                  Container(
+                                                    margin: EdgeInsets.only(left: width / 15),
+                                                    child: Text(
+                                                      ' ',
+                                                      textAlign: TextAlign.left,
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            102, 51, 204, 1),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                               Column(
                                                 children: [
                                                   Container(
                                                     margin: EdgeInsets.only(
-                                                        right: width / 2.9),
+                                                        right: width / 3),
                                                     child: Text(
                                                       'Fecha: ',
                                                       textAlign: TextAlign.left,
@@ -699,7 +716,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                   ),
                                                   Container(
                                                     margin: EdgeInsets.only(
-                                                        right: width / 11.5),
+                                                        right: width / 11),
                                                     child: Text(
                                                       'Direccion de recogida:',
                                                       textAlign: TextAlign.left,
