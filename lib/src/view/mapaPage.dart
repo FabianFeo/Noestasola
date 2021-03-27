@@ -652,7 +652,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                             margin: EdgeInsets.only(top: height / 2),
                             child: Center(
                               child: Container(
-                                height: height / 2.5,
+                                height: height / 2.3,
                                 width: width / 1.05,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.all(
@@ -816,6 +816,31 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                               ),
                                                             ),
                                                           ),
+                                                          Container(
+                                                            height: height /22,
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                                    right:
+                                                                        width /
+                                                                            3),
+                                                            child: Text(
+                                                              'Estado:',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .left,
+                                                              style: TextStyle(
+                                                                color: Color
+                                                                    .fromRGBO(
+                                                                        102,
+                                                                        51,
+                                                                        204,
+                                                                        1),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                            ),
+                                                          ),
                                                         ],
                                                       ),
                                                       Column(
@@ -902,6 +927,25 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                              width: width /2.5,
                                                             child: Text(
                                                               snapshotViaje.data.data()['valor'] + '',
+                                                              style: TextStyle(
+                                                                color: Color
+                                                                    .fromRGBO(
+                                                                        102,
+                                                                        51,
+                                                                        204,
+                                                                        1),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          
+                                                          Container(
+                                                            height: height /22,
+                                                             width: width /2.5,
+                                                            child: Text(
+                                                              snapshotViaje.data.data()['estado'] + '',
                                                               style: TextStyle(
                                                                 color: Color
                                                                     .fromRGBO(
