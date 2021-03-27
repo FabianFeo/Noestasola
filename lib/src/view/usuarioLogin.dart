@@ -58,7 +58,7 @@ class _UsuarioLoginState extends State<UsuarioLogin> {
                                   onChanged: (value) =>
                                       inputNumeroTelefono = value,
                                   decoration: InputDecoration(
-                                      hintText: 'Numero de telefono'),
+                                      hintText: '313123456'),
                                 ),
                               ))
                             ],
