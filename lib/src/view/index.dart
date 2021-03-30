@@ -1,6 +1,7 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/service/authService.dart';
 import 'package:NoEstasSola/src/view/Ayuda.dart';
+import 'package:NoEstasSola/src/view/Blog.dart';
 import 'package:NoEstasSola/src/view/Configuracion.dart';
 import 'package:NoEstasSola/src/view/Contactoconfianza.dart';
 import 'package:NoEstasSola/src/view/Historialviajes.dart';
@@ -80,7 +81,7 @@ class _IndexState extends State<Index> {
             setState(() {
               switch (index) {
                 case 0:
-                  pageCurrent = Container();
+                  pageCurrent = Blog();
                   break;
                 case 1:
                   pageCurrent = MapaPage();
