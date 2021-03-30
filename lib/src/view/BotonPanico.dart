@@ -1,3 +1,5 @@
+import 'package:NoEstasSola/src/view/LuAlarmada.dart';
+import 'package:NoEstasSola/src/view/LuPreocupada.dart';
 import 'package:flutter/material.dart';
 
 class BotonPanico extends StatefulWidget {
@@ -23,7 +25,7 @@ class _BotonPanicoState extends State<BotonPanico> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: height / 30),
+                    margin: EdgeInsets.only(top: height / 8),
                     child: Center(
                       child: Text(
                         '¿Te sientes insegura?',
@@ -57,7 +59,7 @@ class _BotonPanicoState extends State<BotonPanico> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: height / 10),
+                    margin: EdgeInsets.only(top: height / 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -73,10 +75,51 @@ class _BotonPanicoState extends State<BotonPanico> {
                                   ),
                                 ),
                               ),
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LuAlarmada()));
+                              },
                             ),
                             Container(
-                              child: Text('Lü alarmada'),
+                              child: Text(
+                                'Lü alarmada',
+                                style: TextStyle(
+                                    fontSize: height / 50,
+                                    color: Colors.yellow,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            GestureDetector(
+                              child: Container(
+                                width: width / 3.5,
+                                child: Container(
+                                  child: Image(
+                                    image:
+                                        AssetImage('assets/Logo/Usuaria.png'),
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                 Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LuPreocupada()));
+                              },
+                            ),
+                            Container(
+                              child: Text(
+                                'Lü preocupada',
+                                style: TextStyle(
+                                    fontSize: height / 50,
+                                    color: Colors.orange,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             )
                           ],
                         ),
@@ -95,26 +138,13 @@ class _BotonPanicoState extends State<BotonPanico> {
                               onTap: () {},
                             ),
                             Container(
-                              child: Text('Lü preocupada'),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              child: Container(
-                                width: width / 3.5,
-                                child: Container(
-                                  child: Image(
-                                    image:
-                                        AssetImage('assets/Logo/Usuaria.png'),
-                                  ),
-                                ),
+                              child: Text(
+                                'Lü asustada',
+                                style: TextStyle(
+                                    fontSize: height / 50,
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.w500),
                               ),
-                              onTap: () {},
-                            ),
-                            Container(
-                              child: Text('Lü asustada'),
                             )
                           ],
                         ),
