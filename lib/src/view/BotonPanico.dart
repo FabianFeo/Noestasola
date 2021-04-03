@@ -92,37 +92,7 @@ class _BotonPanicoState extends State<BotonPanico> {
                               ),
                             )
                           ],
-                        ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              child: Container(
-                                width: width / 3.5,
-                                child: Container(
-                                  child: Image(
-                                    image:
-                                        AssetImage('assets/Logo/Usuaria.png'),
-                                  ),
-                                ),
-                              ),
-                              onTap: () {
-                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LuPreocupada()));
-                              },
-                            ),
-                            Container(
-                              child: Text(
-                                'Lü preocupada',
-                                style: TextStyle(
-                                    fontSize: height / 50,
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            )
-                          ],
-                        ),
+                        ),                       
                         Column(
                           children: [
                             GestureDetector(
