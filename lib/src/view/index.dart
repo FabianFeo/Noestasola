@@ -363,36 +363,7 @@ class _IndexState extends State<Index> {
                             ),
                           ],
                         ),
-                        Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              height: height / 20,
-                              child: Icon(
-                                Icons.drive_eta,
-                                color: Color.fromRGBO(40, 1, 102, 1),
-                              ),
-                            ),
-                            Container(
-                              height: height / 14,
-                              width: width / 2,
-                              child: ListTile(
-                                title: Text('Volverme conductora',
-                                    style: TextStyle(
-                                      color: Color.fromRGBO(101, 79, 168, 1),
-                                    )),
-                                onTap: () {
-                                  // Update the state of the app
-                                  // ...
-                                  // Then close the drawer
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                        Divider(),
+                        Divider(),                        
                       ],
                     )),
                 Container(
