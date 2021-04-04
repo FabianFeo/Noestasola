@@ -61,7 +61,7 @@ class _BotonPanicoState extends State<BotonPanico> {
                   Container(
                     margin: EdgeInsets.only(top: height / 12),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
                           children: [

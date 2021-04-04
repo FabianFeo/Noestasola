@@ -110,20 +110,18 @@ class _IndexState extends State<Index> {
 
               children: <Widget>[
                 Container(
-                  height: height / 5,
+                  height: height / 6,
                   child: DrawerHeader(
-                    child: Container(
+                    child: Container(                     
                       child: Column(
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Container(
-                                height: height / 15,
                                 child: Container(
-                                  margin: EdgeInsets.only(top: height / 50),
                                   child: CircleAvatar(
-                                    backgroundColor: Colors.white,
+                                    backgroundColor: Color.fromRGBO(207, 197, 239, 1),
                                     radius: height / 28,
                                     backgroundImage: _user.profileImage == null
                                         ? AssetImage('assets/Logo/Usuaria.png')
@@ -131,8 +129,8 @@ class _IndexState extends State<Index> {
                                   ),
                                 ),
                               ),
-                              Container(
-                                  height: height / 42,
+                              Container(                               
+                                  height: height / 15,
                                   width: width / 2,
                                   child: Column(
                                     children: [
