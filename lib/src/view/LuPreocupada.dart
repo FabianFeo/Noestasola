@@ -1,4 +1,4 @@
-import 'package:NoEstasSola/src/view/AlertaNaranja.dart';
+import 'package:NoEstasSola/src/view/AlertaRoja.dart';
 import 'package:NoEstasSola/src/view/Contactoconfianza.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,7 @@ class _LuPreocupadaState extends State<LuPreocupada> {
                     width: width / 1.5,
                     child: Container(
                       child: Image(
-                        image: AssetImage('assets/Logo/Usuaria.png'),
+                        image: AssetImage('assets/IconosMarker/Lu_red.png'),
                       ),
                     ),
                   ),
@@ -99,7 +99,8 @@ class _LuPreocupadaState extends State<LuPreocupada> {
                                     child: Container(
                                       width: width / 4,
                                       height: height / 20,
-                                      child: Text(
+                                      child: Center(child: 
+                                       Text(
                                         "Contactos de confianza",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -111,7 +112,7 @@ class _LuPreocupadaState extends State<LuPreocupada> {
                                     ),
                                   )),
                               ),
-                            ),
+                            )),
                           ],
                         ),
                         Column(
@@ -132,7 +133,8 @@ class _LuPreocupadaState extends State<LuPreocupada> {
                                     child: Container(
                                       width: width / 4,
                                       height: height / 20,
-                                      child: Text(
+                                      child: Center( child:
+                                      Text(
                                         "Llamada de emergencia",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -144,7 +146,7 @@ class _LuPreocupadaState extends State<LuPreocupada> {
                                     ),
                                   )),
                               ),
-                            ),
+                            )),
                           ],
                         ),
                         Column(
@@ -159,7 +161,7 @@ class _LuPreocupadaState extends State<LuPreocupada> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                AlertaNaranja()));
+                                                AlertaRoja()));
                                   },
                                   child: Card(
                                     shape: RoundedRectangleBorder(
@@ -169,7 +171,8 @@ class _LuPreocupadaState extends State<LuPreocupada> {
                                     child: Container(
                                       width: width / 4,
                                       height: height / 20,
-                                      child: Text(
+                                      child: Center( child:
+                                      Text(
                                         "Enviar alerta a Lü cercana",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -181,7 +184,7 @@ class _LuPreocupadaState extends State<LuPreocupada> {
                                     ),
                                   )),
                               ),
-                            ),
+                            )),
                           ],
                         ),
                       ],

@@ -39,7 +39,7 @@ class _AlertaRojaState extends State<AlertaRoja> {
                     width: width / 1.5,
                     child: Container(
                       child: Image(
-                        image: AssetImage('assets/Logo/Usuaria.png'),
+                        image: AssetImage('assets/IconosMarker/Lu_red.png'),
                       ),
                     ),
                   ),

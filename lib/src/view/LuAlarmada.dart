@@ -41,7 +41,7 @@ class _LuAlarmadaState extends State<LuAlarmada> {
                     width: width / 1.5,
                     child: Container(
                       child: Image(
-                        image: AssetImage('assets/Logo/Usuaria.png'),
+                        image: AssetImage('assets/IconosMarker/Lu_yellow.png'),
                       ),
                     ),
                   ),
@@ -98,7 +98,9 @@ class _LuAlarmadaState extends State<LuAlarmada> {
                                     child: Container(
                                       width: width / 3,
                                       height: height / 20,
-                                      child: Text(
+                                      child: Center(
+                                        child:
+                                      Text(
                                         "Contactos de confianza",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -110,7 +112,7 @@ class _LuAlarmadaState extends State<LuAlarmada> {
                                     ),
                                   )),
                               ),
-                            ),
+                            )),
                           ],
                         ),
                         Column(
@@ -135,7 +137,8 @@ class _LuAlarmadaState extends State<LuAlarmada> {
                                     child: Container(
                                       width: width / 3,
                                       height: height / 20,
-                                      child: Text(
+                                      child: Center(child: 
+                                      Text(
                                         "Llamada de emergencia",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -147,7 +150,7 @@ class _LuAlarmadaState extends State<LuAlarmada> {
                                     ),
                                   )),
                               ),
-                            ),
+                            )),
                           ],
                         ),
                       ],
