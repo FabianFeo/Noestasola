@@ -71,7 +71,7 @@ class _BotonPanicoState extends State<BotonPanico> {
                                 child: Container(
                                   child: Image(
                                     image:
-                                        AssetImage('assets/Logo/Usuaria.png'),
+                                        AssetImage('assets/Logo/Lu_yellow.png'),
                                   ),
                                 ),
                               ),
@@ -92,7 +92,7 @@ class _BotonPanicoState extends State<BotonPanico> {
                               ),
                             )
                           ],
-                        ),                       
+                        ),
                         Column(
                           children: [
                             GestureDetector(
@@ -100,8 +100,7 @@ class _BotonPanicoState extends State<BotonPanico> {
                                 width: width / 3.5,
                                 child: Container(
                                   child: Image(
-                                    image:
-                                        AssetImage('assets/Logo/Usuaria.png'),
+                                    image: AssetImage('assets/Logo/Lu_red.png'),
                                   ),
                                 ),
                               ),
