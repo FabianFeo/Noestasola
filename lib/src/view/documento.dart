@@ -1,5 +1,6 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/view/ScannerCara.dart';
+import 'package:NoEstasSola/src/view/index.dart';
 import 'package:beauty_textfield/beauty_textfield.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:camera/camera.dart';
@@ -178,12 +179,9 @@ class _DocumentoState extends State<Documento> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ScannerRostro(
-                                    cameraDescription: cameras.firstWhere(
-                                      (CameraDescription camera) =>
-                                          camera.lensDirection ==
-                                          CameraLensDirection.front,
-                                    ),
+                              builder: (context) => Index(
+                                    
+                                    
                                   )));
                     },
                     child: Card(

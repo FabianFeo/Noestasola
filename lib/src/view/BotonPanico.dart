@@ -71,7 +71,7 @@ class _BotonPanicoState extends State<BotonPanico> {
                                 child: Container(
                                   child: Image(
                                     image:
-                                        AssetImage('assets/IconosMarker/Lu_yellow.png'),
+                                        AssetImage('assets/IconosMarker/Lu_yellow_sombra.png'),
                                   ),
                                 ),
                               ),
