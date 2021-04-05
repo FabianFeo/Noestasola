@@ -19,4 +19,8 @@ class ViajesServiceCollection {
   Stream<DocumentSnapshot> getCambiosViaje() {
     return firestore.collection('viajes').doc(viaje.uiid).snapshots();
   }
+
+  Stream<QuerySnapshot> getHistorialViaje() {
+    return firestore.collection('viajes').where('idCliente',isEqualTo: user.userUuid).snapshots();
+  }
 }

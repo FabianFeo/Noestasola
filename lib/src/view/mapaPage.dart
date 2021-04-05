@@ -3,6 +3,7 @@ import 'package:NoEstasSola/src/service/contactosService.dart';
 import 'package:NoEstasSola/src/service/viajeServicecollection.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
 import 'package:google_place/google_place.dart';
 import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class MapaPage extends StatefulWidget {
 class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   String _myActivity;
   String dropDownValue;
+  BitmapDescriptor myIcon;
   Viaje _viaje = Viaje();
   ViajesServiceCollection _viajesServiceCollection = ViajesServiceCollection();
   double totalDistancia = 0;
@@ -59,6 +61,15 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   double width = 0;
   String dropdownValue;
   ContactosService _contactosService = ContactosService();
+  @override
+  void initState() { 
+    super.initState();
+    BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(5, 5)), 'assets/IconosMarker/Markers.png')
+        .then((onValue) {
+      myIcon = onValue;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
@@ -1102,14 +1113,17 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
       if (value != null) {
         setState(() {
           _markers.add(new Marker(
+            icon: myIcon,
               markerId: MarkerId(idDestination),
               position: LatLng(value.result.geometry.location.lat,
                   value.result.geometry.location.lng)));
         });
         await googlePlace.details.get(idStart).then((value2) async {
           if (value2 != null) {
+            
             setState(() {
               _markers.add(new Marker(
+                icon: myIcon,
                   markerId: MarkerId(idStart),
                   position: LatLng(value2.result.geometry.location.lat,
                       value2.result.geometry.location.lng)));

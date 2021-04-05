@@ -1,3 +1,5 @@
+import 'package:NoEstasSola/src/service/viajeServicecollection.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class HistorialViajes extends StatefulWidget {
@@ -8,6 +10,7 @@ class HistorialViajes extends StatefulWidget {
 }
 
 class _HistorialViajesState extends State<HistorialViajes> {
+  ViajesServiceCollection _viajesServiceCollection = ViajesServiceCollection();
   double height = 0;
   double width = 0;
   @override
@@ -39,69 +42,83 @@ class _HistorialViajesState extends State<HistorialViajes> {
                           fontWeight: FontWeight.w500),
                     )),
                   ),
-                  Card(
-                    color: Color.fromRGBO(101, 79, 168, 1),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    margin: EdgeInsets.all(30),
-                    child: Container(
-                      height: height / 6,
-                      child: Row(
-                        children: [
-                          Container(
-                            width: width / 2,
-                            child: Column(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: height / 40, left: width / 19),
-                                  width: width / 1.5,
-                                  child: Text(
-                                    'Fecha',
-                                    style: TextStyle(
-                                      color: Colors.white,
+                  StreamBuilder(
+                      stream: _viajesServiceCollection.getHistorialViaje(),
+                      builder: (_, AsyncSnapshot<QuerySnapshot> response) {
+                        return response.hasData
+                            ? ListView.builder(
+                                itemCount: response.data.docs.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Card(
+                                    color: Color.fromRGBO(101, 79, 168, 1),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
                                     ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: height / 40, left: width / 19),
-                                  width: width / 1.5,
-                                  child: Text(
-                                    'Origen',
-                                    style: TextStyle(
-                                      color: Colors.white,
+                                    margin: EdgeInsets.all(30),
+                                    child: Container(
+                                      height: height / 6,
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: width / 2,
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: height / 40,
+                                                      left: width / 19),
+                                                  width: width / 1.5,
+                                                  child: Text(
+                                                    'Fecha: ${response.data.docs[index].data()["date"].toString().split("T")[0]}',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: height / 40,
+                                                      left: width / 19),
+                                                  width: width / 1.5,
+                                                  child: Text(
+                                                    'Origen: ${response.data.docs[index].data()["direccionInicio"].toString()}',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: height / 40,
+                                                      left: width / 19),
+                                                  width: width / 1.5,
+                                                  child: Text(
+                                                    'Destino: ${response.data.docs[index].data()["direccionDestino"].toString()}',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            child: Text(
+                                              'Valor: ${response.data.docs[index].data()["valor"].toString()}',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: height / 40, left: width / 19),
-                                  width: width / 1.5,
-                                  child: Text(
-                                    'Destino',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Text(
-                              'Valor',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                                  );
+                                },
+                              )
+                            : CircularProgressIndicator();
+                      })
                 ],
               ),
             ),
