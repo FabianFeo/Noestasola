@@ -65,7 +65,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   void initState() { 
     super.initState();
     BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(size: Size(5, 5)), 'assets/IconosMarker/Markers.png')
+        ImageConfiguration(size: Size(5, 5)), 'assets/IconosMarker/Marker_1.png')
         .then((onValue) {
       myIcon = onValue;
     });

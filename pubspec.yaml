@@ -83,6 +83,10 @@ flutter:
     - assets/IconosMarker/Lu_yellow.png
     - assets/IconosMarker/Markers.png
     - assets/IconosMarker/Lu_yellow_sombra.png
+    - assets/IconosMarker/Marker_1.png
+    - assets/IconosMarker/Marker_2.png
+    - assets/IconosMarker/Marker_3.png
+    - assets/IconosMarker/Marker_4.png
 
   fonts:
     - family: Gotham

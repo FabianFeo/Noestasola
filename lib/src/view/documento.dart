@@ -175,13 +175,15 @@ class _DocumentoState extends State<Documento> {
                     onPressed: () {
                      
 
-                      Navigator.of(context).pop();
-                      Navigator.push(
+                     Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Index(
-                                    
-                                    
+                              builder: (context) => ScannerRostro(
+                                    cameraDescription: cameras.firstWhere(
+                                      (CameraDescription camera) =>
+                                          camera.lensDirection ==
+                                          CameraLensDirection.front,
+                                    ),
                                   )));
                     },
                     child: Card(
