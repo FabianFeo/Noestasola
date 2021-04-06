@@ -7,7 +7,6 @@ import 'package:NoEstasSola/src/view/Configuracion.dart';
 import 'package:NoEstasSola/src/view/Contactoconfianza.dart';
 import 'package:NoEstasSola/src/view/Historialviajes.dart';
 import 'package:NoEstasSola/src/view/Mensajes.dart';
-
 import 'package:NoEstasSola/src/view/Perfil.dart';
 import 'package:NoEstasSola/src/view/carga.dart';
 import 'package:NoEstasSola/src/view/mapaPage.dart';

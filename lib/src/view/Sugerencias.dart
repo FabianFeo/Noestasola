@@ -1,5 +1,7 @@
+import 'package:NoEstasSola/src/service/sugerenciasService.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Sugerencias extends StatefulWidget {
   Sugerencias({Key key}) : super(key: key);
@@ -11,14 +13,18 @@ class Sugerencias extends StatefulWidget {
 class _SugerenciasState extends State<Sugerencias> {
   double height = 0;
   double width = 0;
+  String sugerencia;
+
+  TextEditingController _controller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
+        child: Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Stack(
           children: [
             Container(
               margin: EdgeInsets.only(top: height / 2),
@@ -69,6 +75,10 @@ class _SugerenciasState extends State<Sugerencias> {
                               width: width / 1.3,
                               child: Center(
                                 child: TextField(
+                                  controller: _controller,
+                                  onChanged: (value) {
+                                    this.sugerencia = value;
+                                  },
                                   maxLines: 5,
                                   decoration: InputDecoration(
                                     labelText:
@@ -93,7 +103,24 @@ class _SugerenciasState extends State<Sugerencias> {
                           child: BouncingWidget(
                               duration: Duration(milliseconds: 100),
                               scaleFactor: 1.5,
-                              onPressed: () {},
+                              onPressed: () {
+                                SugerenciasService sugerenciasService =
+                                    SugerenciasService();
+                                sugerenciasService
+                                    .pushSugerencia(sugerencia)
+                                    .then((value) => {
+                                          Fluttertoast.showToast(
+                                              msg:
+                                                  'Se asigno la jornada al empleado',
+                                              toastLength: Toast.LENGTH_LONG,
+                                              gravity: ToastGravity.BOTTOM,
+                                              timeInSecForIosWeb: 3,
+                                              backgroundColor: Colors.green,
+                                              textColor: Colors.white,
+                                              fontSize: 16.0),
+                                          _controller.text="",
+                                        });
+                              },
                               child: Card(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50.0),
@@ -122,6 +149,6 @@ class _SugerenciasState extends State<Sugerencias> {
           ],
         ),
       ),
-    );
+    ));
   }
 }
