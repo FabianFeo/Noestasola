@@ -49,6 +49,7 @@ dependencies:
   uuid: 3.0.2
   bitmap: ^0.1.2
   fluttertoast: ^8.0.3
+  image_picker: ^0.7.3
   
   
 dependency_overrides:
@@ -88,6 +89,7 @@ flutter:
     - assets/IconosMarker/Marker_2.png
     - assets/IconosMarker/Marker_3.png
     - assets/IconosMarker/Marker_4.png
+    - assets/video/Lu_carga.mp4
 
   fonts:
     - family: Gotham

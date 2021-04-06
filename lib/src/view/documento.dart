@@ -1,6 +1,5 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
-import 'package:NoEstasSola/src/view/ScannerCara.dart';
-import 'package:NoEstasSola/src/view/index.dart';
+import 'package:NoEstasSola/src/view/cedulaUser.dart';
 import 'package:beauty_textfield/beauty_textfield.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:camera/camera.dart';
@@ -69,7 +68,7 @@ class _DocumentoState extends State<Documento> {
                         style: TextStyle(
                           color: Color.fromRGBO(101, 79, 168, 1),
                           fontWeight: FontWeight.w400,
-                           fontSize: height / 40,
+                          fontSize: height / 40,
                         ),
                       ),
                     )),
@@ -168,23 +167,14 @@ class _DocumentoState extends State<Documento> {
                             width: width,
                           ))),
                 ),
-                
                 BouncingWidget(
                     duration: Duration(milliseconds: 100),
                     scaleFactor: 1.5,
                     onPressed: () {
-                     
-
-                     Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ScannerRostro(
-                                    cameraDescription: cameras.firstWhere(
-                                      (CameraDescription camera) =>
-                                          camera.lensDirection ==
-                                          CameraLensDirection.front,
-                                    ),
-                                  )));
+                              builder: (context) => DocumentosDriver()));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
