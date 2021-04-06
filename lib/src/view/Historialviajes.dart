@@ -29,6 +29,7 @@ class _HistorialViajesState extends State<HistorialViajes> {
               ),
             ),
             Container(
+              height: height,
               child: Column(
                 children: [
                   Container(
@@ -46,77 +47,104 @@ class _HistorialViajesState extends State<HistorialViajes> {
                       stream: _viajesServiceCollection.getHistorialViaje(),
                       builder: (_, AsyncSnapshot<QuerySnapshot> response) {
                         return response.hasData
-                            ? ListView.builder(
-                                itemCount: response.data.docs.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Card(
-                                    color: Color.fromRGBO(101, 79, 168, 1),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                    margin: EdgeInsets.all(30),
+                            ? Center(
+                                child: SingleChildScrollView(
                                     child: Container(
-                                      height: height / 6,
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            width: width / 2,
-                                            child: Column(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      top: height / 40,
-                                                      left: width / 19),
-                                                  width: width / 1.5,
-                                                  child: Text(
-                                                    'Fecha: ${response.data.docs[index].data()["date"].toString().split("T")[0]}',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      top: height / 40,
-                                                      left: width / 19),
-                                                  width: width / 1.5,
-                                                  child: Text(
-                                                    'Origen: ${response.data.docs[index].data()["direccionInicio"].toString()}',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      top: height / 40,
-                                                      left: width / 19),
-                                                  width: width / 1.5,
-                                                  child: Text(
-                                                    'Destino: ${response.data.docs[index].data()["direccionDestino"].toString()}',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              'Valor: ${response.data.docs[index].data()["valor"].toString()}',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w500,
+                                        height: height*0.8 ,
+                                        width: width ,
+                                        child: ListView.builder(
+                                          itemCount: response.data.docs.length,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Card(
+                                              color: Color.fromRGBO(
+                                                  101, 79, 168, 1),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
                                               ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              )
+                                              margin: EdgeInsets.all(30),
+                                              child: Container(
+                                                height: height / 3.5,
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      width: width / 2,
+                                                      child: Column(
+                                                        children: [
+                                                          Container(
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                                    top:
+                                                                        height /
+                                                                            40,
+                                                                    left:
+                                                                        width /
+                                                                            19),
+                                                            width: width / 1.5,
+                                                            child: Text(
+                                                              'Fecha: ${response.data.docs[index].data()["date"].toString().split("T")[0]}',
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                                    top:
+                                                                        height /
+                                                                            40,
+                                                                    left:
+                                                                        width /
+                                                                            19),
+                                                            width: width / 1.5,
+                                                            child: Text(
+                                                              'Origen: ${response.data.docs[index].data()["direccionInicio"].toString()}',
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                                    top:
+                                                                        height /
+                                                                            40,
+                                                                    left:
+                                                                        width /
+                                                                            19),
+                                                            width: width / 1.5,
+                                                            child: Text(
+                                                              'Destino: ${response.data.docs[index].data()["direccionDestino"].toString()}',
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Text(
+                                                        'Valor: ${response.data.docs[index].data()["valor"].toString()}',
+                                                        style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ))))
                             : CircularProgressIndicator();
                       })
                 ],
