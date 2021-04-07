@@ -50,7 +50,7 @@ class _DocumentosDriverState extends State<DocumentosDriver> {
                 Container(
                   child: Center(
                     child: Text(
-                      'Documentos de la conductora',
+                      'Documento requerido',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: height / 20,
@@ -75,7 +75,7 @@ class _DocumentosDriverState extends State<DocumentosDriver> {
                           ),
                           child: Center(
                             child: Image.asset(
-                              'assets/Logo/Conductora.png',
+                              'assets/Logo/Usuaria.png',
                               height: height / 11.5,
                             ),
                           )),

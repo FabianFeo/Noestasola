@@ -59,7 +59,7 @@ class _CedulaDriverState extends State<CedulaDriver> {
               height: height / 3,
               child: Image(
                 image: licenceImage == null
-                    ? AssetImage('assets/Logo/Conductora.png')
+                    ? AssetImage('assets/Logo/Usuaria.png')
                     : FileImage(File(licenceImage.path)),
               ),
             )),
@@ -92,7 +92,7 @@ class _CedulaDriverState extends State<CedulaDriver> {
               height: height / 3,
               child: Image(
                 image: licenceImage2 == null
-                    ? AssetImage('assets/Logo/Conductora.png')
+                    ? AssetImage('assets/Logo/Usuaria.png')
                     : FileImage(File(licenceImage2.path)),
               ),
             )),
