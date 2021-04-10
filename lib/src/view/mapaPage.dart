@@ -33,6 +33,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   bool confirmationCard = false;
   bool dondeestas = true;
   bool showFinalcard = false;
+  bool showEstoyLista = false;
   String idDestination;
   String idStart;
   TextEditingController controller = TextEditingController();
@@ -62,14 +63,15 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   String dropdownValue;
   ContactosService _contactosService = ContactosService();
   @override
-  void initState() { 
+  void initState() {
     super.initState();
-    BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(size: Size(5, 5)), 'assets/IconosMarker/Marker_1.png')
+    BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(5, 5)),
+            'assets/IconosMarker/Marker_1.png')
         .then((onValue) {
       myIcon = onValue;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
@@ -658,366 +660,540 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
               showFinalcard
                   ? StreamBuilder(
                       stream: _viajesServiceCollection.getCambiosViaje(),
-                      builder: (_, AsyncSnapshot<DocumentSnapshot> snapshotViaje) {
+                      builder:
+                          (_, AsyncSnapshot<DocumentSnapshot> snapshotViaje) {
                         return Container(
                             margin: EdgeInsets.only(top: height / 2),
                             child: Center(
-                              child: Container(
-                                height: height / 2.3,
-                                width: width / 1.05,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                  color: Color.fromRGBO(207, 197, 239, 1),
-                                ),
                                 child: Container(
-                                  child: SingleChildScrollView(
-                                  child: snapshotViaje.hasData && snapshotViaje.data.exists?  Column(
-                                    children: [
-                                      Container(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              child: Column(
-                                                children: [
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        top: height / 155),
-                                                    child: Row(
-                                                      children: [
-                                                        Image(
-                                                          height: height / 10,
-                                                          image: AssetImage(
-                                                              'assets/Logo/Lu_logo.png'),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Row(
+                              height: height / 2.3,
+                              width: width / 1.05,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
+                                ),
+                                color: Color.fromRGBO(207, 197, 239, 1),
+                              ),
+                              child: Container(
+                                child: SingleChildScrollView(
+                                  child:
+                                      snapshotViaje.hasData &&
+                                              snapshotViaje.data.exists
+                                          ? Column(
+                                              children: [
+                                                Container(
+                                                  child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [                                                      
-                                                      Column(
-                                                        children: [
-                                                          Container(
-                                                            height: height /22,
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    right:
-                                                                        width /
-                                                                            3),
-                                                            child: Text(
-                                                              'Fecha: ',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
+                                                            .center,
+                                                    children: [
+                                                      Container(
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              margin: EdgeInsets
+                                                                  .only(
+                                                                      top: height /
+                                                                          155),
+                                                              child: Row(
+                                                                children: [
+                                                                  Image(
+                                                                    height:
+                                                                        height /
+                                                                            10,
+                                                                    image: AssetImage(
+                                                                        'assets/Logo/Lu_logo.png'),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ),
-                                                          ),
-                                                          Container(
-                                                            height: height /22,
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    right:
-                                                                        width /
-                                                                            11),
-                                                            child: Text(
-                                                              'Direccion de recogida:',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Column(
+                                                                  children: [
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      margin: EdgeInsets.only(
+                                                                          right:
+                                                                              width / 3),
+                                                                      child:
+                                                                          Text(
+                                                                        'Fecha: ',
+                                                                        textAlign:
+                                                                            TextAlign.left,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      margin: EdgeInsets.only(
+                                                                          right:
+                                                                              width / 11),
+                                                                      child:
+                                                                          Text(
+                                                                        'Direccion de recogida:',
+                                                                        textAlign:
+                                                                            TextAlign.left,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      margin: EdgeInsets.only(
+                                                                          right:
+                                                                              width / 10),
+                                                                      child:
+                                                                          Text(
+                                                                        'Direccion de Llegada:',
+                                                                        textAlign:
+                                                                            TextAlign.left,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      margin: EdgeInsets.only(
+                                                                          right:
+                                                                              width / 6),
+                                                                      child:
+                                                                          Text(
+                                                                        'Metodo de Pago:',
+                                                                        textAlign:
+                                                                            TextAlign.left,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      margin: EdgeInsets.only(
+                                                                          right:
+                                                                              width / 3.8),
+                                                                      child:
+                                                                          Text(
+                                                                        'Valor total:',
+                                                                        textAlign:
+                                                                            TextAlign.left,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      margin: EdgeInsets.only(
+                                                                          right:
+                                                                              width / 3),
+                                                                      child:
+                                                                          Text(
+                                                                        'Estado:',
+                                                                        textAlign:
+                                                                            TextAlign.left,
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Column(
+                                                                  children: [
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      width:
+                                                                          width /
+                                                                              2.5,
+                                                                      child:
+                                                                          Text(
+                                                                        snapshotViaje.data.data()['date'].split('T')[0] +
+                                                                            '',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      width:
+                                                                          width /
+                                                                              2.5,
+                                                                      child:
+                                                                          Text(
+                                                                        snapshotViaje.data.data()['direccionInicio'] +
+                                                                            '',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      width:
+                                                                          width /
+                                                                              2.5,
+                                                                      child:
+                                                                          Text(
+                                                                        snapshotViaje.data.data()['direccionDestino'] +
+                                                                            '',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      width:
+                                                                          width /
+                                                                              2.5,
+                                                                      child:
+                                                                          Text(
+                                                                        snapshotViaje.data.data()['metodoPago'] +
+                                                                            '',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      width:
+                                                                          width /
+                                                                              2.5,
+                                                                      child:
+                                                                          Text(
+                                                                        snapshotViaje.data.data()['valor'] +
+                                                                            '',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height:
+                                                                          height /
+                                                                              22,
+                                                                      width:
+                                                                          width /
+                                                                              2.5,
+                                                                      child:
+                                                                          Text(
+                                                                        snapshotViaje.data.data()['estado'] +
+                                                                            '',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color: Color.fromRGBO(
+                                                                              102,
+                                                                              51,
+                                                                              204,
+                                                                              1),
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                )
+                                                              ],
                                                             ),
-                                                          ),
-                                                          Container(
-                                                            height: height /22,
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    right:
-                                                                        width /
-                                                                            10),
-                                                            child: Text(
-                                                              'Direccion de Llegada:',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: height /22,
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    right:
-                                                                        width /
-                                                                            6),
-                                                            child: Text(
-                                                              'Metodo de Pago:',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: height /22,
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    right:
-                                                                        width /
-                                                                            3.8),
-                                                            child: Text(
-                                                              'Valor total:',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: height /22,
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    right:
-                                                                        width /
-                                                                            3),
-                                                            child: Text(
-                                                              'Estado:',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Column(
-                                                        children: [
-                                                          Container(
-                                                            height: height /22,
-                                                             width: width /2.5,
-                                                            child: Text(
-                                                              snapshotViaje.data.data()['date'].split(
-                                                                      'T')[0] +
-                                                                  '',
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: height /22,
-                                                            width: width /2.5,
-                                                            child: Text(
-                                                              snapshotViaje.data.data()['direccionInicio'] +
-                                                                  '',
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: height /22,
-                                                             width: width /2.5,
-                                                            child: Text(
-                                                              snapshotViaje.data.data()['direccionDestino'] +
-                                                                  '',
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: height /22,
-                                                             width: width /2.5,
-                                                            child: Text(
-                                                              snapshotViaje.data.data()['metodoPago'] +
-                                                                  '',
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: height /22,
-                                                             width: width /2.5,
-                                                            child: Text(
-                                                              snapshotViaje.data.data()['valor'] + '',
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          
-                                                          Container(
-                                                            height: height /22,
-                                                             width: width /2.5,
-                                                            child: Text(
-                                                              snapshotViaje.data.data()['estado'] + '',
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        102,
-                                                                        51,
-                                                                        204,
-                                                                        1),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       )
                                                     ],
                                                   ),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        child: BouncingWidget(
-                                            duration:
-                                                Duration(milliseconds: 100),
-                                            scaleFactor: 1.5,
-                                            onPressed: () {},
-                                            child: Card(
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(50.0),
-                                              ),
-                                              color: Color.fromRGBO(
-                                                  101, 79, 168, 1),
-                                              child: Container(
-                                                width: width / 2.8,
-                                                height: height / 25,
-                                                child: Text(
-                                                  "Cancelar",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          255, 255, 255, 1),
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 25),
                                                 ),
-                                              ),
-                                            )),
-                                      )
-                                    ],
-                                  ):CircularProgressIndicator(),
+                                                Container(
+                                                  child: BouncingWidget(
+                                                      duration: Duration(
+                                                          milliseconds: 100),
+                                                      scaleFactor: 1.5,
+                                                      onPressed: () {},
+                                                      child: Card(
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      50.0),
+                                                        ),
+                                                        color: Color.fromRGBO(
+                                                            101, 79, 168, 1),
+                                                        child: Container(
+                                                          width: width / 2.8,
+                                                          height: height / 25,
+                                                          child: Text(
+                                                            "Cancelar",
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                color: Color
+                                                                    .fromRGBO(
+                                                                        255,
+                                                                        255,
+                                                                        255,
+                                                                        1),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 25),
+                                                          ),
+                                                        ),
+                                                      )),
+                                                )
+                                              ],
+                                            )
+                                          : CircularProgressIndicator(),
                                 ),
                               ),
                             )));
                       },
                     )
                   : Container(),
+              showEstoyLista
+                  ? Card()
+                  : Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: Row(
+                              children: [
+                                Container(
+                                    margin: EdgeInsets.only(top: height / 2.8),
+                                    child: Center(
+                                        child: Container(
+                                      height: height / 2.9,
+                                      width: width / 1.15,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(15),
+                                        ),
+                                        color: Color.fromRGBO(207, 197, 239, 1),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                top: height / 150),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Image(
+                                                  height: height / 9,
+                                                  image: AssetImage(
+                                                      'assets/Logo/Lu_logo.png'),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Container(
+                                                    height: height / 22,
+                                                    margin: EdgeInsets.only(
+                                                        right: width / 6),
+                                                    child: Text(
+                                                      '  Conductora:',
+                                                      textAlign: TextAlign.left,
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            102, 51, 204, 1),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: height / 22,
+                                                    margin: EdgeInsets.only(
+                                                        right: width / 4.5),
+                                                    child: Text(
+                                                      'Modelo:',
+                                                      textAlign: TextAlign.left,
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            102, 51, 204, 1),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: height / 22,
+                                                    margin: EdgeInsets.only(
+                                                        right: width / 3.8),
+                                                    child: Text(
+                                                      'Placa:',
+                                                      textAlign: TextAlign.left,
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            102, 51, 204, 1),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          Container(
+                                              child: BouncingWidget(
+                                                  duration: Duration(
+                                                      milliseconds: 100),
+                                                  scaleFactor: 1.5,
+                                                  onPressed: () {},
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50.0),
+                                                    ),
+                                                    color: Color.fromRGBO(
+                                                        101, 79, 168, 1),
+                                                    child: Container(
+                                                      width: width / 4,
+                                                      height: height / 30,
+                                                      child: Text(
+                                                        "Lista.",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    255,
+                                                                    255,
+                                                                    255,
+                                                                    1),
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 17),
+                                                      ),
+                                                    ),
+                                                  )))
+                                        ],
+                                      ),
+                                    )))
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
             ],
           ),
         ),
@@ -1114,17 +1290,16 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
       if (value != null) {
         setState(() {
           _markers.add(new Marker(
-            icon: myIcon,
+              icon: myIcon,
               markerId: MarkerId(idDestination),
               position: LatLng(value.result.geometry.location.lat,
                   value.result.geometry.location.lng)));
         });
         await googlePlace.details.get(idStart).then((value2) async {
           if (value2 != null) {
-            
             setState(() {
               _markers.add(new Marker(
-                icon: myIcon,
+                  icon: myIcon,
                   markerId: MarkerId(idStart),
                   position: LatLng(value2.result.geometry.location.lat,
                       value2.result.geometry.location.lng)));

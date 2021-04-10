@@ -93,7 +93,7 @@ flutter:
     - assets/IconosMarker/Marker_3.png
     - assets/IconosMarker/Marker_4.png
     - assets/video/Lu_carga.mp4
-
+    - assets/Logo/Lu_carga_transparente.gif
   fonts:
     - family: Gotham
       fonts: 
