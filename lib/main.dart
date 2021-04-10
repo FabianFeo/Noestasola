@@ -1,4 +1,3 @@
-
 import 'package:NoEstasSola/src/service/faceNetService.dart';
 import 'package:NoEstasSola/src/service/mlVisionService.dart';
 import 'package:NoEstasSola/src/view/carga.dart';
@@ -13,14 +12,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
- 
   @override
   Widget build(BuildContext context) {
     Firebase.initializeApp().then((value) async {
       SystemChrome.setPreferredOrientations([
         DeviceOrientation.portraitUp,
       ]);
-  
+
       FaceNetService _faceNetService = FaceNetService();
       MLVisionService _mlVisionService = MLVisionService();
       await _faceNetService.loadModel();

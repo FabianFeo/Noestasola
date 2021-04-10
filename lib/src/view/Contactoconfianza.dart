@@ -3,6 +3,7 @@ import 'package:NoEstasSola/src/view/FormularioConfianza.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:NoEstasSola/src/service/smsService.dart';
 
 class ContactoConfianza extends StatefulWidget {
   ContactoConfianza({Key key}) : super(key: key);
@@ -16,6 +17,36 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
   double width = 0;
   var mostrarPlus = true;
   ContactosService _contactosService = ContactosService();
+
+  createPopUp(BuildContext context, nameContact, contact) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Compartiras un mensaje personalizado via Whatsapp con información sobre tu ubicación actual a " +
+                nameContact +
+                " con numero: " +
+                contact),
+            actions: <Widget>[
+              MaterialButton(
+                  elevation: 5.0,
+                  color: Colors.redAccent,
+                  child: Text("COMPARTIR UBICACIÓN"),
+                  onPressed: () {
+                    var contactFinal = "+57"+contact;
+                    whatsappSMS(contactFinal);
+                  }),
+              MaterialButton(
+                  elevation: 5.0,
+                  child: Text("CANCELAR"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -60,18 +91,35 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                                         child: Row(
                                           children: [
                                             Container(
-                                                height: height / 2,
+                                              child: Container(
                                                 width: width / 1.5,
-                                                child: Container(
-                                                  width: width / 1.5,
-                                                  child: Text(
-                                                    '${snapshot.data.docs[index].data()["nombre"]}  ${snapshot.data.docs[index].data()["telefono"]}',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                    ),
+                                                child: Text(
+                                                  '${snapshot.data.docs[index].data()["nombre"]}  ${snapshot.data.docs[index].data()["telefono"]}',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 18,
                                                   ),
-                                                ))
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: width - (width / 1.2),
+                                              child: GestureDetector(
+                                                child: Icon(
+                                                  Icons.sms,
+                                                  color: Colors.white,
+                                                ),
+                                                onTap: () {
+                                                  var nameContact =
+                                                      "${snapshot.data.docs[index].data()["nombre"]}";
+                                                  var contact =
+                                                      "${snapshot.data.docs[index].data()["telefono"]}";
+                                                  createPopUp(context,
+                                                      nameContact, contact);
+                                                },
+                                              ),
+                                            )
                                           ],
                                         ),
                                       ),
