@@ -110,7 +110,7 @@ class _IndexState extends State<Index> {
 
               children: <Widget>[
                 Container(
-                  height: height / 6,
+                  height: height / 5.5,
                   child: DrawerHeader(
                     child: Container(                     
                       child: Column(

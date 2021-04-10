@@ -107,13 +107,12 @@ class _BlogState extends State<Blog> {
                       margin: EdgeInsets.all(30),
                       child: Container(
                         height: height / 6,
-                        child: Row(
+                        child: Row(                          
                           children: [
                             Container(
-                              width: width / 1.179,
+                              width: width / 1.36 ,
                               child: Center(
                                 child: Text('Publicidad',
-                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: height / 20,
                                 color: Colors.white,

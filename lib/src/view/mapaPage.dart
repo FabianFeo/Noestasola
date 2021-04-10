@@ -672,6 +672,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                   color: Color.fromRGBO(207, 197, 239, 1),
                                 ),
                                 child: Container(
+                                  child: SingleChildScrollView(
                                   child: snapshotViaje.hasData && snapshotViaje.data.exists?  Column(
                                     children: [
                                       Container(
@@ -1013,7 +1014,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                   ):CircularProgressIndicator(),
                                 ),
                               ),
-                            ));
+                            )));
                       },
                     )
                   : Container(),

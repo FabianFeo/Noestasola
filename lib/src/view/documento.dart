@@ -178,13 +178,7 @@ class _DocumentoState extends State<Documento> {
                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ScannerRostro(
-                                    cameraDescription: cameras.firstWhere(
-                                      (CameraDescription camera) =>
-                                          camera.lensDirection ==
-                                          CameraLensDirection.front,
-                                    ),
-                                  )));
+                              builder: (context) => Index()));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
