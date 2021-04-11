@@ -201,36 +201,6 @@ class _ContactoConfianzaState extends State<ContactoConfianza> {
                     ),
               ),
               Container(
-                child: BouncingWidget(
-                    duration: Duration(milliseconds: 100),
-                    scaleFactor: 1.5,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => FormularioTerminosCondiciones()));
-                    },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                      color: Colors.greenAccent,
-                      child: Container(
-                        width: width / 2,
-                        height: height / 20,
-                        child: Text(
-                          "Prueba",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Color.fromRGBO(255, 255, 255, 1),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30),
-                        ),
-                      ),
-                    ),
-                    ),
-              ),
-              Container(
                   child: Image.asset(
                 'assets/Logo/Lu_logo.png',
                 height: height / 5,
