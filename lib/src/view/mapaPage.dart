@@ -1066,7 +1066,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                           Container(
                             child: Row(
                               children: [
-                                Container(
+                                /*Container(
                                     margin: EdgeInsets.only(top: height / 2.8),
                                     child: Center(
                                         child: Container(
@@ -1187,7 +1187,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                   )))
                                         ],
                                       ),
-                                    )))
+                                    )))*/
                               ],
                             ),
                           ),
