@@ -1,4 +1,8 @@
+import 'dart:async';
+
+import 'package:NoEstasSola/src/service/emergecySharePreference.dart';
 import 'package:flutter_sms/flutter_sms.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'dart:math';
@@ -20,8 +24,7 @@ whatsappSMS(contactFinal) async {
   int max = 99999;
   var randomizer = new Random();
   var rNum = min + randomizer.nextInt(max - min);
-
-
+  pushCodeEmergency(rNum.toString());
   var message = _user.firstName +
       " nesecita tu ayuda, ingresa a este link con el siguiente codigo: " +
       rNum.toString() +
@@ -33,10 +36,29 @@ whatsappSMS(contactFinal) async {
     throw "Could not launch $url";
 }
 
-Future pushCodeEmergency(rNum) {
-  return firestore
+Future pushCodeEmergency(String rNum) async {
+  EmergencySharePreference emergencySharePreference =
+      EmergencySharePreference();
+  Timer(Duration(minutes: 10), () {
+    emergencySharePreference.disableEmergency();
+    firestore.collection('emergencia').doc(rNum).delete();
+  });
+
+  await emergencySharePreference.activatedEmergency();
+
+  await firestore
       .collection('emergencia')
       .doc(rNum)
-      .collection('User')
-      .add({'Codigo Emergencia ': rNum, 'ID usuario': _user.firstName});
+      .set({'Codigo Emergencia ': rNum, 'ID usuario': _user.firstName});
+
+  Timer.periodic(Duration(seconds: 5), (timer) async {
+    if (await emergencySharePreference.getEmergency()) {
+      Position position = await Geolocator.getLastKnownPosition();
+      await firestore
+          .collection('emergencia')
+          .doc(rNum)
+          .collection("positions")
+          .add({'lat': position.latitude, 'lng': position.longitude});
+    }
+  });
 }

@@ -1,5 +1,7 @@
+import 'package:NoEstasSola/src/service/emergecySharePreference.dart';
 import 'package:NoEstasSola/src/view/LuAlarmada.dart';
 import 'package:NoEstasSola/src/view/LuPreocupada.dart';
+import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 
 class BotonPanico extends StatefulWidget {
@@ -70,8 +72,8 @@ class _BotonPanicoState extends State<BotonPanico> {
                                 width: width / 3.5,
                                 child: Container(
                                   child: Image(
-                                    image:
-                                        AssetImage('assets/IconosMarker/Lu_yellow_sombra.png'),
+                                    image: AssetImage(
+                                        'assets/IconosMarker/Lu_yellow_sombra.png'),
                                   ),
                                 ),
                               ),
@@ -92,7 +94,7 @@ class _BotonPanicoState extends State<BotonPanico> {
                               ),
                             )
                           ],
-                        ),                       
+                        ),
                         Column(
                           children: [
                             GestureDetector(
@@ -100,8 +102,8 @@ class _BotonPanicoState extends State<BotonPanico> {
                                 width: width / 3.5,
                                 child: Container(
                                   child: Image(
-                                    image:
-                                        AssetImage('assets/IconosMarker/Lu_red.png'),
+                                    image: AssetImage(
+                                        'assets/IconosMarker/Lu_red.png'),
                                   ),
                                 ),
                               ),
@@ -119,6 +121,37 @@ class _BotonPanicoState extends State<BotonPanico> {
                                     fontSize: height / 50,
                                     color: Colors.red,
                                     fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            Container(
+                              child: BouncingWidget(
+                                duration: Duration(milliseconds: 100),
+                                scaleFactor: 1.5,
+                                onPressed: () {
+                                  EmergencySharePreference
+                                      emergencySharePreference =
+                                      EmergencySharePreference();
+                                  emergencySharePreference.disableEmergency();
+                                },
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                  ),
+                                  color: Color.fromRGBO(101, 79, 168, 1),
+                                  child: Container(
+                                    width: width / 2,
+                                    height: height / 20,
+                                    child: Text(
+                                      "Desabilitar",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(255, 255, 255, 1),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30),
+                                    ),
+                                  ),
+                                ),
                               ),
                             )
                           ],
