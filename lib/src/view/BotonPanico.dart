@@ -1,7 +1,9 @@
 import 'package:NoEstasSola/src/service/emergecySharePreference.dart';
+import 'package:NoEstasSola/src/view/EstoyAqui.dart';
 import 'package:NoEstasSola/src/view/LuAlarmada.dart';
 import 'package:NoEstasSola/src/view/LuPreocupada.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class BotonPanico extends StatefulWidget {
@@ -123,7 +125,7 @@ class _BotonPanicoState extends State<BotonPanico> {
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
-                            Container(
+                            /*Container(
                               child: BouncingWidget(
                                 duration: Duration(milliseconds: 100),
                                 scaleFactor: 1.5,
@@ -153,7 +155,46 @@ class _BotonPanicoState extends State<BotonPanico> {
                                   ),
                                 ),
                               ),
-                            )
+                            ), BOTON PARA DESACTIVAR LAS REPETICIONES DEL GPS */
+                            Container(
+                              child: BouncingWidget(
+                                duration: Duration(milliseconds: 100),
+                                scaleFactor: 1.5,
+                                onPressed: () async {
+                                  var cameras = await availableCameras();
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => EstoyAqui(
+                                                cameraDescription:
+                                                    cameras.firstWhere(
+                                                  (CameraDescription camera) =>
+                                                      camera.lensDirection ==
+                                                      CameraLensDirection.front,
+                                                ),
+                                              )));
+                                },
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                  ),
+                                  color: Color.fromRGBO(101, 79, 168, 1),
+                                  child: Container(
+                                    width: width / 2,
+                                    height: height / 20,
+                                    child: Text(
+                                      "YA LLEGUE",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(255, 255, 255, 1),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ],
