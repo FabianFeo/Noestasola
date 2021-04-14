@@ -13,8 +13,8 @@ class ViajeActivoSharePreference {
     return json.decode(prefs.get('viajeActivo'));
   }
 
-  deletViaje() async {
+  Future deletViaje() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove('viajeActivo');
+    return prefs.remove('viajeActivo');
   }
 }

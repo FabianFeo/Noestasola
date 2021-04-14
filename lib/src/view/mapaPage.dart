@@ -30,11 +30,13 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   ViajesServiceCollection _viajesServiceCollection = ViajesServiceCollection();
   double totalDistancia = 0;
   bool showDetails = false;
-  bool servicePedido = false;
+  bool servicePedido = true;
   bool confirmationCard = false;
   bool dondeestas = true;
   bool showFinalcard = false;
   bool showEstoyLista = false;
+  bool iniciarViaje = false;
+  bool showCurrentPosition = true;
   String idDestination;
   String idStart;
   TextEditingController controller = TextEditingController();
@@ -54,7 +56,6 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   TextEditingController _controllerText = TextEditingController();
   TextEditingController _controllerText2 = TextEditingController();
   Set<Marker> _markers = Set();
-  bool showCurrentPosition = true;
   Map<String, dynamic> viaje;
   GooglePlace googlePlace =
       GooglePlace("AIzaSyDDjt2cJQi5BgxkYJZ7ZtrPTafZQICenXo");
@@ -64,7 +65,6 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   double height = 0;
   double width = 0;
   String dropdownValue;
-  bool iniciarViaje = false;
   ContactosService _contactosService = ContactosService();
   @override
   void initState() {
@@ -91,13 +91,14 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
         destination = LatLng(value['latDestino'], value['lanDestino']);
         _createPolylines();
       } else {
-        iniciarViaje = false;
         showDetails = false;
         servicePedido = true;
         confirmationCard = false;
-        dondeestas = false;
+        dondeestas = true;
         showFinalcard = false;
         showEstoyLista = false;
+        iniciarViaje = false;
+        showCurrentPosition = true;
       }
     });
   }
@@ -691,7 +692,8 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                   : Container(),
               showFinalcard
                   ? StreamBuilder(
-                      stream: _viajesServiceCollection.getCambiosViaje(),
+                      stream: _viajesServiceCollection
+                          .getCambiosViaje(viaje['uiid']),
                       builder:
                           (_, AsyncSnapshot<DocumentSnapshot> snapshotViaje) {
                         return Container(
@@ -1047,7 +1049,38 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                       duration: Duration(
                                                           milliseconds: 100),
                                                       scaleFactor: 1.5,
-                                                      onPressed: () {},
+                                                      onPressed: () {
+                                                        ViajesServiceCollection
+                                                            viajesServiceCollection =
+                                                            ViajesServiceCollection();
+                                                        viajesServiceCollection
+                                                            .cancelarViaje(
+                                                                viaje['uiid'])
+                                                            .then((value) =>
+                                                                viajeActivoSharePreference
+                                                                    .deletViaje()
+                                                                    .then(
+                                                                        (value) {
+                                                                  setState(() {
+                                                                    showDetails =
+                                                                        false;
+                                                                    servicePedido =
+                                                                        true;
+                                                                    confirmationCard =
+                                                                        false;
+                                                                    dondeestas =
+                                                                        true;
+                                                                    showFinalcard =
+                                                                        false;
+                                                                    showEstoyLista =
+                                                                        false;
+                                                                    iniciarViaje =
+                                                                        false;
+                                                                    showCurrentPosition =
+                                                                        true;
+                                                                  });
+                                                                }));
+                                                      },
                                                       child: Card(
                                                         shape:
                                                             RoundedRectangleBorder(

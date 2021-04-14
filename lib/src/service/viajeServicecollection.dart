@@ -1,5 +1,6 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/model/viaje.model.dart';
+import 'package:NoEstasSola/src/service/viajeActivoService.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 
@@ -17,8 +18,15 @@ class ViajesServiceCollection {
     return firestore.collection('viajes').doc(_viaje.uiid).set(viaje);
   }
 
-  Stream<DocumentSnapshot> getCambiosViaje() {
-    return firestore.collection('viajes').doc(_viaje.uiid).snapshots();
+  Future cancelarViaje(String viajeID) {
+    return firestore
+        .collection('viajes')
+        .doc(viajeID)
+        .update({'estado': 'Cancelado'});
+  }
+
+  Stream<DocumentSnapshot> getCambiosViaje(String iuud) {
+    return firestore.collection('viajes').doc(iuud).snapshots();
   }
 
   Stream<QuerySnapshot> getHistorialViaje() {
