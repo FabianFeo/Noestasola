@@ -35,7 +35,7 @@ class _BlogState extends State<Blog> {
                       ),
                     ),
                   ),
-                  Container(                    
+                  Container(
                     child: Card(
                       color: Color.fromRGBO(101, 79, 168, 1),
                       shape: RoundedRectangleBorder(
@@ -55,7 +55,7 @@ class _BlogState extends State<Blog> {
                                         top: height / 40, left: width / 19),
                                     width: width / 1.5,
                                     child: Container(
-                                      child: CircleAvatar(                                        
+                                      child: CircleAvatar(
                                           backgroundColor: Colors.white,
                                           radius: height / 20,
                                           backgroundImage: AssetImage(
@@ -107,19 +107,20 @@ class _BlogState extends State<Blog> {
                       margin: EdgeInsets.all(30),
                       child: Container(
                         height: height / 6,
-                        child: Row(                          
+                        child: Row(
                           children: [
                             Container(
-                              width: width / 1.36 ,
+                              width: width / 1.36,
                               child: Center(
-                                child: Text('Publicidad',
-                              style: TextStyle(
-                                fontSize: height / 20,
-                                color: Colors.white,
-                              ),),
+                                child: Text(
+                                  'Publicidad',
+                                  style: TextStyle(
+                                    fontSize: height / 25,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
                             ),
-                            
                           ],
                         ),
                       ),
