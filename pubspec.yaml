@@ -54,6 +54,14 @@ dependencies:
   social_share: ^2.1.1
   url_launcher: ^6.0.3
   loading_gifs: ^0.3.0
+  flutter_launcher_icons: ^0.9.0
+
+
+flutter_icons:
+  android: "launcher_icon"
+  image_path_android: "assets/Icon/Lu_icono_driver.png"
+  image_path_ios: "assets/Icon/Lu_icono_user.png"
+  ios: true 
 
   
 dependency_overrides:
