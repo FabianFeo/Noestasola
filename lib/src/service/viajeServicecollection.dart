@@ -7,20 +7,24 @@ class ViajesServiceCollection {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   var uuid = Uuid();
   User user = User();
-  Viaje viaje = Viaje();
-  Future pushviaje() {
-    viaje.date = DateTime.now().toIso8601String();
-    viaje.uiid = uuid.v4();
-    viaje.idCliente = user.userUuid;
-    viaje.estado="enEspera";
-    return firestore.collection('viajes').doc(viaje.uiid).set(viaje.toMap());
+  Viaje _viaje = Viaje();
+  Future pushviaje(Map<String, dynamic> viaje) {
+    viaje['date'] = DateTime.now().toIso8601String();
+    viaje['uiid'] = uuid.v4();
+    _viaje.uiid = viaje['uiid'];
+    viaje['idCliente'] = user.userUuid;
+    viaje['estado'] = "enEspera";
+    return firestore.collection('viajes').doc(_viaje.uiid).set(viaje);
   }
 
   Stream<DocumentSnapshot> getCambiosViaje() {
-    return firestore.collection('viajes').doc(viaje.uiid).snapshots();
+    return firestore.collection('viajes').doc(_viaje.uiid).snapshots();
   }
 
   Stream<QuerySnapshot> getHistorialViaje() {
-    return firestore.collection('viajes').where('idCliente',isEqualTo: user.userUuid).snapshots();
+    return firestore
+        .collection('viajes')
+        .where('idCliente', isEqualTo: user.userUuid)
+        .snapshots();
   }
 }

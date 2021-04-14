@@ -1,5 +1,6 @@
 import 'package:NoEstasSola/src/model/viaje.model.dart';
 import 'package:NoEstasSola/src/service/contactosService.dart';
+import 'package:NoEstasSola/src/service/viajeActivoService.dart';
 import 'package:NoEstasSola/src/service/viajeServicecollection.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -25,11 +26,11 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   String _myActivity;
   String dropDownValue;
   BitmapDescriptor myIcon;
-  Viaje _viaje = Viaje();
+
   ViajesServiceCollection _viajesServiceCollection = ViajesServiceCollection();
   double totalDistancia = 0;
   bool showDetails = false;
-  bool servicePedido = true;
+  bool servicePedido = false;
   bool confirmationCard = false;
   bool dondeestas = true;
   bool showFinalcard = false;
@@ -54,13 +55,16 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
   TextEditingController _controllerText2 = TextEditingController();
   Set<Marker> _markers = Set();
   bool showCurrentPosition = true;
-  Viaje viaje = Viaje();
+  Map<String, dynamic> viaje;
   GooglePlace googlePlace =
       GooglePlace("AIzaSyDDjt2cJQi5BgxkYJZ7ZtrPTafZQICenXo");
   List<AutocompletePrediction> predictions = [];
+  ViajeActivoSharePreference viajeActivoSharePreference =
+      ViajeActivoSharePreference();
   double height = 0;
   double width = 0;
   String dropdownValue;
+  bool iniciarViaje = false;
   ContactosService _contactosService = ContactosService();
   @override
   void initState() {
@@ -69,6 +73,32 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
             'assets/IconosMarker/Marker_1.png')
         .then((onValue) {
       myIcon = onValue;
+    });
+    viajeActivoSharePreference.getVieaje().then((value) {
+      if (value != null &&
+          (value['estado'] != 'Terminado' || value['estado'] != 'Cancelado')) {
+        viaje = value;
+        setState(() {
+          iniciarViaje = false;
+          showDetails = false;
+          servicePedido = false;
+          confirmationCard = false;
+          dondeestas = false;
+          showFinalcard = true;
+          showEstoyLista = false;
+        });
+        startCoordinates = LatLng(value['latInicio'], value['lanInicio']);
+        destination = LatLng(value['latDestino'], value['lanDestino']);
+        _createPolylines();
+      } else {
+        iniciarViaje = false;
+        showDetails = false;
+        servicePedido = true;
+        confirmationCard = false;
+        dondeestas = false;
+        showFinalcard = false;
+        showEstoyLista = false;
+      }
     });
   }
 
@@ -121,6 +151,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                             onPressed: () {
                               setState(() {
                                 showDetails = true;
+                                viaje = Map();
                               });
                             },
                             child: Card(
@@ -281,7 +312,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                         _controllerText2.text =
                                                             predictions[index]
                                                                 .description;
-                                                        viaje.direccionInicio =
+                                                        viaje['direccionInicio'] =
                                                             predictions[index]
                                                                 .description;
                                                       });
@@ -317,14 +348,14 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                           idStart =
                                                               predictions[index]
                                                                   .placeId;
-                                                          viaje.direccionInicio =
+                                                          viaje['direccionInicio'] =
                                                               predictions[index]
                                                                   .description;
                                                         } else {
                                                           _controllerText.text =
                                                               predictions[index]
                                                                   .description;
-                                                          viaje.direccionDestino =
+                                                          viaje['direccionDestino'] =
                                                               predictions[index]
                                                                   .description;
                                                           idDestination =
@@ -394,7 +425,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                     Duration(milliseconds: 100),
                                                 scaleFactor: 1.5,
                                                 onPressed: () {
-                                                  viaje.toNull();
+                                                  viaje = null;
                                                   setState(() {
                                                     showDetails = false;
                                                   });
@@ -521,12 +552,13 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                               Color.fromRGBO(102, 51, 204, 1)),
                                       child: GestureDetector(
                                         onTap: () {
-                                          viaje.valor =
+                                          viaje['valor'] =
                                               ((totalDistancia * 850) + 2500)
                                                   .toStringAsFixed(0);
-
+                                          viajeActivoSharePreference
+                                              .saveVieaje(viaje);
                                           _viajesServiceCollection
-                                              .pushviaje()
+                                              .pushviaje(viaje)
                                               .then((value) {
                                             setState(() {
                                               showFinalcard = true;
@@ -631,7 +663,7 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                           color: Colors.deepPurpleAccent,
                                         ),
                                         onChanged: (String newValue) {
-                                          viaje.metodoPago = newValue;
+                                          viaje['metodoPago'] = newValue;
                                           setState(() {
                                             dropdownValue = newValue;
                                           });
@@ -1312,14 +1344,14 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
           }
           startCoordinates = LatLng(value2.result.geometry.location.lat,
               value2.result.geometry.location.lng);
-          viaje.latInicio = startCoordinates.latitude;
-          viaje.lanInicio = startCoordinates.longitude;
+          viaje['latInicio'] = startCoordinates.latitude;
+          viaje['lanInicio'] = startCoordinates.longitude;
         });
         if (value != null) {
           destination = LatLng(value.result.geometry.location.lat,
               value.result.geometry.location.lng);
-          viaje.latDestino = destination.latitude;
-          viaje.lanDestino = destination.longitude;
+          viaje['latDestino'] = destination.latitude;
+          viaje['lanDestino'] = destination.longitude;
 
           if (startCoordinates.latitude <= value.result.geometry.location.lat) {
             _southwestCoordinates = startCoordinates;
