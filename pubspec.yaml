@@ -53,7 +53,8 @@ dependencies:
   flutter_sms: ^2.3.1
   social_share: ^2.1.1
   url_launcher: ^6.0.3
-  
+  loading_gifs: ^0.3.0
+
   
 dependency_overrides:
   http: ^0.13.0

@@ -1050,7 +1050,12 @@ class _MapaPageState extends State<MapaPage> with TickerProviderStateMixin {
                                                 )
                                               ],
                                             )
-                                          : CircularProgressIndicator(),
+                                          : FadeInImage.assetNetwork(
+                                              placeholder:
+                                                  'assets/Logo/Lu_carga_transparente.gif',
+                                              image: "",
+                                              //alignment: Alignment.center,
+                                            ),
                                 ),
                               ),
                             )));
