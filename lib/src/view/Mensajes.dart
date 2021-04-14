@@ -168,7 +168,7 @@ class _MensajesUserState extends State<MensajesUser> {
                                   top: height / 25, left: width / 18),
                               child: Text(
                                 //mensajes que he enviado
-                                'Mensajes enviados',
+                                'Mensajes Lu',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500,

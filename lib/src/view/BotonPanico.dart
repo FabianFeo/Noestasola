@@ -155,7 +155,8 @@ class _BotonPanicoState extends State<BotonPanico> {
                                   ),
                                 ),
                               ),
-                            ), BOTON PARA DESACTIVAR LAS REPETICIONES DEL GPS */
+                            ),*/
+                            /* BOTON PARA DESACTIVAR LAS REPETICIONES DEL GPS */
                             Container(
                               child: BouncingWidget(
                                 duration: Duration(milliseconds: 100),

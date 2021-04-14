@@ -58,7 +58,11 @@ Future pushCodeEmergency(String rNum) async {
           .collection('emergencia')
           .doc(rNum)
           .collection("positions")
-          .add({'lat': position.latitude, 'lng': position.longitude});
+          .add({
+        'Time': DateTime.now().millisecondsSinceEpoch,
+        'lat': position.latitude,
+        'lng': position.longitude
+      });
     }
   });
 }
