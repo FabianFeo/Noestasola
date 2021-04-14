@@ -1,5 +1,9 @@
 import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/service/authService.dart';
+import 'package:NoEstasSola/src/service/emailConfigService.dart';
+import 'package:NoEstasSola/src/service/locationConfigService.dart';
+import 'package:NoEstasSola/src/service/mensajesConfigService.dart';
+import 'package:NoEstasSola/src/service/notificationConfigService.dart';
 import 'package:NoEstasSola/src/view/Ayuda.dart';
 import 'package:NoEstasSola/src/view/Blog.dart';
 import 'package:NoEstasSola/src/view/BotonPanico.dart';
@@ -22,6 +26,10 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
+  LocationConfigService _locationConfigService = LocationConfigService();
+  NotificationConfigService _notificationConfigService = NotificationConfigService();
+  MensajesConfigServices _mensajesConfigServices = MensajesConfigServices();
+  EmailConfigService _emailConfigService = EmailConfigService();
   User _user = User();
   // ignore: unused_field
   int _page = 1;
@@ -31,6 +39,26 @@ class _IndexState extends State<Index> {
   @override
   void initState() {
     super.initState();
+      _locationConfigService.getLocationConfig().then((value) {
+      if (value==null){
+        _locationConfigService.saveLocationConfig(true);
+      }
+      _notificationConfigService.getNotificationConfig().then((value) {
+        if (value==null){
+          _notificationConfigService.saveNotificationConfig(true);
+        }
+      _mensajesConfigServices.getMensajesConfig().then((value){
+        if (value==null){
+         _mensajesConfigServices.saveMensajesConfig(true);
+        }
+      _emailConfigService.getEmailConfigService().then((value) {
+        if(value==null) {
+          _emailConfigService.saveEmailConfig(true);
+        }
+      }); 
+      });
+      });
+    });
   }
 
   @override
