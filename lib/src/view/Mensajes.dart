@@ -1,3 +1,4 @@
+import 'package:NoEstasSola/src/view/mensajeria.dart';
 import 'package:flutter/material.dart';
 
 class MensajesUser extends StatefulWidget {
@@ -37,6 +38,7 @@ class _MensajesUserState extends State<MensajesUser> {
                         Container(
                             child: Center(
                           child: Text(
+                            //mensajes de publicidad y de la aplicacion
                             'Mensajes',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -66,6 +68,7 @@ class _MensajesUserState extends State<MensajesUser> {
                               margin: EdgeInsets.only(
                                   top: height / 25, left: width / 18),
                               child: Text(
+                                //todos los mensajes recibidos
                                 'Todos los mensajes',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -79,14 +82,18 @@ class _MensajesUserState extends State<MensajesUser> {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                top: height / 25, right: width / 20
-                              ),
+                                  top: height / 25, right: width / 20),
                               child: GestureDetector(
                                 child: Icon(
                                   Icons.arrow_forward_ios_rounded,
                                   color: Colors.white,
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Mensajeria()));
+                                },
                               ),
                             ),
                           ],
@@ -113,6 +120,7 @@ class _MensajesUserState extends State<MensajesUser> {
                               margin: EdgeInsets.only(
                                   top: height / 25, left: width / 18),
                               child: Text(
+                                //mensajes para la ubicacion y la comunicacion con los servicios
                                 'Mensajes usuaria / conductora',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -126,8 +134,7 @@ class _MensajesUserState extends State<MensajesUser> {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                top: height / 25, right: width / 20
-                              ),
+                                  top: height / 25, right: width / 20),
                               child: GestureDetector(
                                 child: Icon(
                                   Icons.arrow_forward_ios_rounded,
@@ -157,8 +164,10 @@ class _MensajesUserState extends State<MensajesUser> {
                         Column(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: height / 25, left: width / 18),
+                              margin: EdgeInsets.only(
+                                  top: height / 25, left: width / 18),
                               child: Text(
+                                //mensajes que he enviado
                                 'Mensajes enviados',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -171,7 +180,8 @@ class _MensajesUserState extends State<MensajesUser> {
                         Column(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: height/25, right: width / 20),
+                              margin: EdgeInsets.only(
+                                  top: height / 25, right: width / 20),
                               child: GestureDetector(
                                 child: Icon(
                                   Icons.arrow_forward_ios_rounded,
