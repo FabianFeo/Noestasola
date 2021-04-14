@@ -59,7 +59,7 @@ dependencies:
 
 flutter_icons:
   android: "launcher_icon"
-  image_path_android: "assets/Icon/Lu_icono_driver.png"
+  image_path_android: "assets/Icon/Lu_icono_user.png"
   image_path_ios: "assets/Icon/Lu_icono_user.png"
   ios: true 
 
