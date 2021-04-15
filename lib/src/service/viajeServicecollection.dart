@@ -6,6 +6,7 @@ import 'package:uuid/uuid.dart';
 
 class ViajesServiceCollection {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  ViajeActivoSharePreference activoSharePreference=ViajeActivoSharePreference();
   var uuid = Uuid();
   User user = User();
   Viaje _viaje = Viaje();
@@ -13,8 +14,10 @@ class ViajesServiceCollection {
     viaje['date'] = DateTime.now().toIso8601String();
     viaje['uiid'] = uuid.v4();
     _viaje.uiid = viaje['uiid'];
+    
     viaje['idCliente'] = user.userUuid;
     viaje['estado'] = "enEspera";
+    activoSharePreference.saveVieaje(viaje);
     return firestore.collection('viajes').doc(_viaje.uiid).set(viaje);
   }
 
