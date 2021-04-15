@@ -23,24 +23,6 @@ class _SearchScreenState extends State<SearchScreen> {
   TextEditingController searchEditingController = new TextEditingController();
   QuerySnapshot searchResultSnapshot;
 
-  initiateSearch() async {
-    if (_user.firstName.isNotEmpty && _user.lastname.isNotEmpty) {
-      setState(() {
-        isLoading = true;
-      });
-      await chatService
-          .searchByName(searchEditingController.text)
-          .then((snapshot) {
-        searchResultSnapshot = snapshot;
-        print("$searchResultSnapshot");
-        setState(() {
-          isLoading = false;
-          haveUserSearched = true;
-        });
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

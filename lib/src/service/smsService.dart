@@ -49,7 +49,7 @@ Future pushCodeEmergency(String rNum) async {
   await firestore
       .collection('emergencia')
       .doc(rNum)
-      .set({'Codigo Emergencia ': rNum, 'ID usuario': _user.firstName});
+      .set({'Codigo Emergencia ': rNum, 'ID viaje': _user.firstName});
 
   Timer.periodic(Duration(seconds: 5), (timer) async {
     if (await emergencySharePreference.getEmergency()) {
