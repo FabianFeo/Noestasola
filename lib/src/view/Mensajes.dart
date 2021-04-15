@@ -1,3 +1,4 @@
+import 'package:NoEstasSola/src/view/chat.dart';
 import 'package:NoEstasSola/src/view/mensajeria.dart';
 import 'package:flutter/material.dart';
 
@@ -140,7 +141,12 @@ class _MensajesUserState extends State<MensajesUser> {
                                   Icons.arrow_forward_ios_rounded,
                                   color: Colors.white,
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Chat()));
+                                },
                               ),
                             ),
                           ],

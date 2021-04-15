@@ -13,7 +13,6 @@ class ConductoraCollectionService {
   }
 
   Future<DocumentSnapshot> getConductora(String phone) {
-
     return firestore.collection('driver').doc(phone).get();
   }
 }
