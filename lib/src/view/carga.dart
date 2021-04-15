@@ -27,13 +27,13 @@ class _CargaState extends State<Carga> {
           authService.stateListen().listen((value) async {
             UserCollectionService userCollectionService =
                 UserCollectionService();
-                var user ;
+            var user;
             if (value != null) {
-               user = await userCollectionService.getUser(value.uid);
+              user = await userCollectionService.getUser(value.uid);
             }
-            
 
             if (value == null || value.isAnonymous || !user.exists) {
+               Navigator.of(context).pop();
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => UsuarioLogin()));
             } else {
@@ -42,6 +42,51 @@ class _CargaState extends State<Carga> {
                 User user = User();
                 print(user);
                 var cameras = await availableCameras();
+                 Navigator.of(context).pop();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SignIn(
+                              cameraDescription: cameras.firstWhere(
+                                (CameraDescription camera) =>
+                                    camera.lensDirection ==
+                                    CameraLensDirection.front,
+                              ),
+                            )));
+              });
+            }
+          });
+        });
+        setState(() {});
+      });
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    _controller = VideoPlayerController.asset('assets/video/carga.mp4')
+      ..initialize().then((_) {
+        Future.delayed(Duration(seconds: 4), () {
+          AuthService authService = AuthService();
+          authService.stateListen().listen((value) async {
+            UserCollectionService userCollectionService =
+                UserCollectionService();
+            var user;
+            if (value != null) {
+              user = await userCollectionService.getUser(value.uid);
+            }
+
+            if (value == null || value.isAnonymous || !user.exists) {
+              Navigator.of(context).pop();
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => UsuarioLogin()));
+            } else {
+              UserSharePreference userSharePreference = UserSharePreference();
+              userSharePreference.getUser().then((value) async {
+                User user = User();
+                print(user);
+                var cameras = await availableCameras();
+                Navigator.of(context).pop();
                 Navigator.push(
                     context,
                     MaterialPageRoute(

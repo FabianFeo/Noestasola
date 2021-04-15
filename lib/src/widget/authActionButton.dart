@@ -2,6 +2,7 @@ import 'package:NoEstasSola/src/model/User.model.dart';
 import 'package:NoEstasSola/src/service/databaseService.dart';
 import 'package:NoEstasSola/src/service/faceNetService.dart';
 import 'package:NoEstasSola/src/service/usersCollectionService.dart';
+import 'package:NoEstasSola/src/view/carga.dart';
 import 'package:NoEstasSola/src/view/index.dart';
 import 'package:flutter/material.dart';
 
@@ -74,6 +75,10 @@ class _AuthActionButtonState extends State<AuthActionButton> {
     if (_faceNetService.predict()) {
       Navigator.of(context).pop();
       Navigator.push(context, MaterialPageRoute(builder: (context) => Index()));
+    }else{
+       Navigator.of(context).pop();
+
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Carga()));
     }
   }
 

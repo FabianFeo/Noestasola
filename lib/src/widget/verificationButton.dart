@@ -54,6 +54,9 @@ class _verificationButtonState extends State<verificationButton> {
       VerificacionFaceTravel verificacionFaceTravel = VerificacionFaceTravel();
       verificacionFaceTravel.saveVerificationFace();
       Navigator.of(context).pop();
+    }else{
+      Navigator.of(context).pop();
+      Navigator.of(context).pop();
     }
   }
 
