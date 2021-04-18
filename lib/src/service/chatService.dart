@@ -5,7 +5,7 @@ class ChatService {
   Future<DocumentReference> addMessage(Map travel, String message) async {
     return firestore
         .collection('viajes')
-        .doc(travel['idViaje'])
+        .doc(travel['uiid'])
         .collection('chat')
         .add({
       'Time': DateTime.now().millisecondsSinceEpoch,
@@ -17,7 +17,7 @@ class ChatService {
   Stream<QuerySnapshot> getMessageDriver(Map travel) {
     return firestore
         .collection('viajes')
-        .doc(travel['idViaje'])
+        .doc(travel['uiid'])
         .collection('chat')
         .orderBy('Time')
         .snapshots();
